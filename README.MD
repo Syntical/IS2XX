@@ -12,7 +12,7 @@ URL=jdbc:mariadb://172.19.160.1:3308
 
 Beskrivelse av de nødvendige verktøy for å kunne arbeide med dette prosjektet. Klikk på hyper 
 - IDE - Vi benytter oss av Intellij (Ulitmate er nødvendig av hensyn til database implementering)
- <a href="https://www.jetbrains.com/idea/download/#section=windows"<br>>Lenke-til-Intellij. <a/>
+ <a href="https://www.jetbrains.com/idea/download/#section=windows">Lenke-til-Intellij. <a/>
 
 - Docker - Programmet som kjører "containere" med database og server lokalt på pcen. Fungerer som VM (virtuell maskin), 
   men unten nødvendigheten for å delegere en gitt kapasitet til denne. Docker er dynamisk.
