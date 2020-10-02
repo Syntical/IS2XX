@@ -9,7 +9,7 @@ username=root
 password=12345
 URL=jdbc:mariadb://172.19.160.1:3308
 
-<a href="http://localhost:8080/Skeleton-1.0/" <a/>
+<a href="http://localhost:8080/Skeleton-1.0/>" Vi benytter oss av Intellij (Ulitmate er nødvendig av hensyn til database implementering) Lenke-til-Intellij.<a/>
 
 Beskrivelse av de nødvendige verktøy for å kunne arbeide med dette prosjektet. Klikk på hyper 
 - IDE - Vi benytter oss av Intellij (Ulitmate er nødvendig av hensyn til database implementering)
