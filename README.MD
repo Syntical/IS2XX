@@ -27,7 +27,7 @@ Beskrivelse av de nødvendige verktøy for å kunne arbeide med dette prosjektet
 
 - Windows terminal (Dette er ikke nødvendig, men anbefales)
 Denne må konfigureres for git. Installer derfor terminalen, åpne den og gå til "settings" og erstatte alt av tekst i denne med det som står i den vedlagte filen "Win.Term.Settings".
-<a href="https://www.microsoft.com/nb-no/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab" <a/>
+<a href="https://www.microsoft.com/nb-no/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab" </a>
 
 </body> 
 
