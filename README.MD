@@ -25,8 +25,8 @@ Beskrivelse av de nødvendige verktøy for å kunne arbeide med dette prosjektet
 <a href="https://github.com/git-for-windows/git/releases/download/v2.28.0.windows.1/Git-2.28.0-64-bit.exe">Lenke-til-Git-nedlastningsfil. <a/>
 
 - Windows terminal (Dette er ikke nødvendig, men anbefales)
-   - Denne må konfigureres for git. Installer derfor terminalen, åpne den og gå til "settings" og erstatte alt av tekst i denne med det som står i den vedlagte filen "Win.Term.Settings".
-<a href="https://www.microsoft.com/nb-no/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab%22%3ELenke-til-Windows-Terminal. <a/>
+Denne må konfigureres for git. Installer derfor terminalen, åpne den og gå til "settings" og erstatte alt av tekst i denne med det som står i den vedlagte filen "Win.Term.Settings".
+<a href="https://www.microsoft.com/nb-no/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab". <a/>
 
 </body> 
 
