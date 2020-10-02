@@ -1,7 +1,7 @@
 
 
 :: Start database
-docker run --rm --name mariadb -p 3308:3306/tcp -v %cd%/database:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=12345 -d mariadb
+docker run --rm --name mariadb -p 3308:3306/tcp -v %cd%/database:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=12345 -d mariadb:10.5.4
 
 :: Start maven-cache
 docker volume create --name maven-repo
