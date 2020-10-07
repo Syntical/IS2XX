@@ -3,17 +3,64 @@ body
     /*
      background-color: #3ebe1b;
      */
-    background: rgb(238,174,202);
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background-image: url("https://www.goodfreephotos.com/albums/other-landscapes/rowing-a-canoe-down-the-scenic-river.jpg");
+    background-size: cover;
+    padding: 30px;
+    font-family: Georgia;
 }
 h1
 {
-    color: #ab0d0d;
+    color: black;
     text-align:center;
 
 }
+
+h3
+{
+    color: black;
+    size: 10px;
+    align-content: center;
+}
 p
 {
-    font-family:"Times New Roman";
     font-size:30px;
+}
+
+.button{
+    border: none;
+    color: whitesmoke;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    align-content: center;
+}
+
+.buttonAdd
+{
+    background-color: white;
+    color: black;
+}
+
+.buttonHent {
+    background-color: white;
+    color: black;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+.forsideKnapper{
+    background:rgba(255,255,255,0.5);
+    border: none;
+    text-align: center;
+
+}
+
+.Introduksjon{
+    background:rgba(255,255,255,0.7);
 }
