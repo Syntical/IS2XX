@@ -43,8 +43,6 @@ public class ReceiveUserNameFromDb extends AbstractAppServlet {
         out.println("<th scope=col> Fornavn: </th>");
         out.println("<th scope=col> Etternavn: </th>");
         out.println("<th scope=col> Vekt: </th>");
-        out.println("<br>");
-        out.println("<a href=\"index.jsp\">Forsiden</a>");
         out.println("</tr>");
         for (UtoevereModel model : listeOverMedlemmer) {
             out.format(" <tr><td> %s </td> <td>  %s </td> <td>  %s </td> </tr>", model.getFornavn(),

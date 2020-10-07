@@ -6,6 +6,7 @@ public class UtoevereModel {
     private String vekt;
 
 
+
     /**
      * @param fornavn   the users firstname
      * @param etternavn the users lastname

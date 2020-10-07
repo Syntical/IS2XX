@@ -24,11 +24,7 @@ public class RequestUserNameFromDb extends AbstractAppServlet {
         out.println("  <label for='uname'>Username:</label>");
         out.println("  <input type='text' name='uname'/>");
         out.println("  <input type='submit' />");
-        out.println("<br>");
-        out.println("<a href=\"index.jsp\">Forsiden</a>");
         out.println("</form>");
-
-
 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

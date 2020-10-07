@@ -17,10 +17,12 @@ public class UserRepository {
      * legger til bruker til databasen.
      * Denne er ikke implementert. Her må dere gjerne prøve å lage en egen servlet som kan kommunisere med
      * denne metoden.
+     *
      * @param utoever bruker objekt som inneholder all informasjon om personen.
-     * Tips: Objektet må instansieres i en servlet før man kaller på addUser().
-     * @param p printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
+     *                Tips: Objektet må instansieres i en servlet før man kaller på addUser().
+     * @param p       printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
      */
+
 
     public static int addUtoever(UtoevereModel utoever, PrintWriter p) {
         Connection db = null;
@@ -28,7 +30,7 @@ public class UserRepository {
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
             String query =
-                "INSERT INTO `utoevere` (fornavn, etternavn, vekt) values (?, ?, ?)";
+                    "INSERT INTO `utoevere` (fornavn, etternavn, vekt) values (?, ?, ?)";
 
             insertNewUtoever = db.prepareStatement(query);
             insertNewUtoever.setString(1, utoever.getFornavn());
@@ -52,8 +54,9 @@ public class UserRepository {
 
     /**
      * henter ut spesifikk person fra databasen
+     *
      * @param fornavn brukerens epost-addresse ("trym@example.com");
-     * @param p printwriter see metoden over.
+     * @param p       printwriter see metoden over.
      * @return et String objekt med eposten til brukeren.
      */
 
@@ -93,7 +96,7 @@ public class UserRepository {
             prepareStatement = db.prepareStatement(query);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"),rs.getString("vekt"));
+                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("vekt"));
                 toReturn.add(utoever);
             }
             rs.close();
@@ -104,4 +107,44 @@ public class UserRepository {
 
         return toReturn;
     }
+
+    public static void removeUtoever(String id, PrintWriter p) {
+
+        Connection db = null;
+        PreparedStatement removeBruker = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+            String query = "DELETE FROM utoevere WHERE medlemID= ? ";
+            removeBruker = db.prepareStatement(query);
+            removeBruker.setString(1, id);
+            removeBruker.executeQuery();
+
+
+        } catch (SQLException e ) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public static int changeUtoever(UtoevereModel utoever, PrintWriter p) {
+
+        Connection db = null;
+        PreparedStatement changeBruker = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+            String query = "UPDATE utoevere WHERE fornavn= 'kevin' ";
+            changeBruker = db.prepareStatement(query);
+            changeBruker.setString(1, utoever.getFornavn());
+            changeBruker.executeQuery();
+
+
+        } catch (SQLException e ) {
+            e.printStackTrace();
+        }
+return 1;
+    }
 }
+

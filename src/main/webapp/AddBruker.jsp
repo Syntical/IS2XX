@@ -6,13 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/Style.css" />
 <html>
 <head>
-    <title>Legg til bruker</title>
+    <title>Legg til utoever</title>
 </head>
 <body>
-<h1>Legg til bruker i databasen</h1>
+<h1>Add someone to the database :-)</h1>
 <form action='AddBruker' method='POST'>
     <label for='fn'>Fornavn:</label>
     <input type='text' name='fn'/>
@@ -26,12 +25,15 @@
     <input type='submit' name="action" value="add"/>
     </form>
 
+<p>Trykk her for å slette en bruker
+    <a href="RemoveBruker.jsp">Slett Bruker</a></p>
+<p>Trykk her for å endre en bruker
+    <a href="ChangeBruker.jsp">endre bruker</a></p>
+
 <form action="AddBruker" method="POST">
     <input type="submit" name="action" value="hent">
-    <a href="index.jsp">Forsiden</a>
 </form>
-<form>
 
-</form>
+
 </body>
 </html>

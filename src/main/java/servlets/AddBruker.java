@@ -1,6 +1,6 @@
 package servlets;
 
-import models.UserModel;
+
 import models.UtoevereModel;
 import org.mariadb.jdbc.MariaDbDatabaseMetaData;
 import tools.repository.UserRepository;
@@ -46,18 +46,11 @@ public class AddBruker extends AbstractAppServlet {
             UtoevereModel utoever = new UtoevereModel(req.getParameter("fn"), req.getParameter("en"), req.getParameter("vk"));
             Integer suksess = UserRepository.addUtoever(utoever, out);
             if (suksess != null) {
-                out.println("Brukeren " + utoever.getFornavn() + " ble lagt til i databasen.");
+                out.println(utoever.getFornavn() + "ble lagt til i databasen.");
 
-                out.println("Vil du legge til en ny bruker?");
-                out.println("<a href=AddBruker.jsp> Klikk her </a>");
-                out.println("<br>");
-                out.println("<a href=index.jsp> Forsiden </a>");
+                out.println("<a href=AddBruker.jsp> Vil du legge til en ny bruker? Klikk her</a>");
             } else {
-                out.println("Noe gikk galt. Vil du forsøke på nytt? </a>");
-                out.println("<a href=AddBruker.jsp> Klikk her</a>");
-
-                out.println("<br>");
-                out.println("<a href=index.jsp> Gå tilbake til forsiden/a>");
+                out.println("<a href=AddBruker.jsp> Noe gikk galt. Vil du prøve på nytt? </a>");
             }
         } if (action.contains("hent")){
             List<UtoevereModel> utoevereModelList = UserRepository.getUtoever(out);

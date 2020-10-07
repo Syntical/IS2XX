@@ -1,0 +1,19 @@
+body
+{
+    /*
+     background-color: #3ebe1b;
+     */
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+h1
+{
+    color: #ab0d0d;
+    text-align:center;
+
+}
+p
+{
+    font-family:"Times New Roman";
+    font-size:30px;
+}
