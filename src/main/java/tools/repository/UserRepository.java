@@ -60,7 +60,7 @@ public class UserRepository {
      * @return et String objekt med eposten til brukeren.
      */
 
-    public static String getEtternavn(String fornavn, PrintWriter p) {
+    public static String getFornavn(String fornavn, PrintWriter p) {
         Connection db = null;
         PreparedStatement prepareStatement = null;
 
@@ -73,7 +73,7 @@ public class UserRepository {
             prepareStatement.setString(1, fornavn);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                toReturn = rs.getString("Fornavn");
+                toReturn = rs.getString("fornavn");
             }
             rs.close();
 

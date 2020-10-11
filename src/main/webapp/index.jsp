@@ -22,6 +22,11 @@
     <p>
     <button class="button buttonHent"><a href="ReceiveUserNameFromDb">Vis alle medlemmene</a></button>
     </p>
+    <p>
+    Click here to send a request for a user.
+        <a href="RequestUserNameFromDb">get user</a>
+    </p>
+    </p>
 </div>
 
 </body>

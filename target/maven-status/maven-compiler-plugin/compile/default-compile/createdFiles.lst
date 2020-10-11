@@ -1,12 +1,13 @@
 docker/file/JAXRSConfiguration.class
-servlets/AbstractAppServlet.class
 docker/file/JavaEE8Resource.class
+servlets/AddBruker.class
+servlets/RequestUserNameFromDb.class
+servlets/ResultsFromDb.class
+tools/repository/UserRepository.class
+servlets/AbstractAppServlet.class
 models/UserModel.class
 servlets/RemoveBruker.class
-servlets/AddBruker.class
 servlets/ChangeBruker.class
-servlets/RequestUserNameFromDb.class
 models/UtoevereModel.class
 servlets/ReceiveUserNameFromDb.class
 tools/DbTool.class
-tools/repository/UserRepository.class

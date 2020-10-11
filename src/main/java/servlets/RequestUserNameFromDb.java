@@ -1,7 +1,14 @@
 package servlets;
 
+import tools.DbTool;
+import tools.repository.UserRepository;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,21 +19,23 @@ import javax.servlet.http.HttpServletResponse;
 public class RequestUserNameFromDb extends AbstractAppServlet {
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
 
         writeResponse(request, response, "Servlet");
     }
 
     @Override
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
-        out.println("<h1>Get someone from the database :-)</h1>");
-        out.println("<form action='ReceiveUserNameFromDb' method='POST'>");
-        out.println("  <label for='uname'>Username:</label>");
-        out.println("  <input type='text' name='uname'/>");
+
+        out.println("<h1>Hent utøver fra databasen :-)</h1>");
+        out.println("<form action='ResultsFromDb' method='POST'>");
+        out.println("  <label for='fnavn'>fornavn:</label>");
+        out.println("  <input type='text' name='fnavn'/>");
         out.println("  <input type='submit' />");
         out.println("</form>");
-
     }
+
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -38,7 +47,7 @@ public class RequestUserNameFromDb extends AbstractAppServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -52,7 +61,7 @@ public class RequestUserNameFromDb extends AbstractAppServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
