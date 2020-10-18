@@ -19,7 +19,13 @@
     <label for='en'> Etternavn:</label>
     <input type='text' name='en'/>
     <br>
-    <label for='vk'>      Vekt:</label>
+    <label for='fd'> Fødselsdato:</label>
+    <input type='text' name='fd'/>
+    <br>
+    <label for='hd'> Høyde:</label>
+    <input type='text' name='hd'/>
+    <br>
+    <label for='vk'> Vekt:</label>
     <input type='text' name='vk'/>
     <br>
     <input type='submit' name="action" value="add"/>

@@ -43,7 +43,7 @@ public class AddBruker extends AbstractAppServlet {
 
         String action = req.getParameter("action");
         if (action.contains("add")) {
-            UtoevereModel utoever = new UtoevereModel(req.getParameter("fn"), req.getParameter("en"), req.getParameter("vk"));
+            UtoevereModel utoever = new UtoevereModel(req.getParameter("fn"), req.getParameter("en"), req.getParameter("fd"), req.getParameter("hd"), req.getParameter("vk"));
             Integer suksess = UserRepository.addUtoever(utoever, out);
             if (suksess != null) {
                 out.println(utoever.getFornavn() + "ble lagt til i databasen.");
@@ -59,12 +59,14 @@ public class AddBruker extends AbstractAppServlet {
             out.println("<tr>");
             out.println("<th scope=col> Fornavn: </th>");
             out.println("<th scope=col> Etternavn: </th>");
+            out.println("<th scope=col> Fødselsår: </th>");
+            out.println("<th scope=col> Høyde: </th>");
             out.println("<th scope=col> Vekt: </th>");
             out.println("</tr>");
 
             for (UtoevereModel model : utoevereModelList) {
-                out.format(" <tr><td> %s </td> <td>  %s </td> <td>  %s </td> </tr>", model.getFornavn(),
-                        model.getEtternavn(), model.getVekt());
+                out.format(" <tr><td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> </tr>", model.getFornavn(),
+                        model.getEtternavn(), model.getFodselsdato(), model.getHoyde(), model.getVekt());
             }
             out.println("</table>");
         }

@@ -14,11 +14,15 @@
 
 
 <form action="ChangeBruker" method="POST">
-    <label for='cb'>endre:</label>
+    <label for='cb'>endre fornavn:</label>
     <input type='text' name='cb'/>
     <br>
+    <label for='ci'>brukerid:</label>
+    <input type='text' name='ci'/>
     <input type='submit' name="action" value="change"/>
 </form>
+
+
 
 </body>
 </html>

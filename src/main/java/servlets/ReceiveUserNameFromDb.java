@@ -42,11 +42,14 @@ public class ReceiveUserNameFromDb extends AbstractAppServlet {
         out.println("<tr>");
         out.println("<th scope=col> Fornavn: </th>");
         out.println("<th scope=col> Etternavn: </th>");
+        out.println("<th scope=col> Fødselsår: </th>");
+        out.println("<th scope=col> Høyde: </th>");
         out.println("<th scope=col> Vekt: </th>");
         out.println("</tr>");
+
         for (UtoevereModel model : listeOverMedlemmer) {
-            out.format(" <tr><td> %s </td> <td>  %s </td> <td>  %s </td> </tr>", model.getFornavn(),
-                    model.getEtternavn(), model.getVekt());
+            out.format(" <tr><td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> </tr>", model.getFornavn(),
+                    model.getEtternavn(), model.getFodselsdato(), model.getHoyde(), model.getVekt());
         }
         out.println("</table>");
     }

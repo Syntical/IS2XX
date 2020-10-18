@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.UtoevereModel;
-import org.graalvm.compiler.printer.BinaryGraphPrinter;
 import tools.DbTool;
 
 public class UserRepository {
@@ -30,12 +29,14 @@ public class UserRepository {
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
             String query =
-                    "INSERT INTO `utoevere` (fornavn, etternavn, vekt) values (?, ?, ?)";
+                    "INSERT INTO `utovere` (fornavn, etternavn, fodselsdato, hoyde, vekt) values (?,?,?,?,?)";
 
             insertNewUtoever = db.prepareStatement(query);
             insertNewUtoever.setString(1, utoever.getFornavn());
             insertNewUtoever.setString(2, utoever.getEtternavn());
-            insertNewUtoever.setString(3, utoever.getVekt());
+            insertNewUtoever.setString(3, utoever.getFodselsdato());
+            insertNewUtoever.setString(4, utoever.getHoyde());
+            insertNewUtoever.setString(5, utoever.getVekt());
             insertNewUtoever.execute();
 
         } catch (SQLException throwables) {
@@ -68,12 +69,12 @@ public class UserRepository {
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
             ResultSet rs = null;
-            String query = "SELECT * FROM utoevere where fornavn = ?";
+            String query = "SELECT * FROM utovere where fornavn = ?";
             prepareStatement = db.prepareStatement(query);
             prepareStatement.setString(1, fornavn);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("vekt"));
+                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"),rs.getString("fodselsdato"),rs.getString("hoyde"), rs.getString("vekt"));
                 toReturn.add(utoever);
             }
             rs.close();
@@ -84,7 +85,6 @@ public class UserRepository {
 
         return toReturn;
     }
-
     public static List<UtoevereModel> getUtoever(PrintWriter p) {
         Connection db = null;
         PreparedStatement prepareStatement = null;
@@ -93,11 +93,11 @@ public class UserRepository {
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
             ResultSet rs = null;
-            String query = "SELECT * FROM roklubben.utoevere";
+            String query = "SELECT * FROM Roprosjekt.utovere";
             prepareStatement = db.prepareStatement(query);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("vekt"));
+                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"),rs.getString("fodselsdato"),rs.getString("hoyde"), rs.getString("vekt"));
                 toReturn.add(utoever);
             }
             rs.close();
@@ -116,7 +116,7 @@ public class UserRepository {
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
 
-            String query = "DELETE FROM utoevere WHERE medlemID= ? ";
+            String query = "DELETE FROM Roprosjekt.Utovere WHERE utover_id= ? ";
             removeBruker = db.prepareStatement(query);
             removeBruker.setString(1, id);
             removeBruker.executeQuery();
@@ -129,23 +129,74 @@ public class UserRepository {
     }
 
 
-    public static int changeUtoever(UtoevereModel utoever, PrintWriter p) {
+    public static void changeUtoever(String fornavn, String id, PrintWriter p) {
 
         Connection db = null;
         PreparedStatement changeBruker = null;
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
 
-            String query = "UPDATE utoevere WHERE fornavn= 'kevin' ";
+            String query = "UPDATE Roprosjekt.Utovere SET fornavn = ? WHERE Utover_id = ?";
+
             changeBruker = db.prepareStatement(query);
-            changeBruker.setString(1, utoever.getFornavn());
+            changeBruker.setString(1, fornavn);
+            changeBruker.setString(2, id);
+
             changeBruker.executeQuery();
+
+        } catch (SQLException e ) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public static void Login(String bruk, String Passo, PrintWriter p) {
+
+        Connection db = null;
+        PreparedStatement Log = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+            String query = "SELECT * FROM Brukerinfo WHERE brukernavn = ? AND Passo = ?";
+            Log = db.prepareStatement(query);
+            Log.setString(1, bruk);
+            Log.setString(2, Passo);
+            Log.executeQuery();
 
 
         } catch (SQLException e ) {
             e.printStackTrace();
         }
-return 1;
+
     }
+    public static int Registrer(String Brukernavn, String passord, PrintWriter p) {
+        Connection db = null;
+        PreparedStatement insertNewBruker = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+            String query =
+                    "INSERT INTO `Brukerinfo` (Brukernavn, Passord) values (?,?)";
+
+            insertNewBruker = db.prepareStatement(query);
+            insertNewBruker.setString(1,Brukernavn);
+            insertNewBruker.setString(2,passord);
+
+            insertNewBruker.execute();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+        return 1;
+    }
+
 }
 
