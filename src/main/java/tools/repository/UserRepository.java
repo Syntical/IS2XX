@@ -60,20 +60,21 @@ public class UserRepository {
      * @return et String objekt med eposten til brukeren.
      */
 
-    public static String getFornavn(String fornavn, PrintWriter p) {
+    public static List<UtoevereModel> getFornavn(String fornavn, PrintWriter p) {
         Connection db = null;
         PreparedStatement prepareStatement = null;
 
-        String toReturn = null;
+        List<UtoevereModel> toReturn = new ArrayList<>();
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
             ResultSet rs = null;
-            String query = "SELECT * FROM roklubben.utoevere where fornavn = ?";
+            String query = "SELECT * FROM utoevere where fornavn = ?";
             prepareStatement = db.prepareStatement(query);
             prepareStatement.setString(1, fornavn);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                toReturn = rs.getString("fornavn");
+                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("vekt"));
+                toReturn.add(utoever);
             }
             rs.close();
 
