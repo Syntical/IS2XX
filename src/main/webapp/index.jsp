@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +23,12 @@
     <p>
     <button class="button buttonHent"><a href="ReceiveUserNameFromDb">Vis alle medlemmene</a></button>
     </p>
+    <p>
+    <h3>Klikk her for å søke etter utøver</h3>
+        <button class="button buttonHent"><a href="RequestUserNameFromDb">Søk etter utøver</a></button>
+    </p>
+    </p>
+
 </div>
 
 </body>

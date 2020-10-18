@@ -1,12 +1,13 @@
 /usr/src/mymaven/src/main/java/servlets/AddBruker.java
-/usr/src/mymaven/src/main/java/models/UserModel.java
-/usr/src/mymaven/src/main/java/servlets/ReceiveUserNameFromDb.java
+/usr/src/mymaven/src/main/java/servlets/ResultsFromDb.java
 /usr/src/mymaven/src/main/java/models/UtoevereModel.java
 /usr/src/mymaven/src/main/java/servlets/RemoveBruker.java
 /usr/src/mymaven/src/main/java/servlets/AbstractAppServlet.java
-/usr/src/mymaven/src/main/java/servlets/RequestUserNameFromDb.java
 /usr/src/mymaven/src/main/java/docker/file/JAXRSConfiguration.java
-/usr/src/mymaven/src/main/java/servlets/ChangeBruker.java
 /usr/src/mymaven/src/main/java/tools/repository/UserRepository.java
 /usr/src/mymaven/src/main/java/docker/file/JavaEE8Resource.java
+/usr/src/mymaven/src/main/java/models/UserModel.java
+/usr/src/mymaven/src/main/java/servlets/ReceiveUserNameFromDb.java
+/usr/src/mymaven/src/main/java/servlets/RequestUserNameFromDb.java
+/usr/src/mymaven/src/main/java/servlets/ChangeBruker.java
 /usr/src/mymaven/src/main/java/tools/DbTool.java
