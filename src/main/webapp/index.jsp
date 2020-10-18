@@ -21,15 +21,19 @@
 
     <h3>Eller vis alle medlemmene</h3>
     <p>
-    <button class="button buttonHent"><a href="ReceiveUserNameFromDb">Vis alle medlemmene</a></button>
+        <button class="button buttonHent"><a href="ReceiveUserNameFromDb">Vis alle medlemmene</a></button>
     </p>
     <p>
     <h3>Klikk her for å søke etter utøver</h3>
-        <button class="button buttonHent"><a href="RequestUserNameFromDb">Søk etter utøver</a></button>
+    <button class="button buttonHent"><a href="RequestUserNameFromDb">Søk etter utøver</a></button>
     </p>
     </p>
 
 </div>
+<form>
+    <button class="button buttonAdd"><a href="Registrering.jsp">Registrering</a></button>
 
+
+</form>
 </body>
 </html>

@@ -14,6 +14,7 @@
 
 
 <form action="RemoveBruker" method="POST">
+
     <label for='rm'>fjern:</label>
     <input type='text' name='rm'/>
     <br>

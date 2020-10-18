@@ -42,18 +42,15 @@ public class ChangeBruker extends AbstractAppServlet {
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
 
         String action = req.getParameter("action");
+        String cb = req.getParameter("cb");
+        String ci = req.getParameter("ci");
+
         if (action.contains("change")) {
-            UtoevereModel utoever = new UtoevereModel(req.getParameter("fn"), req.getParameter("en"), req.getParameter("vk"));
-            Integer suksess = UserRepository.changeUtoever(utoever, out);
-            if (suksess != null) {
-                out.println(utoever.getFornavn() + "ble lagt til i databasen.");
-
-                out.println("<a href=AddBruker.jsp> Vil du legge til en ny bruker? Klikk her</a>");
-            } else {
-                out.println("<a href=AddBruker.jsp> Noe gikk galt. Vil du prøve på nytt? </a>");
-            }
-
+            UserRepository.changeUtoever(cb, ci, out);
+            out.println("Utøverens navn endret");
         }
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
