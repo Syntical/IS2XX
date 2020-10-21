@@ -13,15 +13,16 @@
 </head>
 <body>
 
-<div class="Innlogging">
-<form action="ChangeBruker" method="POST">
-    <label for='bn'>Brukernavn:</label>
-    <input type='text' name='cb'/>
-    <br>
-    <label for='pd'>Passord:</label>
-    <input type='text' name='ci'/>
-    <input type='submit' name="action" value="login"/>
-</form>
+<div class="BrukerReg">
+    <form action="RegistrerBruker" method="POST">
+        <label for='bn'>Brukernavn:</label>
+        <input type='text' name='bn'/>
+        <br>
+        <label for='pd'>Passord:</label>
+        <input type='text' name='pd'/>
+        <input type='submit' name="action" value="Registrer"/>
+    </form>
 </div>
+
 </body>
 </html>
