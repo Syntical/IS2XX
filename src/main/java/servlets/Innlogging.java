@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 
-@WebServlet(name = "login", urlPatterns = {"/login"})
+@WebServlet(name = "login2", urlPatterns = {"/login2"})
 public class Innlogging extends AbstractAppServlet {
     /**
      * Tar imot http requesten og kaller på writeResponse()

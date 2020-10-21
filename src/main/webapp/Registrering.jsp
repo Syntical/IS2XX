@@ -14,12 +14,20 @@
 
 
 <form action="RegistrerBruker" method="POST">
-    <label for='bn'>Brukernavn:</label>
-    <input type='text' name='bn'/>
-    <br>
-    <label for='pd'>Passord:</label>
-    <input type='text' name='pd'/>
+
+    <table style="with: 50%">
+
+        <tr>
+            <td>Brukernavn</td>
+            <td><input type="text" name="bn" /></td>
+        </tr>
+        <tr>
+            <td>Passord</td>
+            <td><input type="text" name="pd" /></td>
+
+          </tr> </table>
     <input type='submit' name="action" value="Registrer"/>
+
 </form>
 
 </body>
