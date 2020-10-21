@@ -198,5 +198,41 @@ public class UserRepository {
         return 1;
     }
 
+
+    UserRepository.java
+
+    public static int addTestgruppe(String Testgruppenavn, String utover_id, String test_reg_id, String Testgruppe_id, PrintWriter p) {
+        Connection db = null;
+        PreparedStatement insertNewTestGruppe = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+            String query =
+                    "INSERT INTO 'Testgruppe' (Testgruppenavn, test_reg_id, utover_id, Testgruppe_id) values (?, ?, ?, ?)";
+
+
+            insertNewTestGruppe = db.prepareStatement(query);
+            insertNewTestGruppe.setString(1, Testgruppenavn);
+            insertNewTestGruppe.setString(2, test_reg_id);
+            insertNewTestGruppe.setString(3, utover_id);
+            insertNewTestGruppe.setString(4, Testgruppe_id);
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+
+        return 1;
+
+
+    }
+
 }
 
