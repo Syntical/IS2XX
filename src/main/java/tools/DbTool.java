@@ -96,4 +96,3 @@ public final class DbTool {
         return toReturn;
     }
 }
-

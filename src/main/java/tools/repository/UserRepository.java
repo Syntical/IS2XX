@@ -1,5 +1,6 @@
 package tools.repository;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +11,9 @@ import java.util.List;
 
 import models.UtoevereModel;
 import tools.DbTool;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 public class UserRepository {
     /**
@@ -74,7 +78,7 @@ public class UserRepository {
             prepareStatement.setString(1, fornavn);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"),rs.getString("fodselsdato"),rs.getString("hoyde"), rs.getString("vekt"));
+                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"));
                 toReturn.add(utoever);
             }
             rs.close();
@@ -85,6 +89,7 @@ public class UserRepository {
 
         return toReturn;
     }
+
     public static List<UtoevereModel> getUtoever(PrintWriter p) {
         Connection db = null;
         PreparedStatement prepareStatement = null;
@@ -97,7 +102,7 @@ public class UserRepository {
             prepareStatement = db.prepareStatement(query);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"),rs.getString("fodselsdato"),rs.getString("hoyde"), rs.getString("vekt"));
+                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"));
                 toReturn.add(utoever);
             }
             rs.close();
@@ -122,7 +127,7 @@ public class UserRepository {
             removeBruker.executeQuery();
 
 
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -144,7 +149,7 @@ public class UserRepository {
 
             changeBruker.executeQuery();
 
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -165,11 +170,12 @@ public class UserRepository {
             Log.executeQuery();
 
 
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
+
     public static int Registrer(String Brukernavn, String passord, PrintWriter p) {
         Connection db = null;
         PreparedStatement insertNewBruker = null;
@@ -179,8 +185,8 @@ public class UserRepository {
                     "INSERT INTO `Brukerinfo` (Brukernavn, Passord) values (?,?)";
 
             insertNewBruker = db.prepareStatement(query);
-            insertNewBruker.setString(1,Brukernavn);
-            insertNewBruker.setString(2,passord);
+            insertNewBruker.setString(1, Brukernavn);
+            insertNewBruker.setString(2, passord);
 
             insertNewBruker.execute();
 
@@ -198,5 +204,34 @@ public class UserRepository {
         return 1;
     }
 
-}
 
+    public static int addTestgruppe(String Testgruppenavn, String utover_id, String test_reg_id, String Testgruppe_id, PrintWriter p) {
+        Connection db = null;
+        PreparedStatement insertNewTestGruppe = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+            String query =
+                    "INSERT INTO 'Testgruppe' (Testgruppenavn, test_reg_id, utover_id, Testgruppe_id) values (?, ?, ?, ?)";
+
+            insertNewTestGruppe = db.prepareStatement(query);
+            insertNewTestGruppe.setString(1, Testgruppenavn);
+            insertNewTestGruppe.setString(2, test_reg_id);
+            insertNewTestGruppe.setString(3, utover_id);
+            insertNewTestGruppe.setString(4, Testgruppe_id);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+        return 1;
+
+    }
+
+}
