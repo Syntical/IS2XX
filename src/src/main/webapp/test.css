@@ -1,0 +1,198 @@
+body
+{
+    /*
+     background-color: #3ebe1b;
+     */
+    background-image: url("https://www.goodfreephotos.com/albums/other-landscapes/rowing-a-canoe-down-the-scenic-river.jpg");
+    background-size: cover;
+    padding: 30px;
+    font-family: Georgia;
+}
+
+
+h1
+{
+    color: black;
+    text-align:center;
+
+}
+
+
+h3
+{
+    color: black;
+    size: 10px;
+    align-content: center;
+}
+
+
+p
+{
+    font-size:30px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+table, th, td{
+    border-collapse: collapse;
+    border: 1px solid gray;
+    background-color: white;
+    text-align: left;
+    padding: 15px;
+
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+table.medlemListe {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.button{
+    border: none;
+    color: whitesmoke;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    align-content: center;
+}
+
+
+.buttonAdd
+{
+    background-color: white;
+    color: black;
+}
+
+
+.buttonHent {
+    background-color: white;
+    color: black;
+}
+
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+    color: black;
+}
+
+
+.forsideKnapper{
+    background:rgba(255,255,255,0.5);
+    border: none;
+    text-align: center;
+
+}
+
+
+.Introduksjon{
+    background:rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 10px;
+}
+
+
+.Innlogging, .medlemmerListe{
+    background:rgba(255,255,255,0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+    align-content: center;
+    text-align: center;
+}
+
+
+.Søkefelt{
+    background:rgba(255,255,255,0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+    align-content: center;
+    text-align: center;
+}
+
+.Scoreboard{
+    background:rgba(255,255,255,0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+    align-content: center;
+    text-align: center;
+}
+
+
+.RemBruker{
+    background:rgba(255,255,255,0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+    align-content: center;
+    text-align: center;
+}
+
+
+.BrukerReg{
+    background:rgba(255,255,255,0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+    align-content: center;
+    text-align: center;
+}
+
+
+.KlubbInfo{
+    background:rgba(255,255,255,0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+    align-content: center;
+    text-align: center;
+}
+
+
+.AddTG {
+    background: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+    align-content: center;
+    text-align: center;
+}
+
+
+.LeggTilBruker {
+    background: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+    align-content: center;
+    text-align: center;
+}
+
+
+input[type=text] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
