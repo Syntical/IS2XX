@@ -22,6 +22,9 @@
     <input type='text' name='ci'/>
     <input type='submit' name="action" value="login"/>
 </form>
+
+    <button class="button loginSomAdmin"><a href="Main_pageAdmin.jsp">Login Admin</a></button>
+    <button class="button loginSomTrener"><a href="Main_pageTrener.jsp">Login Trener</a></button>
 </div>
 </body>
 </html>
