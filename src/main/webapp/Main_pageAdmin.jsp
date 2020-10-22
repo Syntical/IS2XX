@@ -30,6 +30,18 @@
         </p>
             <h3>Klikk her for å registrere en ny trener/Superbruker</h3>
         <button class="button buttonAdd"><a href="Registrer.jsp">Registrering</a></button>
+        <p>
+            <h3> Klikk her for å registrere en ny klubb</h3>
+            <button class="button buttonAdd"><a href="addKlubb.jsp">Registrer Klubb</a></button>
+        </p>
+        <p>
+        <h3> Klikk her for å slette en klubb</h3>
+        <button class="button buttonAdd"><a href="RemoveKlubb.jsp">Slett Klubb</a></button>
+        </p>
+        <p>
+        <h3> Klikk her for å endre en klubb</h3>
+        <button class="button buttonAdd"><a href="ChangeKlubb.jsp">Endre Klubb</a></button>
+        </p>
     </div>
     </body>
 </html>

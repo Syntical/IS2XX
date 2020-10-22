@@ -74,7 +74,7 @@ public class UserRepository {
             prepareStatement.setString(1, fornavn);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"),rs.getString("fodselsdato"),rs.getString("hoyde"), rs.getString("vekt"));
+                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"));
                 toReturn.add(utoever);
             }
             rs.close();
@@ -85,6 +85,7 @@ public class UserRepository {
 
         return toReturn;
     }
+
     public static List<UtoevereModel> getUtoever(PrintWriter p) {
         Connection db = null;
         PreparedStatement prepareStatement = null;
@@ -97,7 +98,7 @@ public class UserRepository {
             prepareStatement = db.prepareStatement(query);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"),rs.getString("fodselsdato"),rs.getString("hoyde"), rs.getString("vekt"));
+                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"));
                 toReturn.add(utoever);
             }
             rs.close();
@@ -122,7 +123,7 @@ public class UserRepository {
             removeBruker.executeQuery();
 
 
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -144,7 +145,7 @@ public class UserRepository {
 
             changeBruker.executeQuery();
 
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -165,11 +166,12 @@ public class UserRepository {
             Log.executeQuery();
 
 
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
+
     public static int Registrer(String Brukernavn, String passord, PrintWriter p) {
         Connection db = null;
         PreparedStatement insertNewBruker = null;
@@ -179,8 +181,8 @@ public class UserRepository {
                     "INSERT INTO `Brukerinfo` (Brukernavn, Passord) values (?,?)";
 
             insertNewBruker = db.prepareStatement(query);
-            insertNewBruker.setString(1,Brukernavn);
-            insertNewBruker.setString(2,passord);
+            insertNewBruker.setString(1, Brukernavn);
+            insertNewBruker.setString(2, passord);
 
             insertNewBruker.execute();
 
@@ -198,5 +200,57 @@ public class UserRepository {
         return 1;
     }
 
+    public static void LeggTilKlubb(String navn, PrintWriter p) {
+        Connection db = null;
+        PreparedStatement insertNewBruker = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+            String query = "INSERT INTO `klubb` (klubbnavn) values (?)";
+            insertNewBruker = db.prepareStatement(query);
+            insertNewBruker.setString(1, navn);
+            insertNewBruker.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void removeKlubb(String navn, PrintWriter p) {
+
+        Connection db = null;
+        PreparedStatement removeKlubb = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+            String query = "DELETE FROM klubb WHERE Klubbnavn= ? ";
+            removeKlubb = db.prepareStatement(query);
+            removeKlubb.setString(1, navn);
+            removeKlubb.executeQuery();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void changeKlubb(String navn,String id, PrintWriter p) {
+
+        Connection db = null;
+        PreparedStatement changeKlubb = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+            String query = "UPDATE klubb SET Klubbnavn = ? WHERE klubb_id = ?";
+
+            changeKlubb = db.prepareStatement(query);
+            changeKlubb.setString(1, navn);
+            changeKlubb.setString(2, id);
+
+            changeKlubb.executeQuery();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
 
