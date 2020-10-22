@@ -197,6 +197,31 @@ public class UserRepository {
 
         return 1;
     }
+    public static int addKlubb(String Klubb, PrintWriter p) {
+        Connection db = null;
+        PreparedStatement insertNewKlubb = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+            String query =
+                    "INSERT INTO `Klubb` (Klubbnavn) values (?)";
 
+            insertNewKlubb = db.prepareStatement(query);
+            insertNewKlubb.setString(1, Klubb);
+
+            insertNewKlubb.execute();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+        return 1;
+    }
 }
 
