@@ -1,11 +1,9 @@
 docker/file/JAXRSConfiguration.class
-net/javaguides/login/bean/LoginBean.class
 docker/file/JavaEE8Resource.class
-net/javaguides/login/bean/LoginServlet.class
+com/servlet/Controller.class
 servlets/AddBruker.class
 servlets/RequestUserNameFromDb.class
 servlets/ResultsFromDb.class
-net/javaguides/login/bean/LoginDao.class
 tools/repository/UserRepository.class
 servlets/AbstractAppServlet.class
 models/UserModel.class
