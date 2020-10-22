@@ -1,35 +1,30 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 99kev
+  Date: 12.10.2020
+  Time: 14:03
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html>
 <head>
+    <title>Title</title>
     <link rel="stylesheet" href="test.css" />
-    <title>Start Page</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-<div class="Introduksjon">
-    <h1>Roforbundet</h1>
-    <h2>Velkommen til den nye hjemmesiden for Norges Roforbund! Her vil du kunne legge til utovere og hente dem ut.</h2>
+
+<div class="Innlogging">
+<form action="ChangeBruker" method="POST">
+    <label for='bn'>Brukernavn:</label>
+    <input type='text' name='cb'/>
+    <br>
+    <label for='pd'>Passord:</label>
+    <input type='text' name='ci'/>
+    <input type='submit' name="action" value="login"/>
+</form>
+
+    <button class="button loginSomAdmin"><a href="Main_pageAdmin.jsp">Login Admin</a></button>
+    <button class="button loginSomTrener"><a href="Main_pageTrener.jsp">Login Trener</a></button>
 </div>
-
-
-<div class="forsideKnapper">
-    <h3>Legge til en ny person</h3>
-    <p>
-        <button class="button buttonAdd"><a href="AddBruker.jsp">Legg til ny person</a></button>
-    </p>
-
-    <h3>Eller vis alle medlemmene</h3>
-    <p>
-    <button class="button buttonHent"><a href="ReceiveUserNameFromDb">Vis alle medlemmene</a></button>
-    </p>
-    <p>
-    <h3>Klikk her for å søke etter utøver</h3>
-        <button class="button buttonHent"><a href="RequestUserNameFromDb">Søk etter utøver</a></button>
-    </p>
-    </p>
-
-</div>
-
 </body>
 </html>

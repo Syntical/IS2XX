@@ -34,7 +34,6 @@ public class ResultsFromDb extends AbstractAppServlet {
      */
     @Override
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
-        String action = req.getParameter("action");
         String fornavn = req.getParameter("ffnavn");
         List<UtoevereModel> nameFromDb = UserRepository.getFornavn(fornavn, out);
         out.println("<h1>Her er ditt søkeresultat:</h1> ");
@@ -42,14 +41,15 @@ public class ResultsFromDb extends AbstractAppServlet {
         out.println("<tr>");
         out.println("<th scope=col> Fornavn: </th>");
         out.println("<th scope=col> Etternavn: </th>");
+        out.println("<th scope=col> Fødselsår: </th>");
+        out.println("<th scope=col> Høyde: </th>");
         out.println("<th scope=col> Vekt: </th>");
         out.println("</tr>");
         for (UtoevereModel model : nameFromDb) {
-            out.format(" <tr><td> %s </td> <td>  %s </td> <td>  %s </td> </tr>", model.getFornavn(),
-                    model.getEtternavn(), model.getVekt());
+            out.format(" <tr><td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> </tr>", model.getFornavn(),
+                    model.getEtternavn(), model.getFodselsdato(), model.getHoyde(), model.getVekt());
         }
         out.println("</table>");
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
