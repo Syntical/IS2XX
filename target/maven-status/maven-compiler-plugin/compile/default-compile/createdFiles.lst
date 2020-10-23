@@ -1,5 +1,6 @@
 docker/file/JAXRSConfiguration.class
 docker/file/JavaEE8Resource.class
+servlets/Controller2.class
 servlets/AddBruker.class
 servlets/AddKlubb.class
 servlets/RequestUserNameFromDb.class

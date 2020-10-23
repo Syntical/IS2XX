@@ -15,4 +15,5 @@
 /usr/src/mymaven/src/main/java/servlets/RemoveKlubb.java
 /usr/src/mymaven/src/main/java/servlets/RequestUserNameFromDb.java
 /usr/src/mymaven/src/main/java/servlets/ChangeBruker.java
+/usr/src/mymaven/src/main/java/servlets/Controller2.java
 /usr/src/mymaven/src/main/java/tools/DbTool.java
