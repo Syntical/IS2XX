@@ -15,7 +15,7 @@
 
         <tr>
             <th align='right'> Brukernavn:</th>
-            <td><input type='text' name='vcbrukernavn' placeholder='Brukernavn'></td>
+            <td><input type='text' name='vcbrukernavn' placeholder='E-mail'></td>
         </tr>
         <tr>
             <th align='right'> Passord:</th>
