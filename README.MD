@@ -9,11 +9,11 @@ username=root
 password=12345
 URL=jdbc:mariadb://172.19.160.1:3308
 
-<a href="http://localhost:8080/Skeleton-1.0/>" Vi benytter oss av Intellij (Ulitmate er nødvendig av hensyn til database implementering) Lenke-til-Intellij.<a/>
+"http://localhost:8080/Skeleton-1.0/" Vi benytter oss av Intellij (Ulitmate er nødvendig av hensyn til database implementering) Lenke-til-Intellij.<a/>
 
 Beskrivelse av de nødvendige verktøy for å kunne arbeide med dette prosjektet. Klikk på hyper 
 - IDE - Vi benytter oss av Intellij (Ulitmate er nødvendig av hensyn til database implementering)
- <a href="https://www.jetbrains.com/idea/download/#section=windows">Lenke-til-Intellij. <a/>
+ <a href= "https://www.jetbrains.com/idea/download/#section=windows">Lenke-til-Intellij. <a/>
 
 - Docker - Programmet som kjører "containere" med database og server lokalt på pcen. Fungerer som VM (virtuell maskin), 
   men unten nødvendigheten for å delegere en gitt kapasitet til denne. Docker er dynamisk.
@@ -27,7 +27,7 @@ Beskrivelse av de nødvendige verktøy for å kunne arbeide med dette prosjektet
 
 - Windows terminal (Dette er ikke nødvendig, men anbefales)
 Denne må konfigureres for git. Installer derfor terminalen, åpne den og gå til "settings" og erstatte alt av tekst i denne med det som står i den vedlagte filen "Win.Term.Settings".
-<a href="https://www.microsoft.com/nb-no/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab" </a>
+<a> https://www.microsoft.com/nb-no/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab" <a/>
 
 </body> 
 
