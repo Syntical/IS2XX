@@ -35,7 +35,7 @@ public class Controller2 extends AbstractAppServlet {
                 if (_username != null) {
 
                     db = DbTool.getINSTANCE().dbLoggIn(out);
-                    String Query = "Select * from Roprosjekt.Brukerinfo where Brukernavn=? and Passord=?";
+                    String Query = "Select * from Roprosjekt.Brukerinfo where Email=? and Passord=?";
                     pwm = db.prepareStatement(Query);
                     pwm.setString(1, _username);
                     pwm.setString(2, _password);
