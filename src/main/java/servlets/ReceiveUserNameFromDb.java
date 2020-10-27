@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.UtoevereModel;
-import tools.repository.UserRepository;
+import tools.repository.SearchRepo;
 
 
 @WebServlet(name= "ReceiveUserNameFromDb", urlPatterns = {"/ReceiveUserNameFromDb"})
@@ -36,7 +36,7 @@ public class ReceiveUserNameFromDb extends AbstractAppServlet {
     @Override
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
         String fornavn = req.getParameter("fornavn");
-        List<UtoevereModel> listeOverMedlemmer = UserRepository.getUtoever(out);
+        List<UtoevereModel> listeOverMedlemmer = SearchRepo.getUtoever(out);
         out.println("<h1>Her er listen over alle medlemmene i roklubben:</h1> ");
         out.println("<table>");
         out.println("<tr>");

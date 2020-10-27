@@ -2,18 +2,16 @@ package servlets;
 
 
 import models.UtoevereModel;
-import org.mariadb.jdbc.MariaDbDatabaseMetaData;
-import tools.repository.UserRepository;
+import tools.repository.SearchRepo;
+import tools.repository.UtoeverRepo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.registry.infomodel.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Set;
 
 
 @WebServlet(name = "AddBruker", urlPatterns = {"/AddBruker"})
@@ -44,7 +42,7 @@ public class AddBruker extends AbstractAppServlet {
         String action = req.getParameter("action");
         if (action.contains("add")) {
             UtoevereModel utoever = new UtoevereModel(req.getParameter("fn"), req.getParameter("en"), req.getParameter("fd"), req.getParameter("hd"), req.getParameter("vk"));
-            Integer suksess = UserRepository.addUtoever(utoever, out);
+            Integer suksess = UtoeverRepo.addUtoever(utoever, out);
             if (suksess != null) {
                 out.println(utoever.getFornavn() + "ble lagt til i databasen.");
 
@@ -53,7 +51,7 @@ public class AddBruker extends AbstractAppServlet {
                 out.println("<a href=AddBruker.jsp> Noe gikk galt. Vil du prøve på nytt? </a>");
             }
         } if (action.contains("hent")){
-            List<UtoevereModel> utoevereModelList = UserRepository.getUtoever(out);
+            List<UtoevereModel> utoevereModelList = SearchRepo.getUtoever(out);
             out.println("<h1>Her er listen over alle medlemmene i roklubben:</h1> ");
             out.println("<table>");
             out.println("<tr>");

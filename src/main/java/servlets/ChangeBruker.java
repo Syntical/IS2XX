@@ -1,19 +1,14 @@
 package servlets;
 
 
-import models.UtoevereModel;
-import org.mariadb.jdbc.MariaDbDatabaseMetaData;
-import tools.repository.UserRepository;
+import tools.repository.UtoeverRepo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.registry.infomodel.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.Set;
 
 
 @WebServlet(name = "ChangeBruker", urlPatterns = {"/ChangeBruker"})
@@ -46,7 +41,7 @@ public class ChangeBruker extends AbstractAppServlet {
         String ci = req.getParameter("ci");
 
         if (action.contains("change")) {
-            UserRepository.changeUtoever(cb, ci, out);
+            UtoeverRepo.changeUtoever(cb, ci, out);
             out.println("Utøverens navn endret");
         }
 
