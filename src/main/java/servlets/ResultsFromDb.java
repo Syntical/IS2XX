@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.UtoevereModel;
-import tools.repository.UserRepository;
+import tools.repository.SearchRepo;
 
 
 @WebServlet(name= "ResultsFromDb", urlPatterns = {"/ResultsFromDb"})
@@ -35,7 +35,7 @@ public class ResultsFromDb extends AbstractAppServlet {
     @Override
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
         String fornavn = req.getParameter("ffnavn");
-        List<UtoevereModel> nameFromDb = UserRepository.getFornavn(fornavn, out);
+        List<UtoevereModel> nameFromDb = SearchRepo.getFornavn(fornavn, out);
         out.println("<h1>Her er ditt søkeresultat:</h1> ");
         out.println("<table>");
         out.println("<tr>");

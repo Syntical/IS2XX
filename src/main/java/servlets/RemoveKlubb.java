@@ -1,19 +1,14 @@
 package servlets;
 
 
-import models.UtoevereModel;
-import org.mariadb.jdbc.MariaDbDatabaseMetaData;
-import tools.repository.UserRepository;
+import tools.repository.KlubbRepo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.registry.infomodel.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.Set;
 
 
 @WebServlet(name = "RemoveKlubb", urlPatterns = {"/RemoveKlubb"})
@@ -46,7 +41,7 @@ public class RemoveKlubb extends AbstractAppServlet {
 
 
         if (action.contains("removeklubb")) {
-            UserRepository.removeKlubb(kb, out);
+            KlubbRepo.removeKlubb(kb, out);
             out.println("Din klubb har blitt slettet");
         }
 
