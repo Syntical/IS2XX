@@ -7,6 +7,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ Legger til klubb i databasen
+ @param navn bruker objekt som inneholder all informasjon om klubben.
+ @param p printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
+ **/
 public class KlubbRepo {
     public static void LeggTilKlubb(String navn, PrintWriter p) {
         Connection db = null;
@@ -23,7 +28,11 @@ public class KlubbRepo {
         }
 
     }
-
+    /**
+     Sletter en klubb i databasen
+     @param navn bruker objekt som inneholder all informasjon om klubb.
+     @param p printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
+     **/
     public static void removeKlubb(String navn, PrintWriter p) {
 
         Connection db = null;
@@ -41,7 +50,12 @@ public class KlubbRepo {
         }
 
     }
-
+    /**
+     Endrer en enkel klubbs navn.
+     @param navn bruker objekt som inneholder all informasjon om klubbnavn.
+     @param id bruker objekt som inneholder all informasjon om klubbid.
+     @param p printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
+     **/
     public static void changeKlubb(String navn, String id, PrintWriter p) {
 
         Connection db = null;

@@ -39,9 +39,11 @@ public class RegistrerBruker extends AbstractAppServlet {
         String action = req.getParameter("action");
         String bn = req.getParameter("bn");
         String pd = req.getParameter("pd");
+        String rl = req.getParameter("rolle");
+
 
         if (action.contains("Registrer")) {
-           LoginRepo.Registrer(bn, pd, out);
+           LoginRepo.Registrer(bn, pd,rl, out);
         }
 
     }

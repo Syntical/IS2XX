@@ -15,7 +15,7 @@ public class SearchRepo {
     /**
      * henter ut spesifikk person fra databasen
      *
-     * @param fornavn brukerens epost-addresse ("trym@example.com");
+     * @param fornavn henter ut utøverens data ved bruk av fornavn
      * @param p       printwriter see metoden over.
      * @return et String objekt med eposten til brukeren.
      */
@@ -45,6 +45,11 @@ public class SearchRepo {
         return toReturn;
     }
 
+    /**
+     * Henter ut all data fra databasen om utøvere.
+     *
+     * @return et String objekt med eposten til brukeren.
+     */
     public static List<UtoevereModel> getUtoever(PrintWriter p) {
         Connection db = null;
         PreparedStatement prepareStatement = null;

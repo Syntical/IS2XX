@@ -13,10 +13,8 @@ import tools.DbTool;
 
 public class UtoeverRepo {
     /**
-     * legger til bruker til databasen.
-     * Denne er ikke implementert. Her må dere gjerne prøve å lage en egen servlet som kan kommunisere med
-     * denne metoden.
-     *
+     * legger til utøver til databasen.
+
      * @param utoever bruker objekt som inneholder all informasjon om personen.
      *                Tips: Objektet må instansieres i en servlet før man kaller på addUser().
      * @param p       printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
@@ -53,6 +51,14 @@ public class UtoeverRepo {
         return 1;
     }
 
+    /**
+     * Fjerner en utøver fra databasen
+
+     * @param id objektet som brukes for å slette en utøver via sql id.
+     *
+     * @param p       printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
+     */
+
     public static void removeUtoever(String id, PrintWriter p) {
 
         Connection db = null;
@@ -72,7 +78,15 @@ public class UtoeverRepo {
 
     }
 
+    /**
+     * Endrer for øyeblikket kun fornavn
 
+     @param fornavn objektet som inneholder dataen vi endrer
+
+     * @param id objektet som brukes for å slette en utøver via sql id.
+     *
+     * @param p       printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
+     */
     public static void changeUtoever(String fornavn, String id, PrintWriter p) {
 
         Connection db = null;
