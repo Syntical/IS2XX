@@ -24,9 +24,9 @@
     <input type='text' name='pd'/>
     <input type='submit' name="action" value="Registrer"/>
 
-    <label>Rolle:</label>
-    <select>
-        <option value="-1"> Velg rolle </option>
+    <label for="roller">Rolle:</label>
+    <select id="roller" name="rolle">
+        <option value=""> Velg rolle </option>
         <%
             PrintWriter p = new PrintWriter(out);
             Connection db = null;
