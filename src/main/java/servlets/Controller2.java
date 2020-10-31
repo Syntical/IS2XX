@@ -3,6 +3,7 @@ package servlets;
 import org.w3c.dom.ls.LSOutput;
 import tools.DbTool;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +33,8 @@ public class Controller2 extends AbstractAppServlet {
 
             try {
 
+                String nesteSide = "Login.jsp";
+                String melding = "Invalid email/password";
                 if (_username != null) {
 
                     db = DbTool.getINSTANCE().dbLoggIn(out);
@@ -45,11 +48,18 @@ public class Controller2 extends AbstractAppServlet {
 
                      HttpSession session = request.getSession();
                      session.setAttribute("Brukernavn", _username);
-                     response.sendRedirect("AdminSide.jsp");
+                     nesteSide = "AdminSide.jsp";
+                     // response.sendRedirect("AdminSide.jsp");
                     } else
-                        response.sendRedirect("Login.jsp");
-                } else
+                        request.setAttribute("message", melding);
+                   //     response.sendRedirect("Login.jsp");
+                } else {
                     System.out.println("Eriks Error");
+
+                }
+                RequestDispatcher dispatcher = request.getRequestDispatcher(nesteSide);
+                dispatcher.forward(request, response);
+
             } catch (Exception ex) {
                 out.println("Exception :" + ex.getMessage());
                 ex.printStackTrace();
