@@ -1,11 +1,13 @@
 package servlets;
 
+import org.w3c.dom.ls.LSOutput;
 import tools.DbTool;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -24,13 +26,11 @@ public class Controller2 extends AbstractAppServlet {
 
             String _username = request.getParameter("vcbrukernavn");
             String _password = request.getParameter("vcpassord");
-            String action = request.getParameter("action");
+    //        String action = request.getParameter("action");
             Connection db = null;
             PreparedStatement pwm = null;
 
             try {
-
-
 
                 if (_username != null) {
 
@@ -39,9 +39,13 @@ public class Controller2 extends AbstractAppServlet {
                     pwm = db.prepareStatement(Query);
                     pwm.setString(1, _username);
                     pwm.setString(2, _password);
+
                     ResultSet rs = pwm.executeQuery();
                     if (rs.next()) {
-                        response.sendRedirect("AdminSide.jsp");
+
+                     HttpSession session = request.getSession();
+                     session.setAttribute("Brukernavn", _username);
+                     response.sendRedirect("AdminSide.jsp");
                     } else
                         response.sendRedirect("Login.jsp");
                 } else

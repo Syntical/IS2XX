@@ -9,6 +9,9 @@
     <div>
         <h1> Velkommen til adminsiden, du er nå logget inn!</h1>
     </div>
+    <form action="${pageContext.request.contextPath}/LoggUt" method="post">
+        <input type="submit" value="Logg ut" />
+    </form>
 
 </head>
 </html>
