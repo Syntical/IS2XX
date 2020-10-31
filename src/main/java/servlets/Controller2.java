@@ -19,6 +19,7 @@ import java.sql.ResultSet;
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class Controller2 extends AbstractAppServlet {
 
+
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -27,7 +28,7 @@ public class Controller2 extends AbstractAppServlet {
 
             String _username = request.getParameter("vcbrukernavn");
             String _password = request.getParameter("vcpassord");
-    //        String action = request.getParameter("action");
+
             Connection db = null;
             PreparedStatement pwm = null;
 
@@ -47,12 +48,12 @@ public class Controller2 extends AbstractAppServlet {
                     if (rs.next()) {
 
                      HttpSession session = request.getSession();
-                     session.setAttribute("Brukernavn", _username);
+                     session.setAttribute("_username", _username);
                      nesteSide = "AdminSide.jsp";
-                     // response.sendRedirect("AdminSide.jsp");
+
                     } else
                         request.setAttribute("message", melding);
-                   //     response.sendRedirect("Login.jsp");
+
                 } else {
                     System.out.println("Eriks Error");
 
