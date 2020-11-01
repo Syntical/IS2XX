@@ -6,6 +6,7 @@ import tools.DbTool;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -34,8 +35,8 @@ public class Controller2 extends AbstractAppServlet {
 
             try {
 
-                String nesteSide = "Login.jsp";
-                String melding = "Invalid email/password";
+                String nesteSide = "/Login.jsp";
+
                 if (_username != null) {
 
                     db = DbTool.getINSTANCE().dbLoggIn(out);
@@ -47,19 +48,41 @@ public class Controller2 extends AbstractAppServlet {
                     ResultSet rs = pwm.executeQuery();
                     if (rs.next()) {
 
-                     HttpSession session = request.getSession();
-                     session.setAttribute("_username", _username);
-                     nesteSide = "AdminSide.jsp";
+                        //get the old session and invalidate
+                        HttpSession oldSession = request.getSession(false);
+                        if (oldSession != null) {
+                            oldSession.invalidate();
+                        }
 
-                    } else
-                        request.setAttribute("message", melding);
+                        //generate a new session
+                        HttpSession newSession = request.getSession(true);
+
+                        //setting session to expiry in 2 mins
+                        newSession.setMaxInactiveInterval(2 * 60);
+
+                        Cookie bruker = new Cookie("Bruker", _username);
+                        bruker.setMaxAge(2 * 60); // Min * sekunder
+                        response.addCookie(bruker);
+                        response.sendRedirect("/Skeleton-1.0/AdminSide.jsp");
+
+// Må legge aktuelle jsp i restriktive mapper kun for admin.
+//                            response.sendRedirect("admin/LoginSuccess.jsp");
+
+                        newSession.setAttribute("Bruker", _username);
+
+                    } else {
+
+                        RequestDispatcher rd = getServletContext().getRequestDispatcher(nesteSide);
+                        PrintWriter sout = response.getWriter();
+                        sout.println("<font color=red>Either username or password is wrong.</font>");
+                        rd.include(request, response);
+                    }
 
                 } else {
+
                     System.out.println("Eriks Error");
 
                 }
-                RequestDispatcher dispatcher = request.getRequestDispatcher(nesteSide);
-                dispatcher.forward(request, response);
 
             } catch (Exception ex) {
                 out.println("Exception :" + ex.getMessage());
@@ -69,8 +92,11 @@ public class Controller2 extends AbstractAppServlet {
 
     }
 
+
     @Override
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
 
     }
+
+
 }
