@@ -1,11 +1,18 @@
 package tools.repository;
 
+import models.Klubbmodell;
+import models.UserModel;
+import models.UtoevereModel;
 import tools.DbTool;
 
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  Legger til klubb i databasen
@@ -75,5 +82,28 @@ public class KlubbRepo {
             e.printStackTrace();
         }
 
+    }
+    public static List<Klubbmodell> getKlubbnavn(PrintWriter p) {
+        Connection db = null;
+        PreparedStatement prepareStatement = null;
+
+        List<Klubbmodell> toReturn = new ArrayList<>();
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+            ResultSet rs = null;
+            String query = "SELECT * FROM Roprosjekt.klubb";
+            prepareStatement = db.prepareStatement(query);
+            rs = prepareStatement.executeQuery();
+            while (rs.next()) {
+                Klubbmodell klubb = new Klubbmodell(rs.getString("klubbnavn"));
+                toReturn.add(klubb);
+            }
+            rs.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return toReturn;
     }
 }

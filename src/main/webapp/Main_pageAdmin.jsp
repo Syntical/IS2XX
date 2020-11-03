@@ -42,6 +42,10 @@
         <h3> Klikk her for å endre en klubb</h3>
         <button class="button buttonAdd"><a href="ChangeKlubb.jsp">Endre Klubb</a></button>
         </p>
+        <p>
+        <h3> Klikk her for å se alle klubber</h3>
+        <button class="button buttonAdd"><a href="visklub.jsp">Vis alle klubber</a></button>
+        </p>
     </div>
     </body>
 </html>
