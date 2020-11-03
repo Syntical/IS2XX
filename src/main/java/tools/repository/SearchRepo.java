@@ -33,7 +33,10 @@ public class SearchRepo {
             prepareStatement.setString(1, fornavn);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"));
+                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"),
+                        rs.getString("ftw"), rs.getString("ftt"), rs.getString("tts"), rs.getString("ttt"), rs.getString("tlt"), rs.getString("ttw"), rs.getString("tott"),
+                        rs.getString("sw"), rs.getString("khs"), rs.getString("sgs"), rs.getString("bs"), rs.getString("lr"), rs.getString("lrp"), rs.getString("lrk"), rs.getString("kbp"),
+                        rs.getString("kbk"), rs.getString("totsc"));
                 toReturn.add(utoever);
             }
             rs.close();
@@ -62,7 +65,10 @@ public class SearchRepo {
             prepareStatement = db.prepareStatement(query);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"));
+                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"),
+                        rs.getString("ftw"), rs.getString("ftt"), rs.getString("tts"), rs.getString("ttt"), rs.getString("tlt"), rs.getString("ttw"), rs.getString("tott"),
+                        rs.getString("sw"), rs.getString("khs"), rs.getString("sgs"), rs.getString("bs"), rs.getString("lr"), rs.getString("lrp"), rs.getString("lrk"), rs.getString("kbp"),
+                        rs.getString("kbk"), rs.getString("totsc"));
                 toReturn.add(utoever);
             }
             rs.close();

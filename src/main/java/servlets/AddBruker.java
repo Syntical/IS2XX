@@ -40,9 +40,13 @@ public class AddBruker extends AbstractAppServlet {
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
 
         String action = req.getParameter("action");
+        String year = req.getParameter("year");
         if (action.contains("add")) {
-            UtoevereModel utoever = new UtoevereModel(req.getParameter("fn"), req.getParameter("en"), req.getParameter("fd"), req.getParameter("hd"), req.getParameter("vk"));
-            Integer suksess = UtoeverRepo.addUtoever(utoever, out);
+            UtoevereModel utoever = new UtoevereModel(req.getParameter("fn"), req.getParameter("en"), req.getParameter("fd"), req.getParameter("hd"), req.getParameter("vk"), req.getParameter("ftw"),
+                    req.getParameter("ftt"), req.getParameter("tts"), req.getParameter("ttt"), req.getParameter("tlt"), req.getParameter("ttw"),
+                    req.getParameter("tott"), req.getParameter("sw"), req.getParameter("khs"), req.getParameter("sgs"), req.getParameter("bs"), req.getParameter("lr"), req.getParameter("lrp"),
+                    req.getParameter("lrk"), req.getParameter("kbp"), req.getParameter("kbk"), req.getParameter("totsc"));
+            Integer suksess = UtoeverRepo.addUtoever(utoever, out,year );
             if (suksess != null) {
                 out.println(utoever.getFornavn() + "ble lagt til i databasen.");
 
@@ -60,11 +64,31 @@ public class AddBruker extends AbstractAppServlet {
             out.println("<th scope=col> Fødselsår: </th>");
             out.println("<th scope=col> Høyde: </th>");
             out.println("<th scope=col> Vekt: </th>");
+            out.println("<th scope=col> 5000 watt: </th>");
+            out.println("<th scope=col> 5000 tid: </th>");
+            out.println("<th scope=col> 3000 sek: </th>");
+            out.println("<th scope=col> 3000 tid: </th>");
+            out.println("<th scope=col> 3000 løp tid: </th>");
+            out.println("<th scope=col> 2000 watt: </th>");
+            out.println("<th scope=col> 2000 tid: </th>");
+            out.println("<th scope=col> 60 watt: </th>");
+            out.println("<th scope=col> Kroppshev stk: </th>");
+            out.println("<th scope=col> Sargeant stk: </th>");
+            out.println("<th scope=col> Bevegelse stk: </th>");
+            out.println("<th scope=col> Ligg ro: </th>");
+            out.println("<th scope=col> Ligg ro prosent: </th>");
+            out.println("<th scope=col> Ligg ro kilo: </th>");
+            out.println("<th scope=col> Knebøy prosent: </th>");
+            out.println("<th scope=col> Knebøy kilo: </th>");
+            out.println("<th scope=col> Totalscore: </th>");
             out.println("</tr>");
 
             for (UtoevereModel model : utoevereModelList) {
-                out.format(" <tr><td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> </tr>", model.getFornavn(),
-                        model.getEtternavn(), model.getFodselsdato(), model.getHoyde(), model.getVekt());
+                out.format(" <tr><td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> </tr><td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td>\" +" +
+                                "\n" + "<td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td>  %s </td> ", model.getFornavn(),
+                        model.getEtternavn(), model.getFodselsdato(), model.getHoyde(), model.getVekt(),model.getFemtusen_watt(), model.getFemtusen_tid(),
+                        model.getTretusen_sek(), model.getTretusen_tid(), model.getTretusen_lop_tid(), model.getTotusen_watt(), model.getTotusen_tid(), model.getSeksti_watt(), model.getKropps_hev_stk(),
+                        model.getSargeant_stk(), model.getBeveg_stk(), model.getLigg_ro(), model.getLigg_ro_pst(), model.getLigg_ro_kg(), model.getKneboy_pst(), model.getKneboy_kg(), model.getTotalscore());
             }
             out.println("</table>");
         }
