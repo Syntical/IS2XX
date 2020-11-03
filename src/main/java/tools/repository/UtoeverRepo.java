@@ -54,7 +54,7 @@ public class UtoeverRepo {
             insertNewTest.setString(17, utoever.getTotalscore());
             insertNewTest.setString(18, id);
             insertNewTest.execute();
-
+            insertNewUtoever.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
