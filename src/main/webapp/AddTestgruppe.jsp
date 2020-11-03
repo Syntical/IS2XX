@@ -15,10 +15,10 @@
 </head>
 <body>
     <div class="AddTG">
-        <form action='AddTestgruppe' method='POST'>
+        <form action='addtestgruppe' method='POST'>
             <label for='tgn'>Testgruppenavn:</label>
 
-            <input type='text' name='ui'/>
+            <input type='text' name='tgn'/>
             <input type='submit' name="action" value="leggTilTestgruppe"/>
         </form>
     </div>

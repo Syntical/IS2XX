@@ -9,25 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class LoginRepo {
-    public static void Login(String bruk, String Passo, PrintWriter p) {
 
-        Connection db = null;
-        PreparedStatement Log = null;
-        try {
-            db = DbTool.getINSTANCE().dbLoggIn(p);
-
-            String query = "SELECT * FROM Brukerinfo WHERE brukernavn = ? AND Passo = ?";
-            Log = db.prepareStatement(query);
-            Log.setString(1, bruk);
-            Log.setString(2, Passo);
-            Log.executeQuery();
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
     /**
      Legger til en bruker i databasen
      @param Brukernavn  objekt som inneholder all informasjon om brukernavnet.
