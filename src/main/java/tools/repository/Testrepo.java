@@ -17,7 +17,7 @@ public class Testrepo {
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
 
-            String query = "INSERT INTO testyear (Ar, Testuke) VALUES (?, ?)";
+            String query = "INSERT INTO testyear (Year, Testuke) VALUES (?, ?)";
 
             addar = db.prepareStatement(query);
             addar.setString(1, ar);

@@ -33,7 +33,6 @@ public class LoginRepo {
 
 
 
-           // String query3 = "START TRANSACTION;" + query + query2 + "COMMIT;";
 
             insertNewBrukerinfo = db.prepareStatement(query);
             insertNewBrukerinfo.setString(1, Brukernavn);

@@ -34,9 +34,9 @@ public class SearchRepo {
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
                 UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"),
-                        rs.getString("ftw"), rs.getString("ftt"), rs.getString("tts"), rs.getString("ttt"), rs.getString("tlt"), rs.getString("ttw"), rs.getString("tott"),
-                        rs.getString("sw"), rs.getString("khs"), rs.getString("sgs"), rs.getString("bs"), rs.getString("lr"), rs.getString("lrp"), rs.getString("lrk"), rs.getString("kbp"),
-                        rs.getString("kbk"), rs.getString("totsc"));
+                        rs.getString("5000_watt"), rs.getString("5000_tid"), rs.getString("3000_sek"), rs.getString("3000_tid"), rs.getString("3000_lop_tid"), rs.getString("2000_watt"), rs.getString("2000_tid"),
+                        rs.getString("60_watt"), rs.getString("kropps_hev_stk"), rs.getString("Sargeant_stk"), rs.getString("beveg_stk"), rs.getString("ligg_ro"), rs.getString("ligg_ro_åst"), rs.getString("ligg_ro_kg"), rs.getString("kneboy_pst"),
+                        rs.getString("kneboy_kg"), rs.getString("totalscore"));
                 toReturn.add(utoever);
             }
             rs.close();
@@ -61,14 +61,14 @@ public class SearchRepo {
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
             ResultSet rs = null;
-            String query = "SELECT * FROM Roprosjekt.utovere";
+            String query = "SELECT * FROM utovere JOIN testregister USING(utover_id)";
             prepareStatement = db.prepareStatement(query);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
                 UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"),
-                        rs.getString("ftw"), rs.getString("ftt"), rs.getString("tts"), rs.getString("ttt"), rs.getString("tlt"), rs.getString("ttw"), rs.getString("tott"),
-                        rs.getString("sw"), rs.getString("khs"), rs.getString("sgs"), rs.getString("bs"), rs.getString("lr"), rs.getString("lrp"), rs.getString("lrk"), rs.getString("kbp"),
-                        rs.getString("kbk"), rs.getString("totsc"));
+                        rs.getString("5000_watt"), rs.getString("5000_tid"), rs.getString("3000_sek"), rs.getString("3000_tid"), rs.getString("3000_lop_tid"), rs.getString("2000_watt"), rs.getString("2000_tid"),
+                        rs.getString("60_watt"), rs.getString("kropps_hev_stk"), rs.getString("Sargeant_stk"), rs.getString("beveg_stk"), rs.getString("ligg_ro"), rs.getString("ligg_ro_pst"), rs.getString("ligg_ro_kg"), rs.getString("kneboy_pst"),
+                        rs.getString("kneboy_kg"), rs.getString("totalscore"));
                 toReturn.add(utoever);
             }
             rs.close();

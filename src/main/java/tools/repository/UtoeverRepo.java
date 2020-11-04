@@ -18,43 +18,63 @@ public class UtoeverRepo {
      */
 
 
-    public static int addUtoever(UtoevereModel utoever, PrintWriter p, String id) {
+    public static int addUtoever(UtoevereModel utoever, String id,  String klubb, String gruppe ,PrintWriter p) {
         Connection db = null;
         PreparedStatement insertNewUtoever = null;
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
             String query1 =
-                    "INSERT INTO `utovere` (fornavn, etternavn, fodselsdato, hoyde, vekt) values (?,?,?,?,?)";
+                    "INSERT INTO `utovere` (Fornavn, Etternavn, Fodselsdato, Hoyde, Vekt) values (?,?,?,?,?)";
+
+
             String query2 ="INSERT INTO testregister (utover_id, testyear_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt," +
                             "kropps_hev_stk, Sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore) " +
-                            "values ((SELECT MAX(utover_id)),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                            "values ((SELECT MAX(utover_id) FROM utovere),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+
+            String query3 =  "INSERT INTO Register (utover_id, testgruppe_id, klubb_id, bruker_id) " +
+                    "VALUES ((SELECT MAX(utover_id) FROM utovere), ?, ?, 1)";
+
             insertNewUtoever = db.prepareStatement(query1);
             insertNewUtoever.setString(1, utoever.getFornavn());
             insertNewUtoever.setString(2, utoever.getEtternavn());
             insertNewUtoever.setString(3, utoever.getFodselsdato());
             insertNewUtoever.setString(4, utoever.getHoyde());
             insertNewUtoever.setString(5, utoever.getVekt());
+
+
             PreparedStatement insertNewTest = db.prepareStatement(query2);
-            insertNewTest.setString(1, utoever.getFemtusen_watt());
-            insertNewTest.setString(2, utoever.getFemtusen_tid());
-            insertNewTest.setString(3, utoever.getTretusen_sek());
-            insertNewTest.setString(4, utoever.getTretusen_tid());
-            insertNewTest.setString(5, utoever.getTretusen_lop_tid());
-            insertNewTest.setString(6, utoever.getTotusen_watt());
-            insertNewTest.setString(7, utoever.getTotusen_tid());
-            insertNewTest.setString(8, utoever.getSeksti_watt());
-            insertNewTest.setString(9, utoever.getKropps_hev_stk());
-            insertNewTest.setString(10, utoever.getSargeant_stk());
-            insertNewTest.setString(11, utoever.getBeveg_stk());
-            insertNewTest.setString(12, utoever.getLigg_ro());
-            insertNewTest.setString(13, utoever.getLigg_ro_pst());
-            insertNewTest.setString(14, utoever.getLigg_ro_kg());
-            insertNewTest.setString(15, utoever.getKneboy_pst());
-            insertNewTest.setString(16, utoever.getKneboy_kg());
-            insertNewTest.setString(17, utoever.getTotalscore());
-            insertNewTest.setString(18, id);
-            insertNewTest.execute();
+
+
+            insertNewTest.setString(1, id);
+            insertNewTest.setString(2, utoever.getFemtusen_watt());
+            insertNewTest.setString(3, utoever.getFemtusen_tid());
+            insertNewTest.setString(4, utoever.getTretusen_sek());
+            insertNewTest.setString(5, utoever.getTretusen_tid());
+            insertNewTest.setString(6, utoever.getTretusen_lop_tid());
+            insertNewTest.setString(7, utoever.getTotusen_watt());
+            insertNewTest.setString(8, utoever.getTotusen_tid());
+            insertNewTest.setString(9, utoever.getSeksti_watt());
+            insertNewTest.setString(10, utoever.getKropps_hev_stk());
+            insertNewTest.setString(11, utoever.getSargeant_stk());
+            insertNewTest.setString(12, utoever.getBeveg_stk());
+            insertNewTest.setString(13, utoever.getLigg_ro());
+            insertNewTest.setString(14, utoever.getLigg_ro_pst());
+            insertNewTest.setString(15, utoever.getLigg_ro_kg());
+            insertNewTest.setString(16, utoever.getKneboy_pst());
+            insertNewTest.setString(17, utoever.getKneboy_kg());
+            insertNewTest.setString(18, utoever.getTotalscore());
+
+
+            PreparedStatement insertNewReg = db.prepareStatement(query3);
+            insertNewReg.setString(1, klubb);
+            insertNewReg.setString(2, gruppe);
+
+
             insertNewUtoever.execute();
+            insertNewTest.execute();
+            insertNewReg.execute();
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
