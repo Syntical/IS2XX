@@ -64,9 +64,7 @@ public class Controller2 extends AbstractAppServlet {
                         bruker.setMaxAge(2 * 60); // Min * sekunder
                         response.addCookie(bruker);
                         response.sendRedirect("/Skeleton-1.0/AdminSide.jsp");
-
-// Må legge aktuelle jsp i restriktive mapper kun for admin.
-//                            response.sendRedirect("admin/LoginSuccess.jsp");
+                        
 
                         newSession.setAttribute("Bruker", _username);
 

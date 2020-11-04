@@ -14,19 +14,19 @@
 <h1>Add someone to the database :-)</h1>
 <form action='AddBruker' method='POST'>
     <label for='fn'>Fornavn:</label>
-    <input type='text' name='fn'/>
+    <input type='text' name='fn' placeholder='Fornavn'/>
     <br>
     <label for='en'> Etternavn:</label>
-    <input type='text' name='en'/>
+    <input type='text' name='en' placeholder='Etternavn'/>
     <br>
-    <label for='fd'> Fødselsdato:</label>
-    <input type='text' name='fd'/>
+    <label for='fd'> Fødselsår: </label>
+    <input type='text' name='fd' placeholder='YYYY'/>
     <br>
     <label for='hd'> Høyde:</label>
-    <input type='text' name='hd'/>
+    <input type='text' name='hd' placeholder='høyde i cm'/>
     <br>
     <label for='vk'> Vekt:</label>
-    <input type='text' name='vk'/>
+    <input type='text' name='vk' placeholder='antall kg'/>
     <br>
     <input type='submit' name="action" value="add"/>
     </form>
