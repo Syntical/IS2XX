@@ -82,7 +82,7 @@
     <label for='totsc'> totalscore:</label>
     <input type='text' name='totsc'/>
     <br>
-    <input type='submit' name="action" value="add"/>
+
 
     <label for="year">år:</label>
     <select id="year" name="year">
@@ -109,6 +109,61 @@
             }
         %>
     </select>
+    <br>
+    <label for="klubb">klubb:</label>
+    <select id="klubb" name="klubb">
+        <option value=""> Velg klubb </option>
+        <%
+            PrintWriter o = new PrintWriter(out);
+            Connection dbb = null;
+            PreparedStatement klubb = null;
+            try {
+                dbb = DbTool.getINSTANCE().dbLoggIn(o);
+                ResultSet rs = null;
+                String query = "SELECT * FROM klubb";
+                klubb = dbb.prepareStatement(query);
+                rs = klubb.executeQuery();
+                while (rs.next())
+                {
+        %>
+        <option value="<%=rs.getInt("klubb_id") %>"><%=rs.getString("klubbnavn")%>
+        </option>
+        <%
+                }
+            } catch (SQLException e ) {
+                e.printStackTrace();
+            }
+        %>
+    </select>
+    <br>
+    <label for="test">Testgruppe:</label>
+    <select id="test" name="test">
+        <option value=""> Velg testgruppe </option>
+        <%
+            PrintWriter l = new PrintWriter(out);
+            Connection ddb = null;
+            PreparedStatement gruppe = null;
+            try {
+                ddb = DbTool.getINSTANCE().dbLoggIn(l);
+                ResultSet rs = null;
+                String query = "SELECT * FROM Testgruppe";
+                gruppe = ddb.prepareStatement(query);
+                rs = gruppe.executeQuery();
+                while (rs.next())
+                {
+        %>
+        <option value="<%=rs.getInt("testgruppe_id") %>"><%=rs.getString("TestGruppeNavn")%>
+        </option>
+        <%
+                }
+            } catch (SQLException e ) {
+                e.printStackTrace();
+            }
+        %>
+    </select>
+<br>
+<br>
+    <input type='submit' name="action" value="add"/>
     </form>
 <form>
 <p>Trykk her for å slette en bruker
