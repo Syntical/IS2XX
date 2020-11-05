@@ -42,7 +42,7 @@ public class LoggUt extends AbstractAppServlet {
             loginCookie.setMaxAge(0);
             response.addCookie(loginCookie);
         }
-        response.sendRedirect("Login.jsp");
+        response.sendRedirect("index.jsp");
     }
 
 

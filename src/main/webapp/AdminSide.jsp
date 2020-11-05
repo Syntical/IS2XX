@@ -4,8 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <body>
-
+    <title>Hjemmeside</title>
+    <link rel="stylesheet" href="test.css"/>
+</head>
+<body>
+<ul>
+    <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
+        <input type="submit" value="Logg ut" /></form></li>
+    <li><a href="AddBruker.jsp">Legg til medlem</a></li>
+</ul>
 <%
     //allow access only if session exists
     String Bruker = null;
@@ -22,28 +29,25 @@
         }
     }
 %>
+<br>
+<br>
+<br>
 <h3>Hi <%=bruker %>, Login successful. Your Session ID=<%=sessionID %></h3>
 <br>
 User=<%=Bruker %>
 <br>
 
 
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>AdminSide</title>
-     <div style="text-align: left">
-            <h1> Velkommen til adminsiden, du er nå logget inn!</h1>
-            <b> (${Bruker})</b>
-            <br><br>
-<!-- knapp med henvisning til servletten "LoggUt" som avslutter den innloggede brukerens sesjon. -->
-    </div>
-    <form action="${pageContext.request.contextPath}/LoggUt" method="post">
-        <input type="submit" value="Logg ut" />
-    </form>
-    <br>
-    <!-- Sesjonsinformasjon ved servelet "SessionTest". -->
-    <form action="${pageContext.request.contextPath}/SesjonsTest" method="post">
-        <input type="submit" value="SesjonsTest" />
-    </form>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>AdminSide</title>
+<div style="text-align: left">
+    <h1> Velkommen til adminsiden <b> (${Bruker})</b>, du er nå logget inn!</h1>
+    <br><br>
+    <!-- knapp med henvisning til servletten "LoggUt" som avslutter den innloggede brukerens sesjon. -->
+</div>
+<!-- Sesjonsinformasjon ved servelet "SessionTest". -->
+<form action="${pageContext.request.contextPath}/SesjonsTest" method="post">
+    <input type="submit" value="SesjonsTest" />
+</form>
 </body>
-</head>
 </html>
