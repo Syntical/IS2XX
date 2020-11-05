@@ -1,5 +1,3 @@
-
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding='UTF-8' %>
 <!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'>
@@ -10,25 +8,20 @@
     <link href='test.css' type='text/css' rel='stylesheet'>
 </head>
 <body>
-<form action='Login' method='post'>
-    <table style='with: 100%'>
-
-        <tr>
-            <th align='right'> Brukernavn:</th>
-            <td><input type='text' name='vcbrukernavn' placeholder='E-mail'></td>
-        </tr>
-        <tr>
-            <th align='right'> Passord:</th>
-            <td colspan='2' align='right'>
-                <input type='passord' name='vcpassord' placeholder='Passord'>
-            </td>
-        </tr>
-    </table>
-    <!--   <button class='button buttonHent'> <a href='AdminSide.jsp'> Login</a></button> /> -->
-    <br> <input type='submit' value="Logg inn" class="btn">
-</form>
-
-
+<div class="Introduksjon">
+    <h1>Vennligst logg inn</h1>
+</div>
+<div class="Innlogging">
+    <form action='Login' method='post'>
+        <input type='text' name='vcbrukernavn' placeholder='E-mail'>
+        <input type='password' name='vcpassord' placeholder='Passord'>
+        <!--   <button class='button buttonHent'> <a href='AdminSide.jsp'> Login</a></button> /> -->
+        <br>
+        <input type='submit' value="Logg inn" class="btn">
+    </form>
+</div>
+<div class="informasjonsBar">
+    Kontakt oss på Tlf: 990 99 999 eller E-post: roklubben@support.no
+</div>
 </body>
 </html>
-

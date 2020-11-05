@@ -36,20 +36,55 @@ public class ResultsFromDb extends AbstractAppServlet {
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
         String fornavn = req.getParameter("ffnavn");
         List<UtoevereModel> nameFromDb = SearchRepo.getFornavn(fornavn, out);
+        out.println("<link rel=\"stylesheet\" href=\"test.css\"/>");
+        out.println("<ul>");
+
+        /*out.println("<li><form action=\"${pageContext.request.contextPath}/LoggUt\" method=\"post\">\n" +
+            "            <input type=\"submit\" value=\"Logg ut\" /></form></li>");*/
+
+        out.println("<li><a href=\"AddBruker.jsp\">Legg til medlem</a></li>");
+        out.println("</ul>");
+        out.println("<br>");
+        out.println("<br>");
+        out.println("<br>");
+        out.println("<br>");
         out.println("<h1>Her er ditt søkeresultat:</h1> ");
-        out.println("<table>");
+        out.println("<table style=\"1px solid black;margin-left:auto;margin-right:auto;\">");
         out.println("<tr>");
         out.println("<th scope=col> Fornavn: </th>");
         out.println("<th scope=col> Etternavn: </th>");
         out.println("<th scope=col> Fødselsår: </th>");
         out.println("<th scope=col> Høyde: </th>");
         out.println("<th scope=col> Vekt: </th>");
+        out.println("<th scope=col> 5000 watt: </th>");
+        out.println("<th scope=col> 5000 tid: </th>");
+        out.println("<th scope=col> 3000 sek: </th>");
+        out.println("<th scope=col> 3000 tid: </th>");
+        out.println("<th scope=col> 3000 løp tid: </th>");
+        out.println("<th scope=col> 2000 watt: </th>");
+        out.println("<th scope=col> 2000 tid: </th>");
+        out.println("<th scope=col> 60 watt: </th>");
+        out.println("<th scope=col> Kroppshev stk: </th>");
+        out.println("<th scope=col> Sargeant stk: </th>");
+        out.println("<th scope=col> Bevegelse stk: </th>");
+        out.println("<th scope=col> Ligg ro: </th>");
+        out.println("<th scope=col> Ligg ro prosent: </th>");
+        out.println("<th scope=col> Ligg ro kilo: </th>");
+        out.println("<th scope=col> Knebøy prosent: </th>");
+        out.println("<th scope=col> Knebøy kilo: </th>");
+        out.println("<th scope=col> Totalscore: </th>");
         out.println("</tr>");
         for (UtoevereModel model : nameFromDb) {
-            out.format(" <tr><td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> </tr>", model.getFornavn(),
-                    model.getEtternavn(), model.getFodselsdato(), model.getHoyde(), model.getVekt());
+            out.format(" <tr><td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td>\" +" +
+                            "\n" + "<td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td>  %s </td> </tr> ", model.getFornavn(),
+                    model.getEtternavn(), model.getFodselsdato(), model.getHoyde(), model.getVekt(),model.getFemtusen_watt(), model.getFemtusen_tid(),
+                    model.getTretusen_sek(), model.getTretusen_tid(), model.getTretusen_lop_tid(), model.getTotusen_watt(), model.getTotusen_tid(), model.getSeksti_watt(), model.getKropps_hev_stk(),
+                    model.getSargeant_stk(), model.getBeveg_stk(), model.getLigg_ro(), model.getLigg_ro_pst(), model.getLigg_ro_kg(), model.getKneboy_pst(), model.getKneboy_kg(), model.getTotalscore());
         }
         out.println("</table>");
+        out.println("<div class=\"informasjonsBar\">");
+        out.println("Kontakt oss på Tlf: 990 99 999 eller E-post: roklubben@support.no");
+        out.println("</div>");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

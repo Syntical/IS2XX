@@ -12,9 +12,39 @@
 <html>
 <head>
     <title>Legg til utoever</title>
+    <link rel="stylesheet" href="test.css"/>
 </head>
 <body>
-<h1>Add someone to the database :-)</h1>
+<ul>
+    <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
+        <input type="submit" value="Logg ut" /></form></li>
+    <li><a href="AddBruker.jsp">Legg til medlem</a></li>
+</ul>
+<%
+    //allow access only if session exists
+    String Bruker = null;
+    if(session.getAttribute("Bruker") == null){
+        response.sendRedirect("Login.jsp");
+    }else Bruker = (String) session.getAttribute("Bruker");
+    String bruker = null;
+    String sessionID = null;
+    Cookie[] cookies = request.getCookies();
+    if(cookies !=null){
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("Bruker")) bruker = cookie.getValue();
+            if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+        }
+    }
+%>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div>
+<h1>Legg til et nytt medlem</h1>
+</div>
+<div class="LeggtilMedlem">
 <form action='AddBruker' method='POST'>
     <label for='fn'>Fornavn:</label>
     <input type='text' name='fn'/>
@@ -165,16 +195,10 @@
 <br>
     <input type='submit' name="action" value="add"/>
     </form>
-<form>
-<p>Trykk her for å slette en bruker
-    <a href="RemoveBruker.jsp">Slett Bruker</a></p>
-<p>Trykk her for å endre en bruker
-    <a href="ChangeBruker.jsp">endre bruker</a></p>
-</form>
-<form action="AddBruker" method="POST">
-    <input type="submit" name="action" value="hent">
-</form>
+</div>
 
-
+<div class="informasjonsBar">
+    Kontakt oss på Tlf: 990 99 999 eller E-post: roklubben@support.no
+</div>
 </body>
 </html>
