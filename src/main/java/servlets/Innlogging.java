@@ -1,94 +1,102 @@
 package servlets;
 
+import org.w3c.dom.ls.LSOutput;
+import tools.DbTool;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 
-@WebServlet(name = "login", urlPatterns = {"/login"})
-public class Innlogging extends AbstractAppServlet {
-    /**
-     * Tar imot http requesten og kaller på writeResponse()
-     *
-     * @param request  objektet sender data til servletet
-     * @param response objektet sender data fra servleten.
-     * @throws ServletException
-     * @throws IOException
-     */
+@WebServlet(name = "Login", urlPatterns = {"/Login"})
+public class Controller2 extends AbstractAppServlet {
+
+
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        writeResponse(request, response, "Legg til bruker!");
-    }
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
 
-    /**
-     * skriver ut body på servlet som html.
-     *
-     * @param req http request objektet med data.
-     * @param out http respons objektet som sender data.
-     */
-    @Override
-    protected void writeBody(HttpServletRequest req, PrintWriter out) {
+            String _username = request.getParameter("vcbrukernavn");
+            String _password = request.getParameter("vcpassord");
 
-        String action = req.getParameter("action");
-        String in = req.getParameter("in");
-        if (action.contains("login")) {
-         //   UserRepository.Login();
+            Connection db = null;
+            PreparedStatement pwm = null;
+
+            try {
+
+                String nesteSide = "/Login.jsp";
+
+                if (_username != null) {
+
+                    db = DbTool.getINSTANCE().dbLoggIn(out);
+                    String Query = "Select * from Roprosjekt.Brukerinfo where Email=? and Passord=?";
+                    pwm = db.prepareStatement(Query);
+                    pwm.setString(1, _username);
+                    pwm.setString(2, _password);
+
+                    ResultSet rs = pwm.executeQuery();
+                    if (rs.next()) {
+
+                        //get the old session and invalidate
+                        HttpSession oldSession = request.getSession(false);
+                        if (oldSession != null) {
+                            oldSession.invalidate();
+                        }
+
+                        //generate a new session
+                        HttpSession newSession = request.getSession(true);
+
+                        //setting session to expiry in 2 mins
+                        newSession.setMaxInactiveInterval(2 * 60);
+
+                        Cookie bruker = new Cookie("Bruker", _username);
+                        bruker.setMaxAge(2 * 60); // Min * sekunder
+                        response.addCookie(bruker);
+                        response.sendRedirect("/Skeleton-1.0/AdminSide.jsp");
+
+// Må legge aktuelle jsp i restriktive mapper kun for admin.
+//                            response.sendRedirect("admin/LoginSuccess.jsp");
+
+                        newSession.setAttribute("Bruker", _username);
+
+                    } else {
+
+                        RequestDispatcher rd = getServletContext().getRequestDispatcher(nesteSide);
+                        PrintWriter sout = response.getWriter();
+                        sout.println("<font color=red>Either username or password is wrong.</font>");
+                        rd.include(request, response);
+                    }
+
+                } else {
+
+                    System.out.println("Eriks Error");
+
+                }
+
+            } catch (Exception ex) {
+                out.println("Exception :" + ex.getMessage());
+                ex.printStackTrace();
+            }
         }
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
 
-    /**
-     * Alle get forespørsler til denne servleten blir håndert av doGEt.
-     * får servleten en Get request vil den svare med doGet som kaller på metoden process Request.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException
-     * @throws IOException
-     */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    protected void writeBody(HttpServletRequest req, PrintWriter out) {
+
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 }
-
