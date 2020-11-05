@@ -18,7 +18,7 @@ import java.sql.ResultSet;
 
 
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Controller2 extends AbstractAppServlet {
+public class Innlogging extends AbstractAppServlet {
 
 
     @Override
@@ -58,7 +58,7 @@ public class Controller2 extends AbstractAppServlet {
                         HttpSession newSession = request.getSession(true);
 
                         //setting session to expiry in 2 mins
-                        newSession.setMaxInactiveInterval(2 * 60);
+                        newSession.setMaxInactiveInterval(5 * 60);
 
                         Cookie bruker = new Cookie("Bruker", _username);
                         bruker.setMaxAge(2 * 60); // Min * sekunder
@@ -74,7 +74,7 @@ public class Controller2 extends AbstractAppServlet {
 
                         RequestDispatcher rd = getServletContext().getRequestDispatcher(nesteSide);
                         PrintWriter sout = response.getWriter();
-                        sout.println("<font color=red>Either username or password is wrong.</font>");
+                        sout.println("<font color=red size='25'> Brukernavn eller passord er feil.</font>");
                         rd.include(request, response);
                     }
 

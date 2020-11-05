@@ -24,7 +24,7 @@ public class SesjonsTest extends AbstractAppServlet {
         writer.println("Sesjons ID: " + session.getId() + " belongs to " + username);
         writer.println("Opprettet: " + new Date(session.getCreationTime()));
         writer.println("Siste tilgangstidpkt: " + new Date(session.getLastAccessedTime()));
-        writer.println("Timeout value: " + new Date(session.getMaxInactiveInterval()));
+        writer.println("Session Timeout value: " + request.getSession().getMaxInactiveInterval() / 60 + " minutter");
     }
 
 
