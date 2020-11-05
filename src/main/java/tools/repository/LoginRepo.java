@@ -1,12 +1,17 @@
 package tools.repository;
 
+import models.Klubbmodell;
+import models.UserModel;
 import tools.DbTool;
 
 import javax.validation.constraints.Email;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginRepo {
 
@@ -59,4 +64,31 @@ public class LoginRepo {
 
         return 1;
     }
+
+    public static List<UserModel> getUserName(PrintWriter p) {
+        Connection db = null;
+        PreparedStatement prepareStatement = null;
+
+        List<UserModel> toReturn = new ArrayList<>();
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+            ResultSet rs = null;
+            String query = "SELECT Email, Rolletype FROM Brukerinfo JOIN roller ON rolle_id";
+            prepareStatement = db.prepareStatement(query);
+            rs = prepareStatement.executeQuery();
+            while (rs.next()) {
+                UserModel user = new UserModel(rs.getString("firstName"), rs.getString("lastName"), rs.getString("userName"), rs.getString("password"));
+                toReturn.add(user);
+            }
+            rs.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return toReturn;
+    }
+
+
 }
+
