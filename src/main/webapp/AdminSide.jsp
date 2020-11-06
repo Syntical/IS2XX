@@ -32,7 +32,9 @@
 <br>
 <br>
 <br>
+<div class="Introduksjon">
 <h3>Hi <%=bruker %>, Login successful. Your Session ID=<%=sessionID %></h3>
+</div>
 <br>
 User=<%=Bruker %>
 <br>
@@ -40,9 +42,8 @@ User=<%=Bruker %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>AdminSide</title>
-<div style="text-align: left">
+<div class="Introduksjon">
     <h1> Velkommen til adminsiden <b> (${Bruker})</b>, du er nå logget inn!</h1>
-    <br><br>
     <!-- knapp med henvisning til servletten "LoggUt" som avslutter den innloggede brukerens sesjon. -->
 </div>
 <!-- Sesjonsinformasjon ved servelet "SessionTest". -->

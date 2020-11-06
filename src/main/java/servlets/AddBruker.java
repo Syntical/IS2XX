@@ -51,9 +51,18 @@ public class AddBruker extends AbstractAppServlet {
             Integer suksess = UtoeverRepo.addUtoever(utoever, year, klubb, test, out );
 
             if (suksess != null) {
-                out.println(utoever.getFornavn() + "ble lagt til i databasen.");
+                out.println("<link href='test.css' type='text/css' rel='stylesheet'>");
+                out.println("<div class=\"Innlogging\">");
+                out.println("<h1>");
+                out.println(utoever.getFornavn());
+                out.println(utoever.getEtternavn()+ " ble lagt til i databasen. </h1>");
+                out.println("<br>");
+                out.println("<br>");
+                out.println("Trykk her for å returnere til hjemmesiden");
+                out.println("<br>");
+                out.println("<a href=index.jsp class=\"button\">Hjemmeside</a>");
+                out.println("</div>");
 
-                out.println("<a href=AddBruker.jsp> Vil du legge til en ny bruker? Klikk her</a>");
             } else {
                 out.println("<a href=AddBruker.jsp> Noe gikk galt. Vil du prøve på nytt? </a>");
             }
