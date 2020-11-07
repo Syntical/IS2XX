@@ -36,7 +36,20 @@
 <br>
 <br>
 <br>
-<h3>Velkommen <%=bruker %>, du er nå logget inn. Din sesjonsID=<%=sessionID %></h3>
+<h3>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<<<<<<< Loginfunksjon
+<h3>Velkommen <%=bruker %>, du er nå logget inn. Din sesjonsID er=<%=sessionID %></h3>
+=======
+<div class="Introduksjon">
+    <h3>Hi <%=bruker %>, Login successful. Your Session ID=<%=sessionID %></h3>
+</div>
+>>>>>>> master
 <br>
 <br>
 
