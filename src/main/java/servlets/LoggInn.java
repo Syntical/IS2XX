@@ -18,7 +18,7 @@ import java.sql.ResultSet;
 
 
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Controller2 extends AbstractAppServlet {
+public class LoggInn extends AbstractAppServlet {
 
 
     @Override
