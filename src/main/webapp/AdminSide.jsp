@@ -12,6 +12,10 @@
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
         <input type="submit" value="Logg ut" /></form></li>
     <li><a href="AddBruker.jsp">Legg til medlem</a></li>
+    <li><a href="addKlubb.jsp">Legg til klubb</a></li>
+    <li><a href="AddTestgruppe.jsp">Legg til testgruppe</a></li>
+    <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
+    <li><a href="Registrering.jsp">Legg til trener/Admin</a></li>
 </ul>
 <%
     //allow access only if session exists
@@ -33,7 +37,7 @@
 <br>
 <br>
 <div class="Introduksjon">
-<h3>Hi <%=bruker %>, Login successful. Your Session ID=<%=sessionID %></h3>
+<h3>Hei <%=bruker %>, din sesjonsid er <%=sessionID %></h3>
 </div>
 <br>
 User=<%=Bruker %>
@@ -46,6 +50,7 @@ User=<%=Bruker %>
     <h1> Velkommen til adminsiden <b> (${Bruker})</b>, du er nå logget inn!</h1>
     <!-- knapp med henvisning til servletten "LoggUt" som avslutter den innloggede brukerens sesjon. -->
 </div>
+<br>
 <!-- Sesjonsinformasjon ved servelet "SessionTest". -->
 <form action="${pageContext.request.contextPath}/SesjonsTest" method="post">
     <input type="submit" value="SesjonsTest" />
