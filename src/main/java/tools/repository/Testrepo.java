@@ -26,7 +26,15 @@ public class Testrepo {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
+
 
     }
 
@@ -46,7 +54,15 @@ public class Testrepo {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
+
 
 
     }

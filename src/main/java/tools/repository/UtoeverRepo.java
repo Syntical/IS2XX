@@ -23,6 +23,7 @@ public class UtoeverRepo {
         PreparedStatement insertNewUtoever = null;
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
+            String transquery = "BEGIN;";
             String query1 =
                     "INSERT INTO `utovere` (Fornavn, Etternavn, Fodselsdato, Hoyde, Vekt) values (?,?,?,?,?)";
 
@@ -34,6 +35,8 @@ public class UtoeverRepo {
 
             String query3 =  "INSERT INTO Register (utover_id, testgruppe_id, klubb_id, bruker_id) " +
                     "VALUES ((SELECT MAX(utover_id) FROM utovere), ?, ?, 1)";
+
+            String query4  ="commit;";
 
             insertNewUtoever = db.prepareStatement(query1);
             insertNewUtoever.setString(1, utoever.getFornavn());
@@ -70,10 +73,16 @@ public class UtoeverRepo {
             insertNewReg.setString(1, klubb);
             insertNewReg.setString(2, gruppe);
 
+            PreparedStatement begin = db.prepareStatement(transquery);
+            PreparedStatement end = db.prepareStatement(query4);
 
+            begin.execute();
             insertNewUtoever.execute();
             insertNewTest.execute();
             insertNewReg.execute();
+            end.execute();
+
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -112,7 +121,15 @@ public class UtoeverRepo {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
+
 
     }
 
@@ -142,7 +159,15 @@ public class UtoeverRepo {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
+
 
     }
 
