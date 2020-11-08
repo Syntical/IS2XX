@@ -102,7 +102,15 @@ public class KlubbRepo {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
+
 
         return toReturn;
     }

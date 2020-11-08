@@ -43,7 +43,15 @@ public class SearchRepo {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
+
 
         return toReturn;
     }
@@ -75,7 +83,15 @@ public class SearchRepo {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
+
 
         return toReturn;
     }
