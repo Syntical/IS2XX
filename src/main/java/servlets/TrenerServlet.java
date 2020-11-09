@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-@WebServlet(name = "RegistrerBruker", urlPatterns = {"/RegistrerBruker"})
-public class RegistrerBruker extends AbstractAppServlet {
+@WebServlet(name = "TrenerServlet", urlPatterns = {"/TrenerServlet"})
+public class TrenerServlet extends AbstractAppServlet {
     /**
      * Tar imot http requesten og kaller på writeResponse()
      *
@@ -37,13 +37,13 @@ public class RegistrerBruker extends AbstractAppServlet {
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
 
         String action = req.getParameter("action");
-        String bn = req.getParameter("bn");
-        String pd = req.getParameter("pd");
+        String br = req.getParameter("br");
+        String ps = req.getParameter("ps");
+        String klobb = req.getParameter("klobb");
 
 
-
-        if (action.contains("Registrer")) {
-           LoginRepo.Registrer(bn, pd, out);
+        if (action.contains("Registrer trener")) {
+            LoginRepo.addTrener(br, ps, klobb, out);
         }
 
     }
