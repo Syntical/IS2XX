@@ -16,22 +16,24 @@ public class LoginRepo {
      @param passord objekt som inneholder all informasjon om passordet til brukeren..
      @param p printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
      **/
-    public static int Registrer(String Brukernavn, String passord, String id,   PrintWriter p) {
+    public static int Registrer(String Brukernavn, String passord,   PrintWriter p) {
         Connection db = null;
         PreparedStatement insertNewBrukerinfo = null;
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
+            String begynn = "BEGIN;";
+
             String query =
 
 
                                    "INSERT INTO Brukerinfo (Email, Passord) VALUES(?, ?)";
 
 
-            String query2 =    "INSERT INTO Bruker (Brukerinfo_id, rolle_id) VALUES( (SELECT MAX (brukerinfo_id) FROM Brukerinfo), ?)";
+            String query2 =    "INSERT INTO Bruker (Brukerinfo_id, rolle_id) VALUES( (SELECT MAX (brukerinfo_id) FROM Brukerinfo), 1)";
 
 
 
-
+            String query3 = "COMMIT;";
 
 
             insertNewBrukerinfo = db.prepareStatement(query);
@@ -41,10 +43,15 @@ public class LoginRepo {
 
            PreparedStatement insertNewBruker = db.prepareStatement(query2);
 
-            insertNewBruker.setString(1, id);
+
+
+            PreparedStatement begi = db.prepareStatement(begynn);
+            PreparedStatement slutt = db.prepareStatement(query3);
+
+            begi.execute();
             insertNewBrukerinfo.execute();
             insertNewBruker.execute();
-
+            slutt.execute();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -59,4 +66,67 @@ public class LoginRepo {
 
         return 1;
     }
+
+    public static void addTrener(String br, String ps, String klobb,  PrintWriter p) {
+
+        Connection db = null;
+        PreparedStatement addtr = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+            String begquery = "BEGIN;";
+
+            String query=   "INSERT INTO Brukerinfo (Email, Passord) VALUES(?, ?)";
+
+            String query2 =    "INSERT INTO Bruker (Brukerinfo_id, rolle_id) VALUES( (SELECT MAX (brukerinfo_id) FROM Brukerinfo), 2)";
+
+            String query3 = "INSERT INTO BrukerKlubb (bruker_id, klubb_id) VALUES ((SELECT MAX (bruker_id) FROM Bruker JOIN roller USING (rolle_id) WHERE rolle_id = 2) , ?)";
+
+            String query4= "COMMIT;";
+
+            addtr = db.prepareStatement(query);
+            addtr.setString(1, br);
+            addtr.setString(2, ps);
+
+
+            PreparedStatement insBruker = db.prepareStatement(query2);
+
+
+
+            PreparedStatement insBKR = db.prepareStatement(query3);
+            insBKR.setString(1,klobb );
+
+
+            PreparedStatement beg = db.prepareStatement(begquery);
+            PreparedStatement end = db.prepareStatement(query4);
+
+
+
+
+
+
+
+
+            beg.execute();
+            addtr.execute();
+            insBruker.execute();
+            insBKR.execute();
+            end.execute();
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+
+    }
+
 }
