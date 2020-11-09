@@ -3,6 +3,8 @@ package servlets;
 import org.w3c.dom.ls.LSOutput;
 import tools.DbTool;
 
+import javax.annotation.security.DeclareRoles;
+import javax.lang.model.type.DeclaredType;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,15 +53,24 @@ public class LoggInn extends AbstractAppServlet {
                 if (_username != null) {
 
                     db = DbTool.getINSTANCE().dbLoggIn(out);
-                    String Query = "Select * from Roprosjekt.Brukerinfo where Email=? and Passord=?";
+                    //String Query = "Select * from Roprosjekt.Brukerinfo where Email=? and Passord=?";
+                    String Query ="Select * from Roprosjekt.Brukerinfo JOIN Roprosjekt.bruker USING(brukerinfo_id) where Email=? and Passord=?";
+
+
                     pwm = db.prepareStatement(Query);
                     pwm.setString(1, _username);
                     pwm.setString(2, _password);
+
+
                     // Kjører sql-query ved navn "pwn" hvis overnenvte krav er tilfredsstilt
                     ResultSet rs = pwm.executeQuery();
+
                     if (rs.next()) {
 
+                        // Deklarer "rolle_id" som en variabel som senere bruker til å sjekke brukerens rolle i databasen og systemet.
+                        String name = rs.getNString("rolle_id");
                         //sjekker om det allerede eksisterer en sesjon/session og lukker den hvis en eksisterer
+
                         HttpSession oldSession = request.getSession(false);
                         if (oldSession != null) {
                             oldSession.invalidate();
@@ -76,14 +87,21 @@ public class LoggInn extends AbstractAppServlet {
 
                         //bruker.setMaxAge(10); // Min * sekunder       Denne linja virker unødvendig, gjør intenting så lenge  newSession.setMaxInactiveInterval(15 *60); eksisterer.
                         response.addCookie(bruker);
-                        response.sendRedirect("/Skeleton-1.0/AdminSide.jsp");
+
+                        // Sjekker om rolle_id-en er Admin eller Trener, hvis Admin, sendes bruker til Adminsiden.
+                        // DETTE FORUTSETTER AT ROLLENE SOM ER LAGT TIL I DATABASEN ER LAGT INN I REKKE FØLGEN Admin (1) og Trener (2).
+                        if (name.contains("1")) {
+                            response.sendRedirect("/Skeleton-1.0/AdminSide.jsp");
+                        } else {
+                            response.sendRedirect("/Skeleton-1.0/TrenerSide.jsp");
+                        }
 
                         // Setter brukernavnet for den innloggede brukeren som sesjonens attribut,
                         // slik at brukeren er knyttet til den opprettede sesjonsID-en
                         newSession.setAttribute("Bruker", _username);
 
                     } else {
-                        // hvis brukernavn og/eller passord som er tastet inn i html-en er feil, vises feilmelding
+                        // Hvis brukernavn og/eller passord som er tastet inn i html-en er feil, vises feilmelding
                         // nevnt nedenfor på siden som "nesteSide" refererer til.
                         RequestDispatcher rd = getServletContext().getRequestDispatcher(nesteSide);
                         PrintWriter sout = response.getWriter();
