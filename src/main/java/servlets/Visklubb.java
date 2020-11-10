@@ -2,8 +2,10 @@ package servlets;
 
 
 import models.Klubbmodell;
+import models.UserModel;
 import models.UtoevereModel;
 import tools.repository.KlubbRepo;
+import tools.repository.LoginRepo;
 import tools.repository.SearchRepo;
 import tools.repository.UtoeverRepo;
 
@@ -41,22 +43,36 @@ public class Visklubb extends AbstractAppServlet {
     @Override
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
 
-        String action = req.getParameter("action");
 
-        if (action.contains("HentKlubb")){
-            List<Klubbmodell> klubbModelList = KlubbRepo.getKlubbnavn(out);
-            out.println("<h1>Her er listen over alle medlemmene i roklubben:</h1> ");
-            out.println("<table>");
-            out.println("<tr>");
-            out.println("<th scope=col> Klubbnavn: </th>");
-            out.println("</tr>");
+        //  String action = req.getParameter("action");
 
-            for (Klubbmodell klubb : klubbModelList) {
-                out.format(" <tr><td> %s </td> </tr>", klubb.getKlubbnavn());
-            }
-            out.println("</table>");
+        // if (action.contains("HentKlubb")){
+        //
+        List<UserModel> UserModelList = LoginRepo.visBrukere(out);
+        out.println("<link rel=\"stylesheet\" href=\"test.css\"/>");
+        out.println("<ul>");
+        out.println("<li><a href=\"AddBruker.jsp\">Legg til medlem</a></li>");
+        out.println("</ul>");
+        out.println("<br>");
+        out.println("<br>");
+        out.println("<br>");
+        out.println("<br>");
+        out.println("<h1>Her er ditt søkeresultat:</h1> ");
+        out.println("<table style=\"1px solid black;margin-left:auto;margin-right:auto;\">");
+        out.println("<tr>");
+        out.println("<th scope=col> Tilkoblet bruker: </th>");
+        out.println("<th scope=col> Klubb: </th>");
+
+        for (UserModel bruker : UserModelList) {
+            out.format(" <tr><td> %s </td> <td> %s </td> </tr>", bruker.getEmail(), bruker.getKlubbnavn());
         }
+        out.println("</table>");
+        out.println("<div class=\"informasjonsBar\">");
+        out.println("Kontakt oss på Tlf: 990 99 999 eller E-post: roklubben@support.no");
+        out.println("</div>");
+        out.println("</table>");
     }
+    //}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

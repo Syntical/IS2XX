@@ -16,7 +16,7 @@
     <li><a href="AddTestgruppe.jsp">Legg til testgruppe</a></li>
     <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
     <li><a href="Registrering.jsp">Legg til trener/Admin</a></li>
-    <li><a href="Klubboversikt.jsp">Klubboversikt</a></li>
+    <li><a href="TrenerSide.jsp">Forsiden</a></li>
 </ul>
 <%
     //allow access only if session exists
@@ -48,7 +48,11 @@ User=<%=Bruker %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>AdminSide</title>
 <div class="Introduksjon">
-    <h1> Velkommen til Trenersiden <b> (${Bruker})</b>, du er nå logget inn som trener!</h1>
+    <h1> Her er din klubboversikt</h1>
+
+    <form action="${pageContext.request.contextPath}/Visklubb" method="post">
+        <input type="submit" value="Vis alle klubber" />
+    </form>
     <!-- knapp med henvisning til servletten "LoggUt" som avslutter den innloggede brukerens sesjon. -->
 </div>
 <br>

@@ -1,61 +1,43 @@
 package models;
 
 public class UserModel {
-    private String firstName;
-    private String lastName;
-    private String userName;
-    private String password;
+
+    private String Email;
+    private String Klubbnavn;
+
 
     /**
      *
-     * @param firstName the users firstname
-     * @param lastName the users lastname
-     * @param userName the users email .e.g., example@example.com
-     * @param password the users password: we usually encrypt it in the database but thats for you to figure out :)
-     */
-    public UserModel(String firstName, String lastName, String userName, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userName = userName;
-        this.password = password;
+     * @param Email the users firstname
+     * @param Klubbnavn the users lastname
+     **/
+
+    public UserModel(String Email, String Klubbnavn) {
+
+        this.Email = Email;
+        this.Klubbnavn = Klubbnavn;
+
     }
 
     /**
      *
      * GETTERS AND SETTERS!
      */
-
-    public String getFirstName() {
-        return firstName;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setEmail(String email) {
+        Email = email;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getKlubbnavn() {
+        return Klubbnavn;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setKlubbnavn(String klubbnavn) {
+        Klubbnavn = klubbnavn;
     }
 
 
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
