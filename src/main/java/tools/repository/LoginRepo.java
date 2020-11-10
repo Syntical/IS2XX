@@ -1,12 +1,17 @@
 package tools.repository;
 
+import models.UserModel;
+import models.UtoevereModel;
 import tools.DbTool;
 
 import javax.validation.constraints.Email;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginRepo {
 
@@ -26,7 +31,7 @@ public class LoginRepo {
             String query =
 
 
-                                   "INSERT INTO Brukerinfo (Email, Passord) VALUES(?, ?)";
+                    "INSERT INTO Brukerinfo (Email, Passord) VALUES(?, ?)";
 
 
             String query2 =    "INSERT INTO Bruker (Brukerinfo_id, rolle_id) VALUES( (SELECT MAX (brukerinfo_id) FROM Brukerinfo), 1)";
@@ -41,7 +46,7 @@ public class LoginRepo {
             insertNewBrukerinfo.setString(2, passord);
 
 
-           PreparedStatement insertNewBruker = db.prepareStatement(query2);
+            PreparedStatement insertNewBruker = db.prepareStatement(query2);
 
 
 
@@ -102,11 +107,6 @@ public class LoginRepo {
 
 
 
-
-
-
-
-
             beg.execute();
             addtr.execute();
             insBruker.execute();
@@ -125,8 +125,46 @@ public class LoginRepo {
                 throwables.printStackTrace();
             }
         }
+//
+        // Klubb og tilkoblede trenere (Admin) visKlubbOgTrenere.jsp  /////
+        //
+
+    }
+
+    public static List<UserModel> visBrukere(PrintWriter p) {
+        Connection db = null;
+        PreparedStatement prepareStatement = null;
+
+        List<UserModel> toReturn = new ArrayList<>();
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+            ResultSet rs = null;
+            String query = "SELECT bi.Email, kb.Klubbnavn FROM Brukerinfo bi JOIN bruker USING (brukerinfo_id) JOIN BrukerKlubb USING(bruker_id) JOIN klubb kb USING(klubb_id)";
+
+            prepareStatement = db.prepareStatement(query);
+            rs = prepareStatement.executeQuery();
+            while (rs.next()) {
+                UserModel bruker = new UserModel(rs.getString("Email"), rs.getString("Klubbnavn"));
+                toReturn.add(bruker);
+            }
+            rs.close();
 
 
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+
+        return toReturn;
     }
 
 }

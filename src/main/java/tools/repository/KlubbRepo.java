@@ -91,7 +91,8 @@ public class KlubbRepo {
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
             ResultSet rs = null;
-            String query = "SELECT * FROM Roprosjekt.klubb";
+            // String query = "SELECT * FROM Roprosjekt.klubb";
+            String query = "select Klubbnavn, Email from klubb join Brukerinfo on brukerinfo_id join BrukerKlubb on bruker_id";
             prepareStatement = db.prepareStatement(query);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
