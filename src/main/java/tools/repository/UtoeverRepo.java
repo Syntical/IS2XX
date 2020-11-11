@@ -1,12 +1,18 @@
 package tools.repository;
 
+import models.UserModel;
 import models.UtoevereModel;
+import models.UtoverClubModel;
+
 import tools.DbTool;
 
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UtoeverRepo {
     /**
@@ -171,6 +177,40 @@ public class UtoeverRepo {
 
     }
 
+    public static List<UtoverClubModel> visUtoverKlubb(PrintWriter p) {
+        Connection db = null;
+        PreparedStatement prepareStatement = null;
 
+        List<UtoverClubModel> toReturn = new ArrayList<>();
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+            ResultSet rs = null;
+            String query = "SELECT ut.fornavn, ut.etternavn, ut.Fodselsdato, kb.klubbnavn FROM utovere ut JOIN register USING (utover_id) JOIN klubb kb USING (klubb_id) order by ut.etternavn";
+
+            prepareStatement = db.prepareStatement(query);
+            rs = prepareStatement.executeQuery();
+            while (rs.next()) {
+                UtoverClubModel utover = new UtoverClubModel(rs.getString("fornavn"), rs.getString("etternavn"),rs.getString("Fodselsdato"), rs.getString("klubbnavn"));
+                toReturn.add(utover);
+            }
+            rs.close();
+
+
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+
+        return toReturn;
+    }
 }
 
