@@ -50,6 +50,10 @@ User=<%=Bruker %>
 <div class="Introduksjon">
     <h1> Velkommen til Trenersiden <b> (${Bruker})</b>, du er nå logget inn som trener!</h1>
     <!-- knapp med henvisning til servletten "LoggUt" som avslutter den innloggede brukerens sesjon. -->
+    <br>
+    <form action="${pageContext.request.contextPath}/VisUtoevereiKlubb" method="post">
+        <input type="submit" value="Vis utøvere i klubben" />
+    </form>
 </div>
 <br>
 <!-- Sesjonsinformasjon ved servelet "SessionTest". -->
