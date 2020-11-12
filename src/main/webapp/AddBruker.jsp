@@ -11,14 +11,19 @@
 <%@ page import="java.io.PrintWriter" %>
 <html>
 <head>
-    <title>Legg til utoever</title>
+    <title>Legg til utøver</title>
     <link rel="stylesheet" href="test.css"/>
 </head>
 <body>
 <ul>
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
         <input type="submit" value="Logg ut" /></form></li>
-    <li><a href="AddBruker.jsp">Legg til medlem</a></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
 </ul>
 <%
     //allow access only if session exists
@@ -41,7 +46,7 @@
 <br>
 <br>
 <br>
-<div>
+<div class="Introduksjon">
 <h1>Legg til et nytt medlem</h1>
 </div>
 <div class="LeggtilMedlem">

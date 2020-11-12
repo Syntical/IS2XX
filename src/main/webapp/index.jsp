@@ -14,7 +14,6 @@
 <br>
 <br>
 <br>
-<br>
 <div class="Introduksjon">
     <h1>Her kan du søke etter medlemmer</h1>
 </div>

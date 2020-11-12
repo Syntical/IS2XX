@@ -8,8 +8,18 @@
     <title>Title</title>
 </head>
 <body>
+<ul>
+    <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
+        <input type="submit" value="Logg ut" /></form></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
+</ul>
 
-
+<div class="LeggTilBruker">
 <form action="TrenerServlet" method="POST">
     <label for='br'>Brukernavn:</label>
     <input type='text' name='br'/>
@@ -44,6 +54,6 @@
         %>
     </select>
 </form>
-
+</div>
 </body>
 </html>

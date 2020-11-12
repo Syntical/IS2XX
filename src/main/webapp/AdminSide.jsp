@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Hjemmeside</title>
+    <title>Adminside</title>
     <link rel="stylesheet" href="test.css"/>
 </head>
 <body>
@@ -15,7 +15,13 @@
     <li><a href="addKlubb.jsp">Legg til klubb</a></li>
     <li><a href="AddTestgruppe.jsp">Legg til testgruppe</a></li>
     <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
-    <li><a href="Registrering.jsp">Legg til trener/Admin</a></li>
+    <li><a href="RegistrerNyBruker.jsp">Registrer admin/trener</a></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
 </ul>
 <%
     //allow access only if session exists

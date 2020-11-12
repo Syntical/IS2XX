@@ -10,11 +10,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>AddTestgruppe</title>
+    <title>Legg til testgruppe</title>
     <link rel="stylesheet" href="test.css" />
 </head>
 <body>
-    <div class="AddTG">
+<ul>
+    <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
+        <input type="submit" value="Logg ut" /></form></li>
+    <li><a href="AddBruker.jsp">Legg til medlem</a></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
+</ul>
+    <div class="LeggTilBruker">
         <form action='addtestgruppe' method='POST'>
             <label for='tgn'>Testgruppenavn:</label>
 

@@ -53,33 +53,31 @@ table.medlemListe {
 
 .button{
     border: none;
-    background:rgba(255,255,255,1);
-    padding: 15px 32px;
+    color: black;
+    background-color: whitesmoke;
+    padding: 15px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
     align-content: center;
-    border-radius: 25px;
+
+}
+
+.button:hover{
+    background-color: white;
 }
 
 .buttonAdd
 {
     background-color: white;
     color: black;
-    border-radius: 25px;
 }
 
-.button:hover{
-    background-color: lightslategrey;
-
-}
 
 .buttonHent {
     background-color: white;
     color: black;
-    border-radius: 25px;
 }
 
 
@@ -90,16 +88,15 @@ a:hover, a:visited, a:link, a:active
 }
 
 
-.forsideKnapper{
-    background:rgba(255,255,255,1);
+.forsideKnapper {
+    background: rgba(255, 255, 255, 1);
     border: none;
     text-align: center;
-    border-radius: 25px;
 }
 
 
 .Introduksjon{
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 1);
     text-align: center;
     padding: 10px;
 
@@ -107,7 +104,7 @@ a:hover, a:visited, a:link, a:active
 
 
 .Innlogging {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 1);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -132,7 +129,7 @@ a:hover, a:visited, a:link, a:active
 }
 
 .Søkefelt{
-    background:rgba(255,255,255,0.9);
+    background:rgba(255,255,255,1);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -282,7 +279,6 @@ input[type=submit]{
     display: inline-block;
     font-size: 16px;
     align-content: center;
-    border-radius: 10px;
 
 }
 input[type=submit]:hover{
