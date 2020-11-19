@@ -11,10 +11,21 @@
 <ul>
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
         <input type="submit" value="Logg ut" /></form></li>
-    <li><a href="AddBruker.jsp">Legg til medlem og resultat</a></li>
-    <li><form action="${pageContext.request.contextPath}/VisUtoevereiKlubb" method="post">
-        <input type="submit" value="Vis ut�vere i klubben" />
-    </form></li>
+   <li><form action="${pageContext.request.contextPath}/VisUtoevereiKlubb" method="post">
+        <input type="submit" value="Vis utøvere i klubben" />
+      </form></li>
+    <li><a href="AddBruker.jsp">Legg til medlem</a></li>
+    <li><a href="addKlubb.jsp">Legg til klubb</a></li>
+    <li><a href="AddTestgruppe.jsp">Legg til testgruppe</a></li>
+    <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
+    <li><a href="Registrering.jsp">Legg til trener/Admin</a></li>
+    <li><a href="Klubboversikt.jsp">Klubboversikt</a></li>
+    <li><a href="Velgtestgruppe.jsp">Legg til </a></li>
+
+
+   
+   
+
 </ul>
 <%
     //allow access only if session exists
@@ -46,7 +57,7 @@ User=<%=Bruker %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>AdminSide</title>
 <div class="Introduksjon">
-    <h1> Velkommen til Trenersiden <b> (${Bruker})</b>, du er n� logget inn som trener!</h1>
+    <h1> Velkommen til Trenersiden <b> (${Bruker})</b>, du er nå logget inn som trener!</h1>
     <!-- knapp med henvisning til servletten "LoggUt" som avslutter den innloggede brukerens sesjon. -->
     <br>
 </div>

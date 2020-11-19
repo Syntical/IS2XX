@@ -27,6 +27,7 @@
 </div>
 <div class="informasjonsBar">
     Kontakt oss på Tlf: 990 99 999 eller E-post: roklubben@support.no
+
 </div>
 </body>
 </html>
