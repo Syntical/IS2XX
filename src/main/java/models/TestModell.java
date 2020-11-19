@@ -1,11 +1,7 @@
 package models;
 
-public class UtoevereModel {
-    private String fornavn;
-    private String etternavn;
-    private String fodselsdato;
-    private String hoyde;
-    private String vekt;
+public class TestModell {
+
     private int femtusen_watt;
     private int femtusen_tid;
     private int tretusen_sek;
@@ -25,19 +21,8 @@ public class UtoevereModel {
     private int totalscore;
 
 
-
-    /**
-     * @param fornavn   the users firstname
-     * @param etternavn the users lastname
-     * @param vekt      the users email .e.g., example@example.com
-     */
-    public UtoevereModel(String fornavn, String etternavn, String fodselsdato, String hoyde, String vekt,String femtusen_watt, String femtusen_tid, String tretusen_sek, String tretusen_tid, String tretusen_lop_tid, String totusen_watt, String totusen_tid, String seksti_watt,
+    public TestModell(String femtusen_watt, String femtusen_tid, String tretusen_sek, String tretusen_tid, String tretusen_lop_tid, String totusen_watt, String totusen_tid, String seksti_watt,
                          String kropps_hev_stk, String Sargeant_stk, String beveg_stk, String ligg_ro, String ligg_ro_pst, String ligg_ro_kg, String kneboy_pst, String kneboy_kg, String totalscore ) {
-        this.fornavn = fornavn;
-        this.etternavn = etternavn;
-        this.fodselsdato = fodselsdato;
-        this.hoyde = hoyde;
-        this.vekt = vekt;
 
         this.femtusen_watt = femtusen_watt.isEmpty() ? 0 : Integer.parseInt(femtusen_watt);
 
@@ -60,47 +45,6 @@ public class UtoevereModel {
 
     }
 
-    public String getFornavn() {
-        return fornavn;
-    }
-
-    public String getEtternavn() {
-        return etternavn;
-    }
-
-
-    public String getFodselsdato() {
-        return fodselsdato;
-    }
-
-
-    public String getHoyde() {
-        return hoyde;
-    }
-
-
-    public String getVekt() {
-        return vekt;
-    }
-
-    public void setFornavn(String fornavn) {
-        this.fornavn = fornavn;
-    }
-
-    public void setEtternavn(String etternavn) {
-        this.etternavn = etternavn;
-    }
-
-    public void setFodselsdato(String fodselsdato) {
-        this.fodselsdato = fodselsdato;
-    }
-    public void setHoyde(String hoyde) {
-        this.hoyde = hoyde;
-    }
-
-    public void setVekt(String vekt) {
-        this.vekt = vekt;
-    }
 
     public int getFemtusen_watt() {
         return femtusen_watt;

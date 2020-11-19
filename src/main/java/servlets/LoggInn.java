@@ -1,10 +1,7 @@
 package servlets;
 
-import org.w3c.dom.ls.LSOutput;
-import tools.DbTool;
 
-import javax.annotation.security.DeclareRoles;
-import javax.lang.model.type.DeclaredType;
+import tools.DbTool;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,7 +51,8 @@ public class LoggInn extends AbstractAppServlet {
 
                     db = DbTool.getINSTANCE().dbLoggIn(out);
                     //String Query = "Select * from Roprosjekt.Brukerinfo where Email=? and Passord=?";
-                    String Query ="Select * from Roprosjekt.Brukerinfo JOIN Roprosjekt.bruker USING(brukerinfo_id) where Email=? and Passord=?";
+                    String Query ="Select * from Roprosjekt.Brukerinfo JOIN Roprosjekt.bruker USING(brukerinfo_id)" +
+                            "  where Email=? and Passord=?";
 
 
                     pwm = db.prepareStatement(Query);
@@ -63,7 +61,8 @@ public class LoggInn extends AbstractAppServlet {
 
 
                     // Kjører sql-query ved navn "pwn" hvis overnenvte krav er tilfredsstilt
-                    ResultSet rs = pwm.executeQuery();
+
+                        ResultSet rs = pwm.executeQuery();
 
                     if (rs.next()) {
 

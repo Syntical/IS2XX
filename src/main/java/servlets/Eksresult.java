@@ -1,6 +1,7 @@
 package servlets;
 
 
+import models.TestModell;
 import models.UtoevereModel;
 import tools.repository.SearchRepo;
 import tools.repository.UtoeverRepo;
@@ -14,8 +15,8 @@ import java.io.PrintWriter;
 import java.util.List;
 
 
-@WebServlet(name = "AddBruker", urlPatterns = {"/AddBruker"})
-public class AddBruker extends AbstractAppServlet {
+@WebServlet(name = "Eksresult", urlPatterns = {"/Eksresult"})
+public class Eksresult extends AbstractAppServlet {
     /**
      * Tar imot http requesten og kaller på writeResponse()
      *
@@ -40,23 +41,25 @@ public class AddBruker extends AbstractAppServlet {
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
 
         String action = req.getParameter("action");
-        String year = req.getParameter("year");
-        String klubb = req.getParameter("klubb");
-        String test = req.getParameter("test");
+        String utover = req.getParameter("utover");
+        String ars = req.getParameter("ars");
 
-            if (action.contains("add")) {
-            UtoevereModel utoever = new UtoevereModel(req.getParameter("fn"), req.getParameter("en"), req.getParameter("fd"), req.getParameter("hd"), req.getParameter("vk"), req.getParameter("ftw"),
+
+
+        if (action.contains("legg til resultat")) {
+            TestModell test = new TestModell ( req.getParameter("ftw"),
                     req.getParameter("ftt"), req.getParameter("tts"), req.getParameter("ttt"), req.getParameter("tlt"), req.getParameter("ttw"),
                     req.getParameter("tott"), req.getParameter("sw"), req.getParameter("khs"), req.getParameter("sgs"), req.getParameter("bs"), req.getParameter("lr"), req.getParameter("lrp"),
                     req.getParameter("lrk"), req.getParameter("kbp"), req.getParameter("kbk"), req.getParameter("totsc"));
-            Integer suksess = UtoeverRepo.addUtoever(utoever, year, test, klubb, out );
+
+            Integer suksess = UtoeverRepo.velgUT(test, utover, ars, out );
 
             if (suksess != null) {
                 out.println("<link href='test.css' type='text/css' rel='stylesheet'>");
                 out.println("<div class=\"Innlogging\">");
                 out.println("<h1>");
-                out.println(utoever.getFornavn());
-                out.println(utoever.getEtternavn()+ " ble lagt til i databasen. </h1>");
+
+                out.println( utover + "s' resultater ble lagt til i databasen. </h1>");
                 out.println("<br>");
                 out.println("<br>");
                 out.println("Trykk her for å returnere til hjemmesiden");
@@ -67,7 +70,7 @@ public class AddBruker extends AbstractAppServlet {
             } else {
                 out.println("<a href=AddBruker.jsp> Noe gikk galt. Vil du prøve på nytt? </a>");
             }
-        } if (action.contains("hent")){
+        } /** if (action.contains("hent")){
             List<UtoevereModel> utoevereModelList = SearchRepo.getUtoever(out);
             out.println("<h1>Her er listen over alle medlemmene i roklubben:</h1> ");
             out.println("<table>");
@@ -104,8 +107,9 @@ public class AddBruker extends AbstractAppServlet {
                         model.getSargeant_stk(), model.getBeveg_stk(), model.getLigg_ro(), model.getLigg_ro_pst(), model.getLigg_ro_kg(), model.getKneboy_pst(), model.getKneboy_kg(), model.getTotalscore());
             }
             out.println("</table>");
-        }
+         } **/
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

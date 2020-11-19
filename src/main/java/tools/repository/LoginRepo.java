@@ -85,10 +85,9 @@ public class LoginRepo {
 
             String query2 =    "INSERT INTO Bruker (Brukerinfo_id, rolle_id) VALUES( (SELECT MAX (brukerinfo_id) FROM Brukerinfo), 2)";
 
-            String query3 = "INSERT INTO BrukerKlubb (bruker_id, klubb_id) VALUES ((SELECT MAX (bruker_id) FROM Bruker JOIN roller USING (rolle_id) WHERE rolle_id = 2) , ?)";
-
             String query4= "COMMIT;";
 
+            String query3 = "INSERT INTO BrukerKlubb (bruker_id, klubb_id) VALUES ((SELECT MAX (bruker_id) FROM Bruker JOIN roller USING (rolle_id) WHERE rolle_id = 2) , ?)";
             addtr = db.prepareStatement(query);
             addtr.setString(1, br);
             addtr.setString(2, ps);
@@ -110,8 +109,9 @@ public class LoginRepo {
             beg.execute();
             addtr.execute();
             insBruker.execute();
-            insBKR.execute();
             end.execute();
+            insBKR.execute();
+
 
 
 
@@ -166,5 +166,32 @@ public class LoginRepo {
 
         return toReturn;
     }
+    public static void byttPassTrener(String email, String id, PrintWriter p) {
 
+        Connection db = null;
+        PreparedStatement changePass = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+            String query = "UPDATE Roprosjekt.brukerinfo SET Passord = ? WHERE brukerinfo_id = ?";
+
+            changePass = db.prepareStatement(query);
+            changePass.setString(1, email);
+            changePass.setString(2, id);
+
+            changePass.executeQuery();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+
+    }
 }

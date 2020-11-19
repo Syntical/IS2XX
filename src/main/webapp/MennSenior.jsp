@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dalaria
-  Date: 01.10.2020
-  Time: 19:37
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="tools.DbTool" %>
@@ -19,38 +12,12 @@
 <ul>
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
         <input type="submit" value="Logg ut" /></form></li>
-    <li><a href="AddBruker.jsp">Legg til medlem</a></li>
 </ul>
-<%--
-<%
-    //allow access only if session exists
-    String Bruker = null;
-    if(session.getAttribute("Bruker") == null){
-        response.sendRedirect("Login.jsp");
-    }else Bruker = (String) session.getAttribute("Bruker");
-    String bruker = null;
-    String sessionID = null;
-    Cookie[] cookies = request.getCookies();
-    if(cookies !=null){
-        for(Cookie cookie : cookies){
-            if(cookie.getName().equals("Bruker")) bruker = cookie.getValue();
-            if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-        }
-    }
-%>
---%>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div>
-<h1>Legg til et nytt medlem</h1>
-</div>
-<div class="LeggtilMedlem">
 <form action='AddBruker' method='POST'>
 
-
+    <br>
+    <br>
+    <br>
 
     <label for="year">år:</label>
     <select id="year" name="year">
@@ -109,7 +76,7 @@
     <label for="test">Testgruppe:</label>
     <select id="test" name="test">
         <option value=""> Velg testgruppe </option>
-        <%
+            <%
             PrintWriter l = new PrintWriter(out);
             Connection ddb = null;
             PreparedStatement gruppe = null;
@@ -124,15 +91,14 @@
         %>
         <option value="<%=rs.getInt("testgruppe_id") %>"><%=rs.getString("TestGruppeNavn")%>
         </option>
-        <%
+            <%
                 }
             } catch (SQLException e ) {
                 e.printStackTrace();
             }
         %>
-
-
     </select>
+        <br>
     <label for='fn'>Fornavn:</label>
     <input type='text' name='fn'/>
     <br>
@@ -154,14 +120,91 @@
     <label for='ftt'> 5000 tid:</label>
     <input type='text' name='ftt'/>
     <br>
-    <label for='tts'> 3000 sek:</label>
-    <input type='text' name='tts'/>
+    <label for='ttw'>2000 watt:</label>
+    <input type='text' name='ttw'/>
     <br>
-    <label for='ttt'> 3000 tid:</label>
-    <input type='text' name='ttt'/>
+    <label for='tott'> 2000 tid:</label>
+    <input type='text' name='tott'/>
     <br>
-    <label for='tlt'> 3000 løp tid:</label>
-    <input type='text' name='tlt'/>
+    <label for='sw'> 60 watt:</label>
+    <input type='text' name='sw'/>
+    <br>
+    <label for='lrp'> ligg ro prosent:</label>
+    <input type='text' name='lrp'/>
+    <br>
+    <label for='lrk'> ligg ro kilo:</label>
+    <input type='text' name='lrk'/>
+
+    <label for='kbp'> Knebøy prosent:</label>
+    <input type='text' name='kbp'/>
+    <br>
+    <label for='kbk'> Knebøy kilo:</label>
+    <input type='text' name='kbk'/>
+    <br>
+    <label for='bs'>Bevegelse stk:</label>
+    <input type='text' name='bs'/>
+    <br>
+    <input type='submit' name="action" value="add"/>
+</form>
+
+<form action='Eksresult' method='POST'>
+    <label for="utover">utøver:</label>
+    <select id="utover" name="utover">
+        <option value=""> Velg utøver </option>
+        <%
+            PrintWriter pa = new PrintWriter(out);
+            Connection dba = null;
+            PreparedStatement dropDowns = null;
+            try {
+                dba = DbTool.getINSTANCE().dbLoggIn(pa);
+                ResultSet rs = null;
+                String query = "SELECT * FROM Roprosjekt.fulltnavn";
+                dropDowns = dba.prepareStatement(query);
+                rs = dropDowns.executeQuery();
+                while (rs.next())
+                {
+        %>
+        <option value="<%=rs.getInt("utover_id") %>"><%=rs.getString("fulltnavn")%>
+        </option>
+        <%
+                }
+            } catch (SQLException e ) {
+                e.printStackTrace();
+            }
+        %>
+    </select>
+
+    <label for="ars">år:</label>
+    <select id="ars" name="ars">
+        <option value=""> Velg år </option>
+        <%
+            PrintWriter pp = new PrintWriter(out);
+            Connection dbl = null;
+            PreparedStatement dropDownz = null;
+            try {
+                dbl = DbTool.getINSTANCE().dbLoggIn(pp);
+                ResultSet rs = null;
+                String query = "SELECT * FROM ArogUKE";
+                dropDownz = dbl.prepareStatement(query);
+                rs = dropDownz.executeQuery();
+                while (rs.next())
+                {
+        %>
+        <option value="<%=rs.getInt("test_year_id") %>"><%=rs.getString("ArogUKE")%>
+        </option>
+        <%
+                }
+            } catch (SQLException e ) {
+                e.printStackTrace();
+            }
+        %>
+    </select>
+    <br>
+    <label for='ftw'>5000 watt:</label>
+    <input type='text' name='ftw'/>
+    <br>
+    <label for='ftt'> 5000 tid:</label>
+    <input type='text' name='ftt'/>
     <br>
     <label for='ttw'>2000 watt:</label>
     <input type='text' name='ttw'/>
@@ -172,42 +215,22 @@
     <label for='sw'> 60 watt:</label>
     <input type='text' name='sw'/>
     <br>
-    <label for='khs'> Kroppshev stk:</label>
-    <input type='text' name='khs'/>
-    <br>
-    <label for='sgs'> Sargeant stk:</label>
-    <input type='text' name='sgs'/>
-    <br>
-    <label for='bs'>Bevegelse stk:</label>
-    <input type='text' name='bs'/>
-    <br>
-    <label for='lr'> ligg ro:</label>
-    <input type='text' name='lr'/>
-    <br>
     <label for='lrp'> ligg ro prosent:</label>
     <input type='text' name='lrp'/>
     <br>
     <label for='lrk'> ligg ro kilo:</label>
     <input type='text' name='lrk'/>
-    <br>
+
     <label for='kbp'> Knebøy prosent:</label>
     <input type='text' name='kbp'/>
     <br>
     <label for='kbk'> Knebøy kilo:</label>
     <input type='text' name='kbk'/>
     <br>
-    <label for='totsc'> totalscore:</label>
-    <input type='text' name='totsc'/>
+    <label for='bs'>Bevegelse stk:</label>
+    <input type='text' name='bs'/>
     <br>
-
-    <br>
-    <br>
-    <input type='submit' name="action" value="add"/>
-    </form>
-</div>
-
-<div class="informasjonsBar">
-    Kontakt oss på Tlf: 990 99 999 eller E-post: roklubben@support.no
-</div>
+    <input type='submit' name="action" value="legg til resultat"/>
+</form>
 </body>
 </html>

@@ -17,6 +17,8 @@
     <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
     <li><a href="Registrering.jsp">Legg til trener/Admin</a></li>
     <li><a href="Klubboversikt.jsp">Klubboversikt</a></li>
+    <li><a href="Velgtestgruppe.jsp">Legg til </a></li>
+
 </ul>
 <%
     //allow access only if session exists

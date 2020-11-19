@@ -1,6 +1,7 @@
 package tools.repository;
 
-import models.UserModel;
+import models.TestModell;
+
 import models.UtoevereModel;
 import models.UtoverClubModel;
 
@@ -34,7 +35,7 @@ public class UtoeverRepo {
                     "INSERT INTO `utovere` (Fornavn, Etternavn, Fodselsdato, Hoyde, Vekt) values (?,?,?,?,?)";
 
 
-            String query2 ="INSERT INTO testregister (utover_id, testyear_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt," +
+            String query2 ="INSERT INTO testregister (utover_id, test_year_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt," +
                             "kropps_hev_stk, Sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore) " +
                             "values ((SELECT MAX(utover_id) FROM utovere),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -56,23 +57,23 @@ public class UtoeverRepo {
 
 
             insertNewTest.setString(1, id);
-            insertNewTest.setString(2, utoever.getFemtusen_watt());
-            insertNewTest.setString(3, utoever.getFemtusen_tid());
-            insertNewTest.setString(4, utoever.getTretusen_sek());
-            insertNewTest.setString(5, utoever.getTretusen_tid());
-            insertNewTest.setString(6, utoever.getTretusen_lop_tid());
-            insertNewTest.setString(7, utoever.getTotusen_watt());
-            insertNewTest.setString(8, utoever.getTotusen_tid());
-            insertNewTest.setString(9, utoever.getSeksti_watt());
-            insertNewTest.setString(10, utoever.getKropps_hev_stk());
-            insertNewTest.setString(11, utoever.getSargeant_stk());
-            insertNewTest.setString(12, utoever.getBeveg_stk());
-            insertNewTest.setString(13, utoever.getLigg_ro());
-            insertNewTest.setString(14, utoever.getLigg_ro_pst());
-            insertNewTest.setString(15, utoever.getLigg_ro_kg());
-            insertNewTest.setString(16, utoever.getKneboy_pst());
-            insertNewTest.setString(17, utoever.getKneboy_kg());
-            insertNewTest.setString(18, utoever.getTotalscore());
+            insertNewTest.setInt(2, utoever.getFemtusen_watt());
+            insertNewTest.setInt(3, utoever.getFemtusen_tid());
+            insertNewTest.setInt(4, utoever.getTretusen_sek());
+            insertNewTest.setInt(5, utoever.getTretusen_tid());
+            insertNewTest.setInt(6, utoever.getTretusen_lop_tid());
+            insertNewTest.setInt(7, utoever.getTotusen_watt());
+            insertNewTest.setInt(8, utoever.getTotusen_tid());
+            insertNewTest.setInt(9, utoever.getSeksti_watt());
+            insertNewTest.setInt(10, utoever.getKropps_hev_stk());
+            insertNewTest.setInt(11, utoever.getSargeant_stk());
+            insertNewTest.setInt(12, utoever.getBeveg_stk());
+            insertNewTest.setInt(13, utoever.getLigg_ro());
+            insertNewTest.setInt(14, utoever.getLigg_ro_pst());
+            insertNewTest.setInt(15, utoever.getLigg_ro_kg());
+            insertNewTest.setInt(16, utoever.getKneboy_pst());
+            insertNewTest.setInt(17, utoever.getKneboy_kg());
+            insertNewTest.setInt(18, utoever.getTotalscore());
 
 
             PreparedStatement insertNewReg = db.prepareStatement(query3);
@@ -211,6 +212,72 @@ public class UtoeverRepo {
 
 
         return toReturn;
+    }
+    public static int velgUT(TestModell test, String navn, String id, PrintWriter p) {
+
+        Connection db = null;
+        PreparedStatement leggEksBruk = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+            String query = "INSERT INTO testregister (utover_id, test_year_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt," +
+                    "kropps_hev_stk, Sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore) " +
+                    "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+
+
+
+
+            leggEksBruk = db.prepareStatement(query);
+            leggEksBruk.setString(1, navn);
+            leggEksBruk.setString(2, id);
+
+            leggEksBruk.setInt(3, test.getFemtusen_watt());
+            leggEksBruk.setInt(4, test.getFemtusen_tid());
+            leggEksBruk.setInt(5, test.getTretusen_sek());
+            leggEksBruk.setInt(6, test.getTretusen_tid());
+            leggEksBruk.setInt(7, test.getTretusen_lop_tid());
+            leggEksBruk.setInt(8, test.getTotusen_watt());
+            leggEksBruk.setInt(9, test.getTotusen_tid());
+            leggEksBruk.setInt(10, test.getSeksti_watt());
+            leggEksBruk.setInt(11, test.getKropps_hev_stk());
+            leggEksBruk.setInt(12, test.getSargeant_stk());
+            leggEksBruk.setInt(13, test.getBeveg_stk());
+            leggEksBruk.setInt(14, test.getLigg_ro());
+            leggEksBruk.setInt(15, test.getLigg_ro_pst());
+            leggEksBruk.setInt(16, test.getLigg_ro_kg());
+            leggEksBruk.setInt(17, test.getKneboy_pst());
+            leggEksBruk.setInt(18, test.getKneboy_kg());
+            leggEksBruk.setInt(19, test.getTotalscore());
+
+
+        //   String [] arrofquery = query.split(",");
+           // StringBuilder builder = new StringBuilder();
+
+          //  for (String q : arrofquery)
+             //  if (q == (null )) {
+              //     builder.append("NULL,");
+
+
+             //   } else {
+              //     builder.append(q + ",");
+            //   }
+            leggEksBruk.executeQuery();
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+        return 1;
+
     }
 }
 
