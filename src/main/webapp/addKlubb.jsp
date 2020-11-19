@@ -8,11 +8,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Legg til klubb</title>
 </head>
 <body>
 
+<link rel="stylesheet" href="test.css"/>
+<ul>
+    <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
+        <input type="submit" value="Logg ut" /></form></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
 
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
+</ul>
+<div class="LeggTilBruker">
 <form action='AddKlubb' method="POST">
     <label for='kb'>legg til klubb:</label>
     <input type='text' name='kb'/>
@@ -20,7 +32,7 @@
 
     <input type='submit' name="action" value="addklubb"/>
 </form>
-
+</div>
 
 
 </body>

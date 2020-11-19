@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Hjemmeside</title>
+    <title>Registrer ny bruker</title>
     <link rel="stylesheet" href="test.css"/>
 </head>
 <body>
@@ -13,7 +13,12 @@
         <input type="submit" value="Logg ut" /></form></li>
     <li><a href="RegistrerAdmin.jsp">Legg til ny Superbruker</a></li>
     <li><a href="RegistrerTrener.jsp">Legg til ny Trener</a></li>
-    <li><a href="AdminSide.jsp">Forside</a></li>
+        <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script></li>
 
 </ul>
 <%
@@ -35,19 +40,19 @@
 <br>
 <br>
 <br>
-<div class="Introduksjon">
-    <h3>Hei <%=bruker %>, din sesjonsid er <%=sessionID %></h3>
-</div>
-<br>
 User=<%=Bruker %>
 <br>
+
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>AdminSide</title>
 <div class="Introduksjon">
-    <h1> Hei ${Bruker} Her velger du hvilken type bruker du Ã¸nsker Ã¥ registrere. Benytt valgene nedenfor for Ã¥ legge inn brukere av ulik type <b> </h1>
-
+    <h1> Hei ${Bruker}. Her velger du hvilken type bruker du ønsker å registrere. Benytt valgene nedenfor for å legge inn brukere av ulik type <b> </h1>
+</div>
+<div class="Introduksjon">
+    <button class="button"><a href="RegistrerAdmin.jsp">Legg til ny administrator</a></button>
+    <button class="button"><a href="RegistrerTrener.jsp">Legg til ny trener</a></button>
 </div>
 <br>
 

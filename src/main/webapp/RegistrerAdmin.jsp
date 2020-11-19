@@ -15,7 +15,19 @@
 </head>
 <body>
 
+<ul>
+    <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
+        <input type="submit" value="Logg ut" /></form></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
 
+</ul>
+
+<div class="LeggTilBruker">
 <form action="RegistrerBruker" method="POST">
     <label for='bn'>Brukernavn:</label>
     <input type='text' name='bn'/>
@@ -23,9 +35,7 @@
     <label for='pd'>Passord:</label>
     <input type='text' name='pd'/>
     <input type='submit' name="action" value="Registrer"/>
-
-
 </form>
-
+</div>
 </body>
 </html>

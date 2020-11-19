@@ -59,9 +59,9 @@ public class AddBruker extends AbstractAppServlet {
                 out.println(utoever.getEtternavn()+ " ble lagt til i databasen. </h1>");
                 out.println("<br>");
                 out.println("<br>");
-                out.println("Trykk her for å returnere til hjemmesiden");
+                out.println("Trykk her for å gå tilbake");
                 out.println("<br>");
-                out.println("<a href=index.jsp class=\"button\">Hjemmeside</a>");
+                out.println("<a href=AddBruker.jsp class=\"button\">Tilbake</a>");
                 out.println("</div>");
 
             } else {
