@@ -166,7 +166,7 @@ public class LoginRepo {
 
         return toReturn;
     }
-    public static void byttPassTrener(String email, String id, PrintWriter p) {
+    public static void byttPass(String email, String id, PrintWriter p) {
 
         Connection db = null;
         PreparedStatement changePass = null;
@@ -174,6 +174,35 @@ public class LoginRepo {
             db = DbTool.getINSTANCE().dbLoggIn(p);
 
             String query = "UPDATE Roprosjekt.brukerinfo SET Passord = ? WHERE brukerinfo_id = ?";
+
+            changePass = db.prepareStatement(query);
+            changePass.setString(1, email);
+            changePass.setString(2, id);
+
+            changePass.executeQuery();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+
+    }
+
+    public static void byttBN(String email, String id, PrintWriter p) {
+
+        Connection db = null;
+        PreparedStatement changePass = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+            String query = "UPDATE Roprosjekt.brukerinfo SET Email = ? WHERE brukerinfo_id = ?";
 
             changePass = db.prepareStatement(query);
             changePass.setString(1, email);
