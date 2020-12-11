@@ -7,18 +7,23 @@
 <head>
     <title>Legg til utoever</title>
     <link rel="stylesheet" href="test.css"/>
+
 </head>
 <body>
+
 <ul>
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
         <input type="submit" value="Logg ut" /></form></li>
+
 </ul>
-<form action='AddBruker' method='POST'>
+<form action='insertTestUtover' method='POST'>
 
     <br>
     <br>
     <br>
-
+    <br>
+    <br>
+    <br>
     <label for="year">år:</label>
     <select id="year" name="year">
         <option value=""> Velg år </option>
@@ -76,7 +81,7 @@
     <label for="test">Testgruppe:</label>
     <select id="test" name="test">
         <option value=""> Velg testgruppe </option>
-            <%
+        <%
             PrintWriter l = new PrintWriter(out);
             Connection ddb = null;
             PreparedStatement gruppe = null;
@@ -91,14 +96,16 @@
         %>
         <option value="<%=rs.getInt("testgruppe_id") %>"><%=rs.getString("TestGruppeNavn")%>
         </option>
-            <%
+        <%
                 }
             } catch (SQLException e ) {
                 e.printStackTrace();
             }
         %>
     </select>
-        <br>
+    <br>
+
+    <br>
     <label for='fn'>Fornavn:</label>
     <input type='text' name='fn'/>
     <br>
@@ -114,56 +121,46 @@
     <label for='vk'> Vekt:</label>
     <input type='text' name='vk'/>
     <br>
+    <label for='ftw'>5000 watt:</label>
+    <input type='text' name='ftw'/>
+    <br>
+    <label for='ftt'> 5000 tid:</label>
+    <input type='text' name='ftt'/>
+    <input type='hidden' name='tts'/>
+    <input type='hidden' name='ttt'/>
+    <input type='hidden' name='tlt'/>
+    <br>
+    <label for='ttw'>2000 watt:</label>
+    <input type='text' name='ttw'/>
+    <br>
+    <label for='tott'> 2000 tid:</label>
+    <input type='text' name='tott'/>
+    <br>
+    <label for='sw'> 60 watt:</label>
+    <input type='text' name='sw'/>
+    <input type='hidden' name='khs'/>
+    <label for='sgs'> Sargeant stk:</label>
+    <input type='text' name='sgs'/>
+    <br>
+    <label for='bs'>Bevegelse stk:</label>
+    <input type='text' name='bs'/>
+    <input type='hidden' name='lr'/>
+    <br>
+    <label for='lrp'> ligg ro prosent:</label>
+    <input type='text' name='lrp'/>
+    <br>
+    <label for='lrk'> ligg ro kilo:</label>
+    <input type='text' name='lrk'/>
+    <input type='hidden' name='kbp'/>
+    <input type='hidden' name='kbk'/>
 
-    <label for='fw'>5000 watt:</label>
-    <input type='text' name='fw' />
-    <br>
-    <label for='ft'> 5000 tid:</label>
-    <input type='text' name='ft'/>
-    <br>
-    <input type='hidden' name='ts'/>
-    <input type='hidden' name='tt'/>
-    <br>
-    <input type='hidden' name='tl'/>
-    <br>
-    <label for='tw'>2000 watt:</label>
-    <input type='text' name='tw' />
-    <br>
-    <label for='tot'> 2000 tid:</label>
-    <input type='text' name='tot'/>
-    <br>
-    <label for='sww'> 60 watt:</label>
-    <input type='text' name='sww'/>
-    <br>
-    <input type='hidden' name='ks'/>
-    <input type='hidden' name='ss'/>
-    <br>
-    <label for='bss'>Bevegelse stk:</label>
-    <input type='text' name='bss'/>
-    <br>
-    <input type='hidden' name='lrr'/>
-    <br>
-    <label for='lp'> ligg ro prosent:</label>
-    <input type='text' name='lp'/>
-    <br>
-    <label for='lr'> ligg ro kilo:</label>
-    <input type='text' name='lr'/>
-    <br>
-    <label for='kb'> Knebøy prosent:</label>
-    <input type='text' name='kb'/>
-    <br>
-    <label for='kk'> Knebøy kilo:</label>
-    <input type='text' name='kk'/>
-    <br>
-
-    <input type='hidden' name='totc'/>
-    <br>
-    <input type='submit' name="action" value="add"/>
+    <input type='hidden' name='totsc'/>
+    <input type='submit' name="action" value="adde"/>
 </form>
 
-<form action='Eksresult' method='POST'>
-    <label for="utover">utøver:</label>
-    <select id="utover" name="utover">
+<form action='insertRes' method='POST'>
+    <label for="uutid">utøver:</label>
+    <select id="uutid" name="uutid">
         <option value=""> Velg utøver </option>
         <%
             PrintWriter pa = new PrintWriter(out);
@@ -188,8 +185,8 @@
         %>
     </select>
 
-    <label for="ars">år:</label>
-    <select id="ars" name="ars">
+    <label for="tsstid">år:</label>
+    <select id="tsstid" name="tsstid">
         <option value=""> Velg år </option>
         <%
             PrintWriter pp = new PrintWriter(out);
@@ -214,46 +211,40 @@
         %>
     </select>
     <br>
-    <label for='fw'>5000 watt:</label>
-    <input type='text' name='fw' />
+    <label for='ftw'>5000 watt:</label>
+    <input type='text' name='ftw'/>
     <br>
-    <label for='ft'> 5000 tid:</label>
-    <input type='text' name='ft'/>
+    <label for='ftt'> 5000 tid:</label>
+    <input type='text' name='ftt'/>
+    <input type='hidden' name='tts'/>
+    <input type='hidden' name='ttt'/>
+    <input type='hidden' name='tlt'/>
     <br>
-    <input type='hidden' name='ts'/>
-    <input type='hidden' name='tt'/>
+    <label for='ttw'>2000 watt:</label>
+    <input type='text' name='ttw'/>
     <br>
-    <input type='hidden' name='tl'/>
+    <label for='tott'> 2000 tid:</label>
+    <input type='text' name='tott'/>
     <br>
-    <label for='tw'>2000 watt:</label>
-    <input type='text' name='tw' />
+    <label for='sw'> 60 watt:</label>
+    <input type='text' name='sw'/>
+    <input type='hidden' name='khs'/>
+    <label for='sgs'> Sargeant stk:</label>
+    <input type='text' name='sgs'/>
     <br>
-    <label for='tot'> 2000 tid:</label>
-    <input type='text' name='tot'/>
+    <label for='bs'>Bevegelse stk:</label>
+    <input type='text' name='bs'/>
+    <input type='hidden' name='lr'/>
     <br>
-    <label for='sww'> 60 watt:</label>
-    <input type='text' name='sww'/>
+    <label for='lrp'> ligg ro prosent:</label>
+    <input type='text' name='lrp'/>
     <br>
-    <input type='hidden' name='ks'/>
-    <input type='hidden' name='ss'/>
-    <br>
-    <label for='bss'>Bevegelse stk:</label>
-    <input type='text' name='bss'/>
-    <br>
-    <input type='hidden' name='lrr'/>
-    <br>
-    <label for='lp'> ligg ro prosent:</label>
-    <input type='text' name='lp'/>
-    <br>
-    <label for='lr'> ligg ro kilo:</label>
-    <input type='text' name='lr'/>
-    <br>
-    <label for='kb'> Knebøy prosent:</label>
-    <input type='text' name='kb'/>
-    <br>
-    <label for='kk'> Knebøy kilo:</label>
-    <input type='text' name='kk'/>
-    <br>
+    <label for='lrk'> ligg ro kilo:</label>
+    <input type='text' name='lrk'/>
+    <input type='hidden' name='kbp'/>
+    <input type='hidden' name='kbk'/>
+
+    <input type='hidden' name='totsc'/>
     <br>
     <input type='submit' name="action" value="legg til resultat"/>
 </form>

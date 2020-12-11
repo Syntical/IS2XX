@@ -39,14 +39,14 @@ public final class DbTool {
         Map<String, String> result = new HashMap<>();
 
 
-        try (InputStream input = new FileInputStream(payara)) {
-            Properties prop = new Properties();
+            try (InputStream input = new FileInputStream(payara)) {
+                Properties prop = new Properties();
 
-            prop.load(input);
-            result.put("username", prop.getProperty("username"));
-            result.put("password", prop.getProperty("password"));
-            result.put("URL", prop.getProperty("URL"));
-        } catch (IOException ex) {
+                prop.load(input);
+                result.put("username", prop.getProperty("username"));
+                result.put("password", prop.getProperty("password"));
+                result.put("URL", prop.getProperty("URL"));
+            } catch (IOException ex) {
             ex.printStackTrace();
 
         }

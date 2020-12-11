@@ -2,6 +2,7 @@ package servlets;
 
 
 import tools.DbTool;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,7 +52,7 @@ public class LoggInn extends AbstractAppServlet {
 
                     db = DbTool.getINSTANCE().dbLoggIn(out);
                     //String Query = "Select * from Roprosjekt.Brukerinfo where Email=? and Passord=?";
-                    String Query ="Select * from Roprosjekt.Brukerinfo JOIN Roprosjekt.bruker USING(brukerinfo_id)" +
+                    String Query = "Select * from Roprosjekt.Brukerinfo JOIN Roprosjekt.bruker USING(brukerinfo_id)" +
                             "  where Email=? and Passord=?";
 
 
@@ -62,12 +63,15 @@ public class LoggInn extends AbstractAppServlet {
 
                     // Kjører sql-query ved navn "pwn" hvis overnenvte krav er tilfredsstilt
 
-                        ResultSet rs = pwm.executeQuery();
+                    ResultSet rs = pwm.executeQuery();
 
                     if (rs.next()) {
 
                         // Deklarer "rolle_id" som en variabel som senere bruker til å sjekke brukerens rolle i databasen og systemet.
                         String name = rs.getNString("rolle_id");
+                        Integer brukerId = rs.getInt("bruker_id");
+
+
                         //sjekker om det allerede eksisterer en sesjon/session og lukker den hvis en eksisterer
 
                         HttpSession oldSession = request.getSession(false);
@@ -79,10 +83,23 @@ public class LoggInn extends AbstractAppServlet {
                         HttpSession newSession = request.getSession(true);
 
                         //Setter sesjonen til å autoavsluttet etter 5 minutter med inaktivitet
-                        newSession.setMaxInactiveInterval(15 *60);
+                        newSession.setMaxInactiveInterval(15 * 60);
 
                         // Oppretter en cookie ved navn "bruker" som setter lagrer informasjon om brukeren i sesjonen.
                         Cookie bruker = new Cookie("Bruker", _username);
+
+
+                        if (!name.equals( "admin")) {
+                            String getClub = "Select klubb_id from BrukerKlubb where bruker_id = ?";
+                            PreparedStatement statement = db.prepareStatement(getClub);
+                            statement.setInt(1,brukerId);
+                            ResultSet clubRes = statement.executeQuery();
+                            if (clubRes.next()) {
+                                Cookie club = new Cookie("Klubb", clubRes.getString("klubb_id"));
+                                response.addCookie(club);
+                            }
+                        }
+
 
                         //bruker.setMaxAge(10); // Min * sekunder       Denne linja virker unødvendig, gjør intenting så lenge  newSession.setMaxInactiveInterval(15 *60); eksisterer.
                         response.addCookie(bruker);

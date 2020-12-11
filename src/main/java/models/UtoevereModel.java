@@ -38,9 +38,7 @@ public class UtoevereModel {
         this.fodselsdato = fodselsdato;
         this.hoyde = hoyde;
         this.vekt = vekt;
-
         this.femtusen_watt = femtusen_watt.isEmpty() ? 0 : Integer.parseInt(femtusen_watt);
-
         this.femtusen_tid = femtusen_tid.isEmpty()  ? 0 : Integer.parseInt(femtusen_tid);
         this.tretusen_sek = tretusen_sek.isEmpty() ? 0 : Integer.parseInt(tretusen_sek);
         this.tretusen_tid = tretusen_tid.isEmpty() ? 0 : Integer.parseInt(tretusen_tid);
