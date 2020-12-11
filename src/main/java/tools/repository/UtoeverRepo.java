@@ -1,12 +1,8 @@
 package tools.repository;
-
 import models.TestModell;
-
 import models.UtoevereModel;
 import models.UtoverClubModel;
-
 import tools.DbTool;
-
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,14 +14,14 @@ import java.util.List;
 public class UtoeverRepo {
     /**
      * legger til utøver til databasen.
-
+     *
      * @param utoever bruker objekt som inneholder all informasjon om personen.
      *                Tips: Objektet må instansieres i en servlet før man kaller på addUser().
      * @param p       printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
      */
 
 
-    public static int addUtoever(UtoevereModel utoever, String id,  String klubb, String gruppe ,PrintWriter p) {
+    public static int addUtoever(UtoevereModel utoever, String id, String klubb, String gruppe, PrintWriter p) {
         Connection db = null;
         PreparedStatement insertNewUtoever = null;
         try {
@@ -35,15 +31,15 @@ public class UtoeverRepo {
                     "INSERT INTO `utovere` (Fornavn, Etternavn, Fodselsdato, Hoyde, Vekt) values (?,?,?,?,?)";
 
 
-            String query2 ="INSERT INTO testregister (utover_id, test_year_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt," +
-                            "kropps_hev_stk, Sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore) " +
-                            "values ((SELECT MAX(utover_id) FROM utovere),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query2 = "INSERT INTO testregister (utover_id, test_year_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt," +
+                    "kropps_hev_stk, Sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore) " +
+                    "values ((SELECT MAX(utover_id) FROM utovere),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 
-            String query3 =  "INSERT INTO Register (utover_id, testgruppe_id, klubb_id, bruker_id) " +
+            String query3 = "INSERT INTO Register (utover_id, testgruppe_id, klubb_id, bruker_id) " +
                     "VALUES ((SELECT MAX(utover_id) FROM utovere), ?, ?, 1)";
 
-            String query4  ="commit;";
+            String query4 = "commit;";
 
             insertNewUtoever = db.prepareStatement(query1);
             insertNewUtoever.setString(1, utoever.getFornavn());
@@ -90,7 +86,6 @@ public class UtoeverRepo {
             end.execute();
 
 
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
@@ -107,10 +102,9 @@ public class UtoeverRepo {
 
     /**
      * Fjerner en utøver fra databasen
-
-     * @param id objektet som brukes for å slette en utøver via sql id.
      *
-     * @param p       printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
+     * @param id objektet som brukes for å slette en utøver via sql id.
+     * @param p  printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
      */
 
     public static void removeUtoever(String id, PrintWriter p) {
@@ -142,11 +136,9 @@ public class UtoeverRepo {
 
     /**
      * Endrer for øyeblikket kun fornavn
-
-     @param fornavn objektet som inneholder dataen vi endrer
-
-     * @param id objektet som brukes for å slette en utøver via sql id.
      *
+     * @param fornavn objektet som inneholder dataen vi endrer
+     * @param id      objektet som brukes for å slette en utøver via sql id.
      * @param p       printwriter for å skrive ut html i servlet. F.eks SQL feilmeldinger eller annen info.
      */
     public static void changeUtoever(String fornavn, String id, PrintWriter p) {
@@ -166,7 +158,7 @@ public class UtoeverRepo {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 assert db != null;
                 db.close();
@@ -191,12 +183,10 @@ public class UtoeverRepo {
             prepareStatement = db.prepareStatement(query);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                UtoverClubModel utover = new UtoverClubModel(rs.getString("fornavn"), rs.getString("etternavn"),rs.getString("Fodselsdato"), rs.getString("klubbnavn"));
+                UtoverClubModel utover = new UtoverClubModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("Fodselsdato"), rs.getString("klubbnavn"));
                 toReturn.add(utover);
             }
             rs.close();
-
-
 
 
         } catch (SQLException throwables) {
@@ -213,6 +203,7 @@ public class UtoeverRepo {
 
         return toReturn;
     }
+
     public static int velgUT(TestModell test, String navn, String id, PrintWriter p) {
 
         Connection db = null;
@@ -223,8 +214,6 @@ public class UtoeverRepo {
             String query = "INSERT INTO testregister (utover_id, test_year_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt," +
                     "kropps_hev_stk, Sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore) " +
                     "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
-
-
 
 
             leggEksBruk = db.prepareStatement(query);
@@ -250,24 +239,211 @@ public class UtoeverRepo {
             leggEksBruk.setInt(19, test.getTotalscore());
 
 
-        //   String [] arrofquery = query.split(",");
-           // StringBuilder builder = new StringBuilder();
+            //   String [] arrofquery = query.split(",");
+            // StringBuilder builder = new StringBuilder();
 
-          //  for (String q : arrofquery)
-             //  if (q == (null )) {
-              //     builder.append("NULL,");
+            //  for (String q : arrofquery)
+            //  if (q == (null )) {
+            //     builder.append("NULL,");
 
 
-             //   } else {
-              //     builder.append(q + ",");
+            //   } else {
+            //     builder.append(q + ",");
             //   }
             leggEksBruk.executeQuery();
 
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                assert db != null;
+                db.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+        return 1;
+
+    }
+
+
+    public static int temp(UtoevereModel utoever,String tstid, String klubb, String gruppe, PrintWriter p) {
+        Connection db = null;
+        PreparedStatement insertToTest = null;
+
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+            String tmp = "CREATE TABLE IF NOT EXISTS uttestreg " +
+                    " SELECT  utover_id, fornavn, etternavn, fodselsdato, hoyde, vekt, " +
+                    "test_year_id, `5000_watt`, `5000_tid`, `3000_sek`, `3000_tid`, `3000_lop_tid`, `2000_watt`, `2000_tid`, `60_watt`, kropps_hev_stk, sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore, klubb_id, testgruppe_id, bruker_id  FROM utovere join testregister  using (utover_id) join register using (utover_id)" +
+                    "  LIMIT 0;";
+
+            String qu = "insert into uttestreg values ((SELECT max(utover_id) +1 from utovere),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)";
+
+            insertToTest = db.prepareStatement(tmp);
+
+
+            PreparedStatement test = db.prepareStatement(qu);
+
+
+            test.setString(1, utoever.getFornavn());
+            test.setString(2, utoever.getEtternavn());
+            test.setString(3, utoever.getFodselsdato());
+            test.setString(4, utoever.getHoyde());
+            test.setString(5, utoever.getVekt());
+            test.setString(6, tstid);
+            test.setInt(7, utoever.getFemtusen_watt());
+            test.setInt(8, utoever.getFemtusen_tid());
+            test.setInt(9, utoever.getTretusen_sek());
+            test.setInt(10, utoever.getTretusen_tid());
+            test.setInt(11, utoever.getTretusen_lop_tid());
+            test.setInt(12, utoever.getTotusen_watt());
+            test.setInt(13, utoever.getTotusen_tid());
+            test.setInt(14, utoever.getSeksti_watt());
+            test.setInt(15, utoever.getKropps_hev_stk());
+            test.setInt(16, utoever.getSargeant_stk());
+            test.setInt(17, utoever.getBeveg_stk());
+            test.setInt(18, utoever.getLigg_ro());
+            test.setInt(19, utoever.getLigg_ro_pst());
+            test.setInt(20, utoever.getLigg_ro_kg());
+            test.setInt(21, utoever.getKneboy_pst());
+            test.setInt(22, utoever.getKneboy_kg());
+            test.setInt(23, utoever.getTotalscore());
+           test.setString(24, klubb);
+           test.setString(25, gruppe);
+
+
+
+
+            insertToTest.executeQuery();
+            test.execute();
+
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return 1;
+    }
+    public static int testres(UtoevereModel utoever, String uutid, String tsstid, PrintWriter p) {
+        Connection db = null;
+        PreparedStatement insertToTest = null;
+
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+            String tmp = "CREATE TABLE IF NOT EXISTS uttestreg " +
+                    " SELECT utover_id, fornavn, etternavn, fodselsdato, hoyde, vekt, " +
+                    "test_year_id, `5000_watt`, `5000_tid`, `3000_sek`, `3000_tid`, `3000_lop_tid`, `2000_watt`, `2000_tid`, `60_watt`, kropps_hev_stk, sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore, klubb_id, testgruppe_id, bruker_id " +
+                    " FROM utovere join testregister  using (utover_id) join register using (utover_id)" +
+                    "  LIMIT 0;";
+
+            String qu = "insert into uttestreg values (?,'a','a',1990,1,1,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,0,1)";
+
+            insertToTest = db.prepareStatement(tmp);
+
+
+            PreparedStatement test = db.prepareStatement(qu);
+
+          test.setString(1,uutid);
+            test.setString(2, tsstid);
+            test.setInt(3, utoever.getFemtusen_watt());
+            test.setInt(4, utoever.getFemtusen_tid());
+            test.setInt(5, utoever.getTretusen_sek());
+            test.setInt(6, utoever.getTretusen_tid());
+            test.setInt(7, utoever.getTretusen_lop_tid());
+            test.setInt(8, utoever.getTotusen_watt());
+            test.setInt(9, utoever.getTotusen_tid());
+            test.setInt(10, utoever.getSeksti_watt());
+            test.setInt(11, utoever.getKropps_hev_stk());
+            test.setInt(12, utoever.getSargeant_stk());
+            test.setInt(13, utoever.getBeveg_stk());
+            test.setInt(14, utoever.getLigg_ro());
+            test.setInt(15, utoever.getLigg_ro_pst());
+            test.setInt(16, utoever.getLigg_ro_kg());
+            test.setInt(17, utoever.getKneboy_pst());
+            test.setInt(18, utoever.getKneboy_kg());
+            test.setInt(19, utoever.getTotalscore());
+
+
+
+
+
+            insertToTest.executeQuery();
+            test.execute();
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return 1;
+    }
+
+
+    public static int bbbb(PrintWriter p) {
+
+        Connection db = null;
+        PreparedStatement leggEksBruk = null;
+        try {
+            db = DbTool.getINSTANCE().dbLoggIn(p);
+
+
+
+            //where utover_id != 0; KAN FORTSATT FUNKE
+
+           String transquery = "BEGIN;";
+
+            String query = "INSERT INTO testregister  " +
+                    "SELECT 0, utover_id, test_year_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt," +
+                    "                    kropps_hev_stk, Sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore " +
+                    "FROM uttestreg " +
+                    "WHERE fornavn = 'a';";
+            String query1 =
+                    "INSERT INTO `utovere` " +
+                            "SELECT 0, Fornavn, Etternavn, Fodselsdato, Hoyde, Vekt " +
+                            "FROM uttestreg " +
+                            "WHERE fornavn != 'a';";
+
+
+                String query2 = "INSERT INTO testregister " +
+             "SELECT 0, utover_id, test_year_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt, " +
+             "kropps_hev_stk, Sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore " +
+              "FROM uttestreg WHERE (SELECT  utover_id FROM uttestreg WHERE  utover_id NOT IN  ( SELECT  utover_id FROM   testregister) limit 1);";
+
+
+
+            String query3 = "INSERT INTO Register " +
+              "SELECT 0, utover_id, testgruppe_id, klubb_id, bruker_id " +
+            "FROM uttestreg WHERE (SELECT  utover_id FROM uttestreg WHERE  utover_id NOT IN  ( SELECT  utover_id FROM   Register)limit 1)";
+            //
+
+            String query4 = "commit;";
+
+
+            leggEksBruk = db.prepareStatement(query);
+            PreparedStatement ssss = db.prepareStatement(query1);
+            PreparedStatement insertNewTest = db.prepareStatement(query2);
+            PreparedStatement insertNewReg = db.prepareStatement(query3);
+            PreparedStatement star = db.prepareStatement(transquery);
+            PreparedStatement slutt = db.prepareStatement(query4);
+
+
+            
+            star.execute();
+            leggEksBruk.executeQuery();
+            ssss.execute();
+            insertNewTest.execute();
+            insertNewReg.execute();
+            slutt.execute();
+
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 assert db != null;
                 db.close();
@@ -280,4 +456,3 @@ public class UtoeverRepo {
 
     }
 }
-

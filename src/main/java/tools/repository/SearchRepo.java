@@ -28,7 +28,7 @@ public class SearchRepo {
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
             ResultSet rs = null;
-            String query = "SELECT * FROM utovere JOIN testregister USING(utover_id) WHERE fornavn = ?";
+            String query = "SELECT * FROM utovere JOIN testregister USING (utover_id) where fornavn OR etternavn  = ?";
             prepareStatement = db.prepareStatement(query);
             prepareStatement.setString(1, fornavn);
             rs = prepareStatement.executeQuery();

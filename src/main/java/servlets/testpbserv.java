@@ -1,7 +1,9 @@
 package servlets;
 
 
-
+import models.TestModell;
+import models.UtoevereModel;
+import tools.repository.SearchRepo;
 import tools.repository.UtoeverRepo;
 
 import javax.servlet.ServletException;
@@ -10,12 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 
 
-@WebServlet(name = "velgTG", urlPatterns = {"/velgTG"})
-public class velgTG extends AbstractAppServlet {
+@WebServlet(name = "testpbserv", urlPatterns = {"/testpbserv"})
+public class testpbserv extends AbstractAppServlet {
     /**
      * Tar imot http requesten og kaller på writeResponse()
      *
@@ -26,48 +27,28 @@ public class velgTG extends AbstractAppServlet {
      */
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-
             throws ServletException, IOException {
+        writeResponse(request, response, "Legg til bruker!");
+    }
 
-        String tg = request.getParameter("tg");
-
-
-        if (tg.matches("1")) {
-
-            response.sendRedirect("/Skeleton-1.0/MennSenior.jsp");
-
-        } else if (tg.matches("2")) {
-                    response.sendRedirect("/Skeleton-1.0/DamerSenior.jsp");
-        } else if (tg.matches("4")) {
-            response.sendRedirect("/Skeleton-1.0/JuniorA.jsp");
-        } else if (tg.matches("5")) {
-            response.sendRedirect("/Skeleton-1.0/JuniorA.jsp");
-        } else if (tg.matches("6")) {
-            response.sendRedirect("/Skeleton-1.0/JuniorB.jsp");
-        } else if (tg.matches("7")) {
-        response.sendRedirect("/Skeleton-1.0/JuniorB.jsp");
-        }  else if (tg.matches("8")) {
-        response.sendRedirect("/Skeleton-1.0/JuniorC.jsp");
-     } else if (tg.matches("9")) {
-        response.sendRedirect("/Skeleton-1.0/JuniorC.jsp");
-        }
-
-
-
-        }
-
-        /**
-         * skriver ut body på servlet som html.
-         *
-         * @param req http request objektet med data.
-         * @param out http respons objektet som sender data.
-         */
-
+    /**
+     * skriver ut body på servlet som html.
+     *
+     * @param req http request objektet med data.
+     * @param out http respons objektet som sender data.
+     */
     @Override
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
 
+        String action = req.getParameter("action");
 
 
+
+        if (action.contains("publiser")) {
+
+            UtoeverRepo.bbbb( out );
+
+        }
 
     }
 
