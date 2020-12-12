@@ -41,9 +41,25 @@ public class AddArogUke extends AbstractAppServlet {
         String ar = req.getParameter("ar");
         String uke = req.getParameter("uke");
 
-        if (action.contains("Leggt")) {
+        if (action.contains("Legg til testperiode")) {
             Testrepo.addTestAr(ar, uke, out);
-            out.println("lagt til testtår");
+            out.println("<link href='test.css' type='text/css' rel='stylesheet'>");
+            out.println("<ul>");
+            out.println("<li><a href=\"addKlubb.jsp\">Legg til klubb</a></li>");
+            out.println("<li><a href=\"AddTestgruppe.jsp\">Legg til testklasse</a></li>");
+            out.println("<li><a href=\"Testår.jsp\">Legg til testår og -uke</a></li>");
+            out.println("<li><a href=\"RegistrerNyBruker.jsp\">Registrer ny systembruker</a></li>");
+            out.println("<li style=\"float:left\"><button class=\"button\" onclick=\"goBack()\">Gå tilbake</button>\n" +
+                    "        <script>\n" +
+                    "                function goBack() {\n" +
+                    "            window.history.back();\n" +
+                    "        }\n" +
+                    "        </script></li>");
+            out.println("</ul>");
+            out.println("<div class=\"Innlogging\">");
+            out.println("<h1>Lagt til testperiode</h1>");
+            out.println("</div>");
+
         }
 
 

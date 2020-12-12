@@ -12,15 +12,32 @@
 <ul>
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
         <input type="submit" value="Logg ut" /></form></li>
+    <li><form action="${pageContext.request.contextPath}/VisUtoevereiKlubb" method="post">
+        <input type="submit" value="Vis utøvere i klubben" />
+    </form></li>
+    <li><a href="AddBruker.jsp">Legg til utøver</a></li>
+    <li><a href="Velgtestgruppe.jsp">Testklasser </a></li>
+    <li><a href="TrenerSide.jsp">Forside</a></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
 </ul>
-<form action='AddBruker' method='POST'>
 <br>
-    <br>
-    <br>
+<br>
+<br>
 
-    <label for="year">år:</label>
+<div class="LeggtilMedlem">
+    <h1>Legg til ny utøver med resultater</h1>
+    <form action='AddBruker' method='POST'>
+        <br>
+        <br>
+
+    <label for="year">Testår og uke:</label>
     <select id="year" name="year">
-        <option value=""> Velg år </option>
+        <option value=""> Velg periode </option>
         <%
             PrintWriter p = new PrintWriter(out);
             Connection db = null;
@@ -46,7 +63,7 @@
     <br>
 
     <br>
-    <label for="klubb">klubb:</label>
+    <label for="klubb">Klubb:</label>
     <select id="klubb" name="klubb">
         <option value=""> Velg klubb </option>
         <%
@@ -71,10 +88,11 @@
             }
         %>
     </select>
-    <br>
-    <label for="test">Testgruppe:</label>
+        <br>
+        <br>
+    <label for="test">Testklasse:</label>
     <select id="test" name="test">
-        <option value=""> Velg testgruppe </option>
+        <option value=""> Velg testklasse </option>
             <%
             PrintWriter l = new PrintWriter(out);
             Connection ddb = null;
@@ -112,8 +130,6 @@
     <br>
     <label for='vk'> Vekt:</label>
     <input type='text' name='vk'/>
-        <br>
-
         <input type='hidden' name='ftw'/>
         <input type='hidden' name='ftt'/>
         <input type='hidden' name='tts'/>
@@ -143,11 +159,20 @@
         <input type='hidden' name='kbp'/>
         <input type='hidden' name='kbk'/>
         <input type='hidden' name='totsc'/>
-        <input type='submit' name="action" value="add"/>
+        <br>
+        <input type='submit' name="action" value="Legg til ny utøver og resultat"/>
 </form>
+</div>
 
+
+<br>
+<br>
+<div class ="LeggtilMedlem">
+    <h1>Legg til testresultat for eksisterende utøver</h1>
+    <br>
+    <br>
 <form action='Eksresult' method='POST'>
-    <label for="utover">utøver:</label>
+    <label for="utover">Utøver:</label>
     <select id="utover" name="utover">
         <option value=""> Velg utøver </option>
         <%
@@ -172,10 +197,11 @@
             }
         %>
     </select>
-
-    <label for="ars">år:</label>
+    <br>
+    <br>
+    <label for="ars">Tesår og uke:</label>
     <select id="ars" name="ars">
-        <option value=""> Velg år </option>
+        <option value=""> Velg testperiode </option>
         <%
             PrintWriter pp = new PrintWriter(out);
             Connection dbl = null;
@@ -207,8 +233,6 @@
 
     <label for='tlt'> 3000 løp tid:</label>
     <input type='text' name='tlt'/>
-
-<br>
     <input type='hidden' name='ttw'/>
     <input type='hidden' name='tott'/>
     <br>
@@ -221,7 +245,7 @@
     <label for='sgs'> Sargeant stk:</label>
     <input type='text' name='sgs'/>
     <br>
-    <label for='bs'>Bevegelse stk:</label>
+    <label for='bs'> Bevegelse stk:</label>
     <input type='text' name='bs'/>
 
     <input type='hidden' name='lr'/>
@@ -230,8 +254,10 @@
     <input type='hidden' name='kbp'/>
     <input type='hidden' name='kbk'/>
     <input type='hidden' name='totsc'/>
-
+    <br>
     <input type='submit' name="action" value="legg til resultat"/>
+
 </form>
+</div>
 </body>
 </html>

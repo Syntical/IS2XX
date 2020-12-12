@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 99kev
-  Date: 16.11.2020
-  Time: 14:27
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="tools.DbTool" %>
@@ -14,21 +7,40 @@
 <head>
     <title>Legg til utoever</title>
     <link rel="stylesheet" href="test.css"/>
+
 </head>
 <body>
+
 <ul>
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
         <input type="submit" value="Logg ut" /></form></li>
+    <li><form action="${pageContext.request.contextPath}/VisUtoevereiKlubb" method="post">
+        <input type="submit" value="Vis utøvere i klubben" />
+    </form></li>
+    <li><a href="AddBruker.jsp">Legg til utøver</a></li>
+    <li><a href="Velgtestgruppe.jsp">Testklasser </a></li>
+    <li><a href="TrenerSide.jsp">Forside</a></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
 </ul>
-    <form action='AddBruker' method='POST'>
 <br>
-        <br>
+<br>
+<br>
+
+<div class="LeggtilMedlem">
+    <h1>Legg til ny utøver med resultater</h1>
+    <h2>for Junior A</h2>
+    <form action='AddBruker' method='POST'>
         <br>
         <br>
 
-        <label for="year">år:</label>
+        <label for="year">Testår og uke:</label>
         <select id="year" name="year">
-            <option value=""> Velg år </option>
+            <option value=""> Velg periode </option>
             <%
                 PrintWriter p = new PrintWriter(out);
                 Connection db = null;
@@ -54,7 +66,7 @@
         <br>
 
         <br>
-        <label for="klubb">klubb:</label>
+        <label for="klubb">Klubb:</label>
         <select id="klubb" name="klubb">
             <option value=""> Velg klubb </option>
             <%
@@ -80,9 +92,10 @@
             %>
         </select>
         <br>
-        <label for="test">Testgruppe:</label>
+        <br>
+        <label for="test">Testklasse:</label>
         <select id="test" name="test">
-            <option value=""> Velg testgruppe </option>
+            <option value=""> Velg testklasse </option>
                 <%
             PrintWriter l = new PrintWriter(out);
             Connection ddb = null;
@@ -112,15 +125,15 @@
         <label for='en'> Etternavn:</label>
         <input type='text' name='en'/>
         <br>
-        <label for='fd'> Fødselsdato:</label>
-        <input type='text' name='fd'/>
+        <label for='fd'> Fødselsår:</label>
+        <input type='text' name='fd' placeholder="ÅÅÅÅ"/>
         <br>
         <label for='hd'> Høyde:</label>
         <input type='text' name='hd'/>
         <br>
         <label for='vk'> Vekt:</label>
         <input type='text' name='vk'/>
-        <br>
+              <br>
             <label for='ftw'>5000 watt:</label>
             <input type='text' name='ftw'/>
             <br>
@@ -157,11 +170,20 @@
             <input type='hidden' name='totsc'/>
 
 
-            <input type='submit' name="action" value="add"/>
+            <input type='submit' name="action" value="Legg til ny utover og resultat"/>
     </form>
 
+</div>
+
+
+<br>
+<br>
+<div class ="LeggtilMedlem">
+    <h1>Legg til testresultat for eksisterende utøver</h1>
+    <br>
+    <br>
     <form action='Eksresult' method='POST'>
-        <label for="utover">utøver:</label>
+        <label for="utover">Utøver:</label>
         <select id="utover" name="utover">
             <option value=""> Velg utøver </option>
             <%
@@ -186,10 +208,11 @@
                 }
             %>
         </select>
-
-        <label for="ars">år:</label>
+        <br>
+        <br>
+        <label for="ars">Testår og uke:</label>
         <select id="ars" name="ars">
-            <option value=""> Velg år </option>
+            <option value=""> Velg testperiode </option>
             <%
                 PrintWriter pp = new PrintWriter(out);
                 Connection dbl = null;
@@ -213,11 +236,12 @@
             %>
         </select>
         <br>
+        <br>
         <label for='ftw'>5000 watt:</label>
         <input type='text' name='ftw'/>
         <br>
         <label for='ftt'> 5000 tid:</label>
-        <input type='hidden' name='ftt'/>
+        <input type='text' name='ftt'/>
         <input type='hidden' name='tts'/>
         <input type='hidden' name='ttt'/>
         <input type='hidden' name='tlt'/>
@@ -239,19 +263,19 @@
         <input type='text' name='bs'/>
         <input type='hidden' name='lr'/>
         <br>
-        <label for='lrp'> ligg ro prosent:</label>
+        <label for='lrp'> Ligg ro prosent:</label>
         <input type='text' name='lrp'/>
         <br>
-        <label for='lrk'> ligg ro kilo:</label>
+        <label for='lrk'> Ligg ro kilo:</label>
         <input type='text' name='lrk'/>
         <br>
         <input type='hidden' name='kbp'/>
         <input type='hidden' name='kbk'/>
         <input type='hidden' name='totsc'/>
 
-        <input type='submit' name="action" value="legg til resultat"/>
+        <input type='submit' name="action" value="Legg til resultat"/>
     </form>
-
+</div>
 
 
 </body>

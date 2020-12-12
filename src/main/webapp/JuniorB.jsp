@@ -3,6 +3,8 @@
 <%@ page import="tools.DbTool" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.sql.ResultSet" %>
+
+
 <html>
 <head>
     <title>Legg til utoever</title>
@@ -12,16 +14,32 @@
 <ul>
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
         <input type="submit" value="Logg ut" /></form></li>
+    <li><form action="${pageContext.request.contextPath}/VisUtoevereiKlubb" method="post">
+        <input type="submit" value="Vis utøvere i klubben" />
+    </form></li>
+    <li><a href="AddBruker.jsp">Legg til utøver</a></li>
+    <li><a href="Velgtestgruppe.jsp">Testklasser </a></li>
+    <li><a href="TrenerSide.jsp">Forside</a></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
 </ul>
+<br>
+<br>
+<br>
+
+<div class="LeggtilMedlem">
+    <h1>Legg til ny utøver med resultater</h1>
 <form action='AddBruker' method='POST'>
 <br>
     <br>
-    <br>
-    <br>
 
-    <label for="year">år:</label>
+    <label for="year">Testår og uke: </label>
     <select id="year" name="year">
-        <option value=""> Velg år </option>
+        <option value=""> Velg periode </option>
         <%
             PrintWriter p = new PrintWriter(out);
             Connection db = null;
@@ -47,7 +65,7 @@
     <br>
 
     <br>
-    <label for="klubb">klubb:</label>
+    <label for="klubb">Klubb:</label>
     <select id="klubb" name="klubb">
         <option value=""> Velg klubb </option>
         <%
@@ -73,9 +91,10 @@
         %>
     </select>
     <br>
-    <label for="test">Testgruppe:</label>
+    <br>
+    <label for="test">Testklasse:</label>
     <select id="test" name="test">
-        <option value=""> Velg testgruppe </option>
+        <option value=""> Velg testklasse </option>
             <%
             PrintWriter l = new PrintWriter(out);
             Connection ddb = null;
@@ -98,6 +117,7 @@
             }
         %>
     </select>
+        <br>
         <br>
     <label for='fn'>Fornavn:</label>
     <input type='text' name='fn'/>
@@ -140,34 +160,27 @@
     <br>
     <label for='bs'>Bevegelse stk:</label>
     <input type='text' name='bs'/>
-    <br>
-
     <input type='hidden' name='lr'/>
-    <br>
-
-    <input type='hidden' name='lrp'/>
-    <br>
-
+    <input type='hidden' name='lrp'>
     <input type='hidden' name='lrk'/>
-    <br>
-
     <input type='hidden' name='kbp'/>
-    <br>
-
     <input type='hidden' name='kbk'/>
-    <br>
-
     <input type='hidden' name='totsc'/>
     <br>
-    <input type='submit' name="action" value="add"/>
-</form>
+    <input type='submit' name="action" value="Legg til ny utøver og resultat"/>
+    </form>
 
+</div>
 
-
+<br>
+    <div class ="LeggtilMedlem">
+        <h1>Legg til testresultat for eksisterende utøver</h1>
+        <br>
+        <br>
     <form action='Eksresult' method='POST'>
 
         <br>
-        <label for="utover">utøver:</label>
+        <label for="utover">Utøver:</label>
         <select id="utover" name="utover">
             <option value=""> Velg utøver </option>
             <%
@@ -192,10 +205,11 @@
                 }
             %>
         </select>
-
-        <label for="ars">år:</label>
+        <br>
+        <br>
+        <label for="ars">Testår og uke:</label>
         <select id="ars" name="ars">
-            <option value=""> Velg år </option>
+            <option value=""> Velg testperiode </option>
             <%
                 PrintWriter pc = new PrintWriter(out);
                 Connection dbc = null;
@@ -223,8 +237,6 @@
 
 
         <input type='hidden' name='fw' />
-        <br>
-
         <input type='hidden' name='ft'/>
         <br>
         <label for='ts'> 3000 sek:</label>
@@ -232,11 +244,9 @@
         <br>
         <label for='tt'> 3000 tid:</label>
         <input type='text' name='tt'/>
-        <br>
-
         <input type='hidden' name='tl'/>
         <br>
-        <label for='tw'>2000 watt:</label>
+        <label for='tw'> 2000 watt:</label>
         <input type='text' name='tw' />
         <br>
         <label for='tot'> 2000 tid:</label>
@@ -253,28 +263,16 @@
         <br>
         <label for='bss'>Bevegelse stk:</label>
         <input type='text' name='bss'/>
-        <br>
-
         <input type='hidden' name='lrr'/>
-        <br>
-
         <input type='hidden' name='lp'/>
-        <br>
-
         <input type='hidden' name='lr'/>
-        <br>
-
         <input type='hidden' name='kb'/>
-        <br>
-
         <input type='hidden' name='kk'/>
-        <br>
-
         <input type='hidden' name='totc'/>
         <br>
-        <input type='submit' name="action" value="legg til resultat"/>
+        <input type='submit' name="action" value="Legg til resultat"/>
     </form>
 
-
+    </div>
 </body>
 </html>

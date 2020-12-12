@@ -10,16 +10,18 @@
 <body>
 <ul>
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
-        <input type="submit" value="Logg ut" /></form></li>
-    <li><a href="RegistrerAdmin.jsp">Legg til ny Superbruker</a></li>
-    <li><a href="RegistrerTrener.jsp">Legg til ny Trener</a></li>
-        <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script></li>
-
+        <input type="submit" value="Logg ut" /></form>
+    <li><a href="addKlubb.jsp">Legg til klubb</a></li>
+    <li><a href="AddTestgruppe.jsp">Legg til testklasse</a></li>
+    <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
+    <li><a href="Klubboversikt.jsp">Klubboversikt</a></li>
+    <li><a href="RegistrerNyBruker.jsp">Registrer ny systembruker</a></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
 </ul>
 <%
     //allow access only if session exists
@@ -48,7 +50,7 @@ User=<%=Bruker %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>AdminSide</title>
 <div class="Introduksjon">
-    <h1> Hei ${Bruker}. Her velger du hvilken type bruker du ønsker å registrere. Benytt valgene nedenfor for å legge inn brukere av ulik type <b> </h1>
+    <h1> Hei ${Bruker}. Velg typen bruker du vil registrere. Benytt valgene nedenfor. <b> </h1>
 </div>
 <div class="Introduksjon">
     <button class="button"><a href="RegistrerAdmin.jsp">Legg til ny administrator</a></button>

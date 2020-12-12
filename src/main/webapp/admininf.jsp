@@ -13,6 +13,8 @@
 <html>
 <head>
     <title>Her bytter du brukernavn og passord på adminbrukere</title>
+</head>
+<body>
 
     <form action='Endrebrukere' method='post'>
 
@@ -21,9 +23,9 @@
         <input type='text' name='bkn'/>
         <br>
 
-        <label for="em">Vel brukernavnet som endres:</label>
+        <label for="em">Velg brukernavnet som skal endres:</label>
         <select id="em" name="em">
-            <option value=""> brukernavn </option>
+            <option value=""> Brukernavn </option>
                 <%
             PrintWriter l = new PrintWriter(out);
             Connection ddb = null;
@@ -49,7 +51,7 @@
 
 
 
-            <input type='submit' name="action" value="endre brukernavn"/>
+            <input type='submit' name="action" value="Endre brukernavn"/>
     </form>
 
 
@@ -91,9 +93,6 @@
             <input type='submit' name="action" value="endre passord"/>
     </form>
 
-
-</head>
-<body>
 
 </body>
 </html>

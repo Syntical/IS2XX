@@ -3,7 +3,7 @@ body
     /*
      background-color: #3ebe1b;
      */
-    background-image: url("https://www.goodfreephotos.com/albums/other-landscapes/rowing-a-canoe-down-the-scenic-river.jpg");
+    background-image: url("https://i.imgur.com/qQu8Q01.jpg");
     background-size: cover;
     font-family: "Lato", sans-serif;
     max-width: 100%;
@@ -102,6 +102,14 @@ a:hover, a:visited, a:link, a:active
 
 }
 
+.Introduksjon_JA{
+    background: rgba(255, 255, 255, 1);
+    text-align: left;
+    padding: 10px;
+    float: left;
+    position: absolute;
+    z-index:1;
+}
 
 .Innlogging {
     background: rgba(255, 255, 255, 1);
@@ -261,7 +269,7 @@ li a:hover{
 }
 
 input[type=text],input[type=password] {
-    width: 90%;
+    width: 70%;
     padding: 12px 20px;
     margin: 8px 0;
     border-color: grey;
@@ -289,13 +297,13 @@ input[type=submit]:hover{
 
 .LeggtilMedlem{
     text-align: left;
-    overflow-y: auto;
     background: rgba(255, 255, 255, 1);
     padding: 12px;
     align-content: center;
-    border-radius: 25px;
-    width:500px;
-    max-width:500px;
+    align-self: center;
+    border-radius: 10px;
+    width:800px;
+    max-width:800px;
     position: relative;
 }
 
@@ -303,7 +311,7 @@ input[type=submit]:hover{
 label{
     display: inline-block;
     width: 140px;
-    text-align: right;
+    text-align: center;
 }
 
 

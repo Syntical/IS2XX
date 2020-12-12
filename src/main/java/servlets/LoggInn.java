@@ -89,7 +89,7 @@ public class LoggInn extends AbstractAppServlet {
                         Cookie bruker = new Cookie("Bruker", _username);
 
 
-                        if (!name.equals( "admin")) {
+                        if (!name.equals( "1")) {
                             String getClub = "Select klubb_id from BrukerKlubb where bruker_id = ?";
                             PreparedStatement statement = db.prepareStatement(getClub);
                             statement.setInt(1,brukerId);
