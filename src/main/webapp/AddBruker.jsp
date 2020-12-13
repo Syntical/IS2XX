@@ -161,55 +161,55 @@
     <input type='text' name='vk' maxlength="3" required/>
     <br>
     <label for='ftw'>5000 watt:</label>
-    <input type='text' name='ftw' required/>
+    <input type='text' name='ftw' />
     <br>
     <label for='ftt'> 5000 tid:</label>
-    <input type='text' name='ftt' required/>
+    <input type='text' name='ftt' />
     <br>
     <label for='tts'> 3000 sek:</label>
-    <input type='text' name='tts' required/>
+    <input type='text' name='tts' />
     <br>
     <label for='ttt'> 3000 tid:</label>
-    <input type='text' name='ttt' required/>
+    <input type='text' name='ttt' />
     <br>
     <label for='tlt'> 3000 løp tid:</label>
-    <input type='text' name='tlt' required/>
+    <input type='text' name='tlt' />
     <br>
     <label for='ttw'>2000 watt:</label>
-    <input type='text' name='ttw' required/>
+    <input type='text' name='ttw' />
     <br>
     <label for='tott'> 2000 tid:</label>
-    <input type='text' name='tott' required/>
+    <input type='text' name='tott' />
     <br>
     <label for='sw'> 60 watt:</label>
-    <input type='text' name='sw' required/>
+    <input type='text' name='sw' />
     <br>
     <label for='khs'> Kroppshev stk:</label>
-    <input type='text' name='khs' required/>
+    <input type='text' name='khs' />
     <br>
     <label for='sgs'> Sargeant stk:</label>
-    <input type='text' name='sgs' required/>
+    <input type='text' name='sgs' />
     <br>
     <label for='bs'>Bevegelse stk:</label>
-    <input type='text' name='bs' required/>
+    <input type='text' name='bs' />
     <br>
     <label for='lr'> Ligg ro:</label>
-    <input type='text' name='lr' required/>
+    <input type='text' name='lr' />
     <br>
     <label for='lrp'> Ligg ro prosent:</label>
-    <input type='text' name='lrp' required/>
+    <input type='text' name='lrp' />
     <br>
     <label for='lrk'> Ligg ro kilo:</label>
-    <input type='text' name='lrk' required/>
+    <input type='text' name='lrk' />
     <br>
     <label for='kbp'> Knebøy prosent:</label>
-    <input type='text' name='kbp' required/>
+    <input type='text' name='kbp' />
     <br>
     <label for='kbk'> Knebøy kilo:</label>
-    <input type='text' name='kbk' required/>
+    <input type='text' name='kbk' />
     <br>
     <label for='totsc'> Totalscore:</label>
-    <input type='text' name='totsc' required/>
+    <input type='text' name='totsc' />
     <br>
 
     <br>
