@@ -13,7 +13,12 @@
 
 <ul>
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
-        <input type="submit" value="Logg ut" /></form></li>
+        <input type="submit" value="Logg ut" /></form>
+    <li><a href="addKlubb.jsp">Legg til klubb</a></li>
+    <li><a href="AddTestgruppe.jsp">Legg til testklasse</a></li>
+    <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
+    <li><a href="Klubboversikt.jsp">Klubboversikt</a></li>
+    <li><a href="RegistrerNyBruker.jsp">Registrer ny systembruker</a></li>
     <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
         <script>
             function goBack() {
@@ -21,15 +26,21 @@
             }
         </script></li>
 </ul>
-
+<br>
+<br>
+<br>
+<br>
+<div class="Introduksjon">
+    <h1>Legg til ny testperiode</h1>
+</div>
 <div class="LeggTilBruker">
 <form action="AddArogUke" method="POST">
-    <label for='ar'>testår</label>
+    <label for='ar'>Testår</label>
     <input type='text' name='ar'/>
     <br>
     <label for='uke'>Testuke:</label>
     <input type='text' name='uke'/>
-    <input type='submit' name="action" value="Leggt"/>
+    <input type='submit' name="action" value="Legg til testperiode"/>
 
 
 

@@ -49,15 +49,25 @@ public class Visklubb extends AbstractAppServlet {
         // if (action.contains("HentKlubb")){
         //
         List<UserModel> UserModelList = LoginRepo.visBrukere(out);
-        out.println("<link rel=\"stylesheet\" href=\"test.css\"/>");
+        out.println("<link href='test.css' type='text/css' rel='stylesheet'>");
         out.println("<ul>");
-        out.println("<li><a href=\"AddBruker.jsp\">Legg til medlem</a></li>");
+        out.println("<li><a href=\"addKlubb.jsp\">Legg til klubb</a></li>");
+        out.println("<li><a href=\"AddTestgruppe.jsp\">Legg til testklasse</a></li>");
+        out.println("<li><a href=\"Testår.jsp\">Legg til testår og -uke</a></li>");
+        out.println("<li><a href=\"RegistrerNyBruker.jsp\">Registrer ny systembruker</a></li>");
+        out.println("<li style=\"float:left\"><button class=\"button\" onclick=\"goBack()\">Gå tilbake</button>\n" +
+                "        <script>\n" +
+                "                function goBack() {\n" +
+                "            window.history.back();\n" +
+                "        }\n" +
+                "        </script></li>");
+
         out.println("</ul>");
         out.println("<br>");
         out.println("<br>");
         out.println("<br>");
         out.println("<br>");
-        out.println("<h1>Her er ditt søkeresultat:</h1> ");
+        out.println("<h1>Her er oversikten over trenere og deres respektive klubber:</h1> ");
         out.println("<table style=\"1px solid black;margin-left:auto;margin-right:auto;\">");
         out.println("<tr>");
         out.println("<th scope=col> Tilkoblet bruker: </th>");

@@ -15,7 +15,7 @@
 <br>
 <br>
 <div class="Introduksjon">
-    <h1>Her kan du søke etter medlemmer</h1>
+    <h1>Søk etter utøver</h1>
 </div>
 <div class="Innlogging">
     <h1>Søk i databasen</h1>

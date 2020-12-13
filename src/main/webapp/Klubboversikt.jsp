@@ -10,14 +10,18 @@
 <body>
 <ul>
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
-        <input type="submit" value="Logg ut" /></form></li>
-        <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script></li>
-
+        <input type="submit" value="Logg ut" /></form>
+    <li><a href="addKlubb.jsp">Legg til klubb</a></li>
+    <li><a href="AddTestgruppe.jsp">Legg til testklasse</a></li>
+    <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
+    <li><a href="Klubboversikt.jsp">Klubboversikt</a></li>
+    <li><a href="RegistrerNyBruker.jsp">Registrer ny systembruker</a></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
 </ul>
 <%
     //allow access only if session exists
@@ -49,7 +53,7 @@ User=<%=Bruker %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>AdminSide</title>
 <div class="Introduksjon">
-    <h1> Her er din klubboversikt</h1>
+    <h1> Klubber og tilhørende brukerkontoer</h1>
 
     <form action="${pageContext.request.contextPath}/Visklubb" method="post">
         <input type="submit" value="Vis alle klubber" />

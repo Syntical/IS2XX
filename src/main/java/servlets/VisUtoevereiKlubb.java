@@ -51,15 +51,28 @@ public class VisUtoevereiKlubb extends AbstractAppServlet {
         // if (action.contains("HentKlubb")){
         //
         List<UtoverClubModel> UtoverClubModelList = UtoeverRepo.visUtoverKlubb(out);
-        out.println("<link rel=\"stylesheet\" href=\"test.css\"/>");
+        out.println("<link rel=\"stylesheet\"href=\"test.css\"/>");
         out.println("<ul>");
-        out.println("<li><a href=\"AddBruker.jsp\">Legg til medlem</a></li>");
+        // out.println("<li><form action=\"${pageContext.request.contextPath}/LoggUt\" method=\"post\">\n" +
+        //               "        <input type=\"submit\" value=\"Logg ut\" /></form></li>");
+        out.println("<li><form action=\"${pageContext.request.contextPath}/VisUtoevereiKlubb\" method=\"post\">\n" +
+                "        <input type=\"submit\" value=\"Vis utøvere i klubben\" />\n" +
+                "    </form></li>");
+        out.println("<li><a href=\"AddBruker.jsp\">Legg til utøver</a></li>");
+        out.println("<li><a href=\"Velgtestgruppe.jsp\">Testklasser </a></li>");
+        out.println("<li><a href=\"TrenerSide.jsp\">Forside</a></li>");
+        out.println("<li style=\"float:left\"><button class=\"button\" onclick=\"goBack()\"> Gå tilbake </button>\n" +
+                "        <script>\n" +
+                "                function goBack() {\n" +
+                "            window.history.back()\n}");
+        out.println("</script></li>");
         out.println("</ul>");
+
         out.println("<br>");
         out.println("<br>");
         out.println("<br>");
         out.println("<br>");
-        out.println("<h1>Her er ditt søkeresultat:</h1> ");
+        out.println("<h1>Utøvere i klubb:</h1> ");
         out.println("<table style=\"1px solid black;margin-left:auto;margin-right:auto;\">");
         out.println("<tr>");
         out.println("<th scope=col> Etternavn: </th>");

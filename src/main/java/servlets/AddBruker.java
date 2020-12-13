@@ -44,29 +44,32 @@ public class AddBruker extends AbstractAppServlet {
         String klubb = req.getParameter("klubb");
         String test = req.getParameter("test");
 
-            if (action.contains("add")) {
-            UtoevereModel utoever = new UtoevereModel(req.getParameter("fn"), req.getParameter("en"), req.getParameter("fd"), req.getParameter("hd"), req.getParameter("vk"), req.getParameter("ftw"),
-                    req.getParameter("ftt"), req.getParameter("tts"), req.getParameter("ttt"), req.getParameter("tlt"), req.getParameter("ttw"),
-                    req.getParameter("tott"), req.getParameter("sw"), req.getParameter("khs"), req.getParameter("sgs"), req.getParameter("bs"), req.getParameter("lr"), req.getParameter("lrp"),
-                    req.getParameter("lrk"), req.getParameter("kbp"), req.getParameter("kbk"), req.getParameter("totsc"));
-            Integer suksess = UtoeverRepo.addUtoever(utoever, year, test, klubb, out );
+            if (action.contains("Legg til ny utover og resultat")) {
+                UtoevereModel utoever = new UtoevereModel(req.getParameter("fn"), req.getParameter("en"), req.getParameter("fd"), req.getParameter("hd"), req.getParameter("vk"), req.getParameter("ftw"),
+                        req.getParameter("ftt"), req.getParameter("tts"), req.getParameter("ttt"), req.getParameter("tlt"), req.getParameter("ttw"),
+                        req.getParameter("tott"), req.getParameter("sw"), req.getParameter("khs"), req.getParameter("sgs"), req.getParameter("bs"), req.getParameter("lr"), req.getParameter("lrp"),
+                        req.getParameter("lrk"), req.getParameter("kbp"), req.getParameter("kbk"), req.getParameter("totsc"));
+                Integer suksess = UtoeverRepo.addUtoever(utoever, year, test, klubb, out);
 
-            if (suksess != null) {
-                out.println("<link href='test.css' type='text/css' rel='stylesheet'>");
-                out.println("<div class=\"Innlogging\">");
-                out.println("<h1>");
-                out.println(utoever.getFornavn());
-                out.println(utoever.getEtternavn()+ " ble lagt til i databasen. </h1>");
-                out.println("<br>");
-                out.println("<br>");
-                out.println("Trykk her for å gå tilbake");
-                out.println("<br>");
-                out.println("<a href=AddBruker.jsp class=\"button\">Tilbake</a>");
-                out.println("</div>");
+                if (suksess != null) {
 
-            } else {
-                out.println("<a href=AddBruker.jsp> Noe gikk galt. Vil du prøve på nytt? </a>");
-            }
+                    out.println("<link href='test.css' type='text/css' rel='stylesheet'>");
+                    out.println("<div class=\"Innlogging\">");
+                    out.println("<h1>");
+                    out.println(utoever.getFornavn());
+                    out.println(utoever.getEtternavn() + " ble lagt til i databasen. </h1>");
+                    out.println("<br>");
+                    out.println("<br>");
+                    out.println("Trykk her for å gå tilbake");
+                    out.println("<br>");
+                    out.println("<a href=AddBruker.jsp class=\"button\">Tilbake</a>");
+                    out.println("</div>");
+
+                } else {
+                    out.println("<a href=AddBruker.jsp> Noe gikk galt. Vil du prøve på nytt? </h1>");
+                    out.println("<font color=red size='25'> System failure. Hazzard imidi!!!</font>");
+                }
+
         } if (action.contains("hent")){
             List<UtoevereModel> utoevereModelList = SearchRepo.getUtoever(out);
             out.println("<h1>Her er listen over alle medlemmene i roklubben:</h1> ");

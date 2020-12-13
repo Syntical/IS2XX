@@ -14,17 +14,14 @@
    <li><form action="${pageContext.request.contextPath}/VisUtoevereiKlubb" method="post">
         <input type="submit" value="Vis utøvere i klubben" />
       </form></li>
-    <li><a href="AddBruker.jsp">Legg til medlem</a></li>
-    <li><a href="addKlubb.jsp">Legg til klubb</a></li>
-    <li><a href="AddTestgruppe.jsp">Legg til testgruppe</a></li>
-    <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
-    <li><a href="Klubboversikt.jsp">Klubboversikt</a></li>
-    <li><a href="Velgtestgruppe.jsp">Legg til </a></li>
-
-
-   
-   
-
+    <li><a href="AddBruker.jsp">Legg til utøver</a></li>
+    <li><a href="Velgtestgruppe.jsp">Testklasser </a></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
 </ul>
 <%
     //allow access only if session exists
@@ -49,7 +46,7 @@
     <h3>Hei <%=bruker %>, din sesjonsid er <%=sessionID %></h3>
 </div>
 <br>
-User=<%=Bruker %>
+Brukernavn =<%=Bruker %>
 <br>
 
 

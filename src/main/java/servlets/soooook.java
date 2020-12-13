@@ -44,7 +44,7 @@ public class soooook extends AbstractAppServlet {
             List<UtoevereModel> sokes = SearchRepo.SøkTKÅ(kl, tge, ts, out);
             out.println("<link rel=\"stylesheet\" href=\"test.css\"/>");
             out.println("<ul>");
-            out.println("<li><a href=\"AddBruker.jsp\">Legg til medlem</a></li>");
+            out.println("<li><a href=\"index.jsp\">Tilbake til forsiden</a></li>");
             out.println("</ul>");
             out.println("<br>");
             out.println("<br>");

@@ -12,13 +12,35 @@
 <%@ page import="java.sql.ResultSet" %>
 <html>
 <head>
-    <title>Title</title>
+    <link rel="stylesheet" href="test.css"/>
+    <title>Velg testgruppe</title>
+</head>
 
+<body>
+<ul>
+    <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
+        <input type="submit" value="Logg ut" /></form></li>
+    <li><form action="${pageContext.request.contextPath}/VisUtoevereiKlubb" method="post">
+        <input type="submit" value="Vis utøvere i klubben" />
+    </form>
+    </li>
+    <li><a href="AddBruker.jsp">Legg til utøver</a></li>
+    <li><a href="Velgtestgruppe.jsp">Testklasser </a></li>
+    <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script></li>
+</ul>
+<br>
+<br>
+    <div class="BrukerReg">
     <form action='velgTG' method='post'>
 
-        <label for="tg">Testgruppe:</label>
-        <select id="tg" name="tg">
-            <option value=""> Velg testgruppe </option>
+        <label for="tg">Testklasse:</label>
+        <select id="tg" name="tg" style="width: 200px">
+            <option value=""> Velg testklasse </option>
                 <%
             PrintWriter l = new PrintWriter(out);
             Connection ddb = null;
@@ -40,15 +62,11 @@
                 e.printStackTrace();
             }
         %>
-
-            <input type='submit' name="action" value="gå videre"/>
+            <br>
+            <br>
+            <input type='submit' name="action" value="Hent"/>
     </form>
-
-
-
-
-</head>
-<body>
+    </div>
 
 </body>
 </html>

@@ -59,7 +59,7 @@ public class Eksresult extends AbstractAppServlet {
                 out.println("<div class=\"Innlogging\">");
                 out.println("<h1>");
 
-                out.println( utover + "s' resultater ble lagt til i databasen. </h1>");
+                out.println("Dine resultater ble lagt til i databasen. </h1>");
                 out.println("<br>");
                 out.println("<br>");
                 out.println("Trykk her for å returnere til hjemmesiden");

@@ -19,6 +19,12 @@
 <ul>
     <li><form action="${pageContext.request.contextPath}/LoggUt" method="post">
         <input type="submit" value="Logg ut" /></form></li>
+    <li><form action="${pageContext.request.contextPath}/VisUtoevereiKlubb" method="post">
+        <input type="submit" value="Vis utøvere i klubben" />
+    </form>
+    </li>
+    <li><a href="AddBruker.jsp">Legg til utøver</a></li>
+    <li><a href="Velgtestgruppe.jsp">Testklasser </a></li>
     <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
         <script>
             function goBack() {
@@ -49,17 +55,14 @@
 <br>
 <br>
 <br>
-<div class="Introduksjon">
-<h1>Legg til et nytt medlem</h1>
-</div>
 <div class="LeggtilMedlem">
 <form action='AddBruker' method='POST'>
 
+    <h1>Legg til en ny utøver og resultat</h1>
 
-
-    <label for="year">år:</label>
+    <label for="year">Testår og uke:</label>
     <select id="year" name="year">
-        <option value=""> Velg år </option>
+        <option value=""> Velg testperiode </option>
         <%
             PrintWriter p = new PrintWriter(out);
             Connection db = null;
@@ -85,7 +88,7 @@
     <br>
 
     <br>
-    <label for="klubb">klubb:</label>
+    <label for="klubb">Klubb:</label>
     <select id="klubb" name="klubb">
         <option value=""> Velg klubb </option>
         <%
@@ -111,9 +114,10 @@
         %>
     </select>
     <br>
-    <label for="test">Testgruppe:</label>
+    <br>
+    <label for="test">Testklasse:</label>
     <select id="test" name="test">
-        <option value=""> Velg testgruppe </option>
+        <option value=""> Velg testklasse </option>
         <%
             PrintWriter l = new PrintWriter(out);
             Connection ddb = null;
@@ -138,6 +142,8 @@
 
 
     </select>
+    <br>
+    <br>
     <label for='fn'>Fornavn:</label>
     <input type='text' name='fn'/>
     <br>
@@ -186,13 +192,13 @@
     <label for='bs'>Bevegelse stk:</label>
     <input type='text' name='bs'/>
     <br>
-    <label for='lr'> ligg ro:</label>
+    <label for='lr'> Ligg ro:</label>
     <input type='text' name='lr'/>
     <br>
-    <label for='lrp'> ligg ro prosent:</label>
+    <label for='lrp'> Ligg ro prosent:</label>
     <input type='text' name='lrp'/>
     <br>
-    <label for='lrk'> ligg ro kilo:</label>
+    <label for='lrk'> Ligg ro kilo:</label>
     <input type='text' name='lrk'/>
     <br>
     <label for='kbp'> Knebøy prosent:</label>
@@ -201,13 +207,13 @@
     <label for='kbk'> Knebøy kilo:</label>
     <input type='text' name='kbk'/>
     <br>
-    <label for='totsc'> totalscore:</label>
+    <label for='totsc'> Totalscore:</label>
     <input type='text' name='totsc'/>
     <br>
 
     <br>
     <br>
-    <input type='submit' name="action" value="add"/>
+    <input type='submit' name="action" value="Legg til ny utøver og resultat"/>
     </form>
 </div>
 
