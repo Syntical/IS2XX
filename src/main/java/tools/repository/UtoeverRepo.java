@@ -277,11 +277,11 @@ public class UtoeverRepo {
             db = DbTool.getINSTANCE().dbLoggIn(p);
 
             String tmp = "CREATE TABLE IF NOT EXISTS uttestreg " +
-                    " SELECT  utover_id, fornavn, etternavn, fodselsdato, hoyde, vekt, " +
+                    " SELECT  utover_id , fornavn, etternavn, fodselsdato, hoyde, vekt, " +
                     "test_year_id, `5000_watt`, `5000_tid`, `3000_sek`, `3000_tid`, `3000_lop_tid`, `2000_watt`, `2000_tid`, `60_watt`, kropps_hev_stk, sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore, klubb_id, testgruppe_id, bruker_id  FROM utovere join testregister  using (utover_id) join register using (utover_id)" +
                     "  LIMIT 0;";
 
-            String qu = "insert into uttestreg values ((SELECT max(utover_id) +1 from utovere),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)";
+            String qu = "insert into uttestreg values (1,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)";
 
             insertToTest = db.prepareStatement(tmp);
 
@@ -312,8 +312,8 @@ public class UtoeverRepo {
             test.setInt(21, utoever.getKneboy_pst());
             test.setInt(22, utoever.getKneboy_kg());
             test.setInt(23, utoever.getTotalscore());
-           test.setString(24, klubb);
-           test.setString(25, gruppe);
+            test.setString(24, klubb);
+            test.setString(25, gruppe);
 
 
 
@@ -321,7 +321,7 @@ public class UtoeverRepo {
             insertToTest.executeQuery();
             test.execute();
 
-            
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -348,7 +348,7 @@ public class UtoeverRepo {
 
             PreparedStatement test = db.prepareStatement(qu);
 
-          test.setString(1,uutid);
+            test.setString(1,uutid);
             test.setString(2, tsstid);
             test.setInt(3, utoever.getFemtusen_watt());
             test.setInt(4, utoever.getFemtusen_tid());
@@ -388,6 +388,7 @@ public class UtoeverRepo {
 
         Connection db = null;
         PreparedStatement leggEksBruk = null;
+
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
 
@@ -395,50 +396,66 @@ public class UtoeverRepo {
 
             //where utover_id != 0; KAN FORTSATT FUNKE
 
-           String transquery = "BEGIN;";
-
             String query = "INSERT INTO testregister  " +
                     "SELECT 0, utover_id, test_year_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt," +
                     "                    kropps_hev_stk, Sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore " +
                     "FROM uttestreg " +
-                    "WHERE fornavn = 'a';";
+                    "WHERE utover_id != 0";
+
+
+            String transquery = "BEGIN;";
+
+
             String query1 =
                     "INSERT INTO `utovere` " +
                             "SELECT 0, Fornavn, Etternavn, Fodselsdato, Hoyde, Vekt " +
                             "FROM uttestreg " +
-                            "WHERE fornavn != 'a';";
+                            "WHERE utover_id = 0";
 
 
-                String query2 = "INSERT INTO testregister " +
-             "SELECT 0, utover_id, test_year_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt, " +
-             "kropps_hev_stk, Sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore " +
-              "FROM uttestreg WHERE (SELECT  utover_id FROM uttestreg WHERE  utover_id NOT IN  ( SELECT  utover_id FROM   testregister) limit 1);";
+            String query2 = "INSERT INTO testregister " +
+                    "SELECT 0, (SELECT MAX(utover_id) FROM utovere), test_year_id, 5000_watt, 5000_tid, 3000_sek, 3000_tid, 3000_lop_tid, 2000_watt, 2000_tid, 60_watt, " +
+                    "       kropps_hev_stk, Sargeant_stk, beveg_stk, ligg_ro, ligg_ro_pst, ligg_ro_kg, kneboy_pst, kneboy_kg, totalscore " +
+                    "FROM uttestreg WHERE utover_id  = 0";
 
 
 
             String query3 = "INSERT INTO Register " +
-              "SELECT 0, utover_id, testgruppe_id, klubb_id, bruker_id " +
-            "FROM uttestreg WHERE (SELECT  utover_id FROM uttestreg WHERE  utover_id NOT IN  ( SELECT  utover_id FROM   Register)limit 1)";
+                    " SELECT 0,(SELECT MAX(utover_id) FROM utovere),testgruppe_id,klubb_id, bruker_id " +
+                    "FROM uttestreg " +
+                    "where utover_id = 0";
             //
 
+            String droppe =  "Drop table uttestreg;";
             String query4 = "commit;";
 
 
             leggEksBruk = db.prepareStatement(query);
+
+
             PreparedStatement ssss = db.prepareStatement(query1);
             PreparedStatement insertNewTest = db.prepareStatement(query2);
+
+
+
             PreparedStatement insertNewReg = db.prepareStatement(query3);
-            PreparedStatement star = db.prepareStatement(transquery);
+            PreparedStatement start = db.prepareStatement(transquery);
+
+            PreparedStatement drop = db.prepareStatement(droppe);
             PreparedStatement slutt = db.prepareStatement(query4);
 
 
-            
-            star.execute();
-            leggEksBruk.executeQuery();
+
+            start.execute();
+            leggEksBruk.execute();
             ssss.execute();
             insertNewTest.execute();
             insertNewReg.execute();
+            drop.execute();
             slutt.execute();
+
+
+
 
 
         } catch (SQLException e) {

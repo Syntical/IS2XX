@@ -139,6 +139,7 @@
     <label for='sw'> 60 watt:</label>
     <input type='text' name='sw'/>
     <input type='hidden' name='khs'/>
+    <br>
     <label for='sgs'> Sargeant stk:</label>
     <input type='text' name='sgs'/>
     <br>
@@ -229,6 +230,7 @@
     <label for='sw'> 60 watt:</label>
     <input type='text' name='sw'/>
     <input type='hidden' name='khs'/>
+    <br>
     <label for='sgs'> Sargeant stk:</label>
     <input type='text' name='sgs'/>
     <br>
