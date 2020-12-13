@@ -37,10 +37,10 @@
 <div class="LeggTilBruker">
 <form action="AddArogUke" method="POST">
     <label for='ar'>Testår</label>
-    <input type='text' name='ar' required/>
+    <input type='text' name='ar' maxlength = "2" required/>
     <br>
     <label for='uke'>Testuke:</label>
-    <input type='text' name='uke' required/>
+    <input type='text' name='uke' maxlength = "2" required/>
     <input type='submit' name="action" value="Legg til testperiode"/>
 
 
