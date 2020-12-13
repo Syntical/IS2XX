@@ -124,14 +124,14 @@
     <label for='en'> Etternavn:</label>
     <input type='text' name='en' required/>
     <br>
-    <label for='fd'> Fødselsdato:</label>
-    <input type='text' name='fd' required/>
+    <label for='fd'> Fødselsår:</label>
+    <input type='text' name='fd' maxlength "4" required/>
     <br>
     <label for='hd'> Høyde:</label>
-    <input type='text' name='hd' required/>
+    <input type='text' name='hd' maxlength "3" required/>
     <br>
     <label for='vk'> Vekt:</label>
-    <input type='text' name='vk' required/>
+    <input type='text' name='vk' maxlength "3" required/>
         <input type='hidden' name='ftw'/>
         <input type='hidden' name='ftt'/>
         <input type='hidden' name='tts'/>
