@@ -1,6 +1,7 @@
 package servlets;
 
 
+import models.Klubbmodell;
 import tools.repository.KlubbRepo;
 
 import javax.servlet.ServletException;
@@ -55,9 +56,9 @@ public class AddKlubb extends AbstractAppServlet {
                     "        }\n" +
                     "        </script></li>");
             out.println("</ul>");
-            out.println("<div class=\"Introduksjon\"");
-            out.println("Lagt til klubb");
-            out.println("<div>");
+            out.println("<div class=\"Rembruker\">");
+            out.println("Klubben ble lagt til i databasen");
+            out.println("</div>");
 
         }
 

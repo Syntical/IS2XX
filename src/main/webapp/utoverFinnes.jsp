@@ -28,7 +28,7 @@
 <form action="trenerKlubbelns" method="POST">
 
     <label for="kbb">Klubber:</label>
-    <select id="kbb  " name="kbb">
+    <select id="kbb  " name="kbb" required>
         <option value=""> Velg klubb </option>
         <%
             PrintWriter p = new PrintWriter(out);

@@ -47,6 +47,7 @@ public class addtestgruppe extends AbstractAppServlet {
             out.println("<li><a href=\"AddTestgruppe.jsp\">Legg til testklasse</a></li>");
             out.println("<li><a href=\"Testår.jsp\">Legg til testår og -uke</a></li>");
             out.println("<li><a href=\"RegistrerNyBruker.jsp\">Registrer ny systembruker</a></li>");
+            out.println("<li><a href=\"TrenerSide.jsp\">Forside </a></li>");
             out.println("<li style=\"float:left\"><button class=\"button\" onclick=\"goBack()\">Gå tilbake</button>\n" +
                     "        <script>\n" +
                     "                function goBack() {\n" +
@@ -55,9 +56,9 @@ public class addtestgruppe extends AbstractAppServlet {
                     "        </script></li>");
 
             out.println("</ul>");
-            out.println("<div class=\"Introduksjon\"");
-            out.println("Lagt til testklasse");
-            out.println("<div>");
+            out.println("<div class=\"RemBruker\">");
+            out.println("<h1>Lagt til testklasse</h1>");
+            out.println("</div>");
         }
 
 

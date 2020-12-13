@@ -20,11 +20,11 @@
 
 
         <label for='bkn'> Endre brukernavn</label>
-        <input type='text' name='bkn'/>
+        <input type='text' name='bkn' required/>
         <br>
 
         <label for="em">Velg brukernavnet som skal endres:</label>
-        <select id="em" name="em">
+        <select id="em" name="em" required>
             <option value=""> Brukernavn </option>
                 <%
             PrintWriter l = new PrintWriter(out);
@@ -59,11 +59,11 @@
 
 
         <label for='pkn'> Endre passord</label>
-        <input type='text' name='pkn'/>
+        <input type='text' name='pkn' required/>
         <br>
 
         <label for="gg">Velg bruker passordet skal bli endret på:</label>
-        <select id="gg" name="gg">
+        <select id="gg" name="gg" required>
             <option value=""> brukernavn </option>
                 <%
             PrintWriter lo = new PrintWriter(out);

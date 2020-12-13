@@ -19,6 +19,7 @@
     <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
     <li><a href="Klubboversikt.jsp">Klubboversikt</a></li>
     <li><a href="RegistrerNyBruker.jsp">Registrer ny systembruker</a></li>
+    <li><a href="AdminSide.jsp">Forside </a></li>
     <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
         <script>
             function goBack() {
@@ -36,10 +37,10 @@
 <div class="LeggTilBruker">
 <form action="AddArogUke" method="POST">
     <label for='ar'>Testår</label>
-    <input type='text' name='ar'/>
+    <input type='text' name='ar' required/>
     <br>
     <label for='uke'>Testuke:</label>
-    <input type='text' name='uke'/>
+    <input type='text' name='uke' required/>
     <input type='submit' name="action" value="Legg til testperiode"/>
 
 
