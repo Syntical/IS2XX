@@ -136,35 +136,35 @@
         <input type='text' name='vk' required/>
               <br>
             <label for='ftw'>5000 watt:</label>
-            <input type='text' name='ftw' required/>
+            <input type='text' name='ftw' />
             <br>
             <label for='ftt'> 5000 tid:</label>
-            <input type='text' name='ftt' required/>
+            <input type='text' name='ftt' />
             <input type='hidden' name='tts'/>
             <input type='hidden' name='ttt'/>
             <input type='hidden' name='tlt'/>
             <br>
             <label for='ttw'>2000 watt:</label>
-            <input type='text' name='ttw' required/>
+            <input type='text' name='ttw' />
             <br>
             <label for='tott'> 2000 tid:</label>
-            <input type='text' name='tott' required/>
+            <input type='text' name='tott' />
             <br>
             <label for='sw'> 60 watt:</label>
-            <input type='text' name='sw' required/>
+            <input type='text' name='sw' />
             <input type='hidden' name='khs'/>
             <label for='sgs'> Sargeant stk:</label>
-            <input type='text' name='sgs' required/>
+            <input type='text' name='sgs' />
             <br>
             <label for='bs'>Bevegelse stk:</label>
-            <input type='text' name='bs' required/>
+            <input type='text' name='bs' />
             <input type='hidden' name='lr'/>
             <br>
             <label for='lrp'> ligg ro prosent:</label>
-            <input type='text' name='lrp' required/>
+            <input type='text' name='lrp' />
             <br>
             <label for='lrk'> ligg ro kilo:</label>
-            <input type='text' name='lrk' required/>
+            <input type='text' name='lrk' />
             <input type='hidden' name='kbp'/>
             <input type='hidden' name='kbk'/>
 
@@ -243,33 +243,33 @@
         <input type='text' name='ftw' required/>
         <br>
         <label for='ftt'> 5000 tid:</label>
-        <input type='text' name='ftt' required/>
+        <input type='text' name='ftt' />
         <input type='hidden' name='tts'/>
         <input type='hidden' name='ttt'/>
         <input type='hidden' name='tlt'/>
         <br>
         <label for='ttw'>2000 watt:</label>
-        <input type='text' name='ttw' required/>
+        <input type='text' name='ttw' />
         <br>
         <label for='tott'> 2000 tid:</label>
-        <input type='text' name='tott' required/>
+        <input type='text' name='tott' />
         <br>
         <label for='sw'> 60 watt:</label>
-        <input type='text' name='sw' required/>
+        <input type='text' name='sw' />
         <input type='hidden' name='khs'/>
         <br>
         <label for='sgs'> Sargeant stk:</label>
-        <input type='text' name='sgs' required/>
+        <input type='text' name='sgs' />
         <br>
         <label for='bs'>Bevegelse stk:</label>
-        <input type='text' name='bs' required/>
+        <input type='text' name='bs' />
         <input type='hidden' name='lr'/>
         <br>
         <label for='lrp'> Ligg ro prosent:</label>
-        <input type='text' name='lrp' required/>
+        <input type='text' name='lrp' />
         <br>
         <label for='lrk'> Ligg ro kilo:</label>
-        <input type='text' name='lrk' required/>
+        <input type='text' name='lrk' />
         <br>
         <input type='hidden' name='kbp'/>
         <input type='hidden' name='kbk'/>
