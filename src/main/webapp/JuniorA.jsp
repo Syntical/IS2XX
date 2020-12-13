@@ -127,13 +127,13 @@
         <input type='text' name='en' required/>
         <br>
         <label for='fd'> Fødselsår:</label>
-        <input type='text' name='fd' placeholder="ÅÅÅÅ" required/>
+        <input type='text' name='fd' placeholder="ÅÅÅÅ" maxlength="4" required/>
         <br>
         <label for='hd'> Høyde:</label>
-        <input type='text' name='hd' required/>
+        <input type='text' name='hd' maxlength="3" required/>
         <br>
         <label for='vk'> Vekt:</label>
-        <input type='text' name='vk' required/>
+        <input type='text' name='vk'maxlength="3" required/>
               <br>
             <label for='ftw'>5000 watt:</label>
             <input type='text' name='ftw' />
