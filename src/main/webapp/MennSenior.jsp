@@ -135,40 +135,40 @@
         <br>
 
         <label for='fw'>5000 watt:</label>
-        <input type='text' name='fw' required/>
+        <input type='text' name='fw' />
         <br>
         <label for='ft'> 5000 tid:</label>
-        <input type='text' name='ft' required/>
+        <input type='text' name='ft' />
         <br>
         <input type='hidden' name='ts'/>
         <input type='hidden' name='tt'/>
         <input type='hidden' name='tl'/>
         <label for='tw'> 2000 watt:</label>
-        <input type='text' name='tw' required/>
+        <input type='text' name='tw' />
         <br>
         <label for='tot'> 2000 tid:</label>
-        <input type='text' name='tot' required/>
+        <input type='text' name='tot' />
         <br>
         <label for='sww'> 60 watt:</label>
-        <input type='text' name='sww' required/>
+        <input type='text' name='sww' />
         <br>
         <input type='hidden' name='ks'/>
         <input type='hidden' name='ss'/>
         <label for='bss'> Bevegelse stk:</label>
-        <input type='text' name='bss' required/>
+        <input type='text' name='bss' />
         <input type='hidden' name='lrr'/>
         <br>
         <label for='lp'> Ligg ro prosent:</label>
-        <input type='text' name='lp' required/>
+        <input type='text' name='lp' />
         <br>
         <label for='lr'> Ligg ro kilo:</label>
-        <input type='text' name='lr' required/>
+        <input type='text' name='lr' />
         <br>
         <label for='kb'> Knebøy prosent:</label>
-        <input type='text' name='kb' required/>
+        <input type='text' name='kb' />
         <br>
         <label for='kk'> Knebøy kilo:</label>
-        <input type='text' name='kk' required/>
+        <input type='text' name='kk' />
         <br>
 
         <input type='hidden' name='totc'/>
@@ -239,40 +239,40 @@
             <br>
             <br>
             <label for='fw'>5000 watt:</label>
-            <input type='text' name='fw' required/>
+            <input type='text' name='fw' />
             <br>
             <label for='ft'> 5000 tid:</label>
-            <input type='text' name='ft' required/>
+            <input type='text' name='ft' />
             <br>
             <input type='hidden' name='ts'/>
             <input type='hidden' name='tt'/>
             <input type='hidden' name='tl'/>
             <label for='tw'>2000 watt:</label>
-            <input type='text' name='tw' required/>
+            <input type='text' name='tw' />
             <br>
             <label for='tot'> 2000 tid:</label>
-            <input type='text' name='tot' required/>
+            <input type='text' name='tot' />
             <br>
             <label for='sww'> 60 watt:</label>
-            <input type='text' name='sww' required/>
+            <input type='text' name='sww' />
             <input type='hidden' name='ks'/>
             <input type='hidden' name='ss'/>
             <br>
             <label for='bss'>Bevegelse stk:</label>
-            <input type='text' name='bss' required/>
+            <input type='text' name='bss' />
             <input type='hidden' name='lrr'/>
             <br>
             <label for='lp'> Ligg ro prosent:</label>
-            <input type='text' name='lp' required/>
+            <input type='text' name='lp' />
             <br>
             <label for='lr'> Ligg ro kilo:</label>
-            <input type='text' name='lr' required/>
+            <input type='text' name='lr' />
             <br>
             <label for='kb'> Knebøy prosent:</label>
-            <input type='text' name='kb' required/>
+            <input type='text' name='kb' />
             <br>
             <label for='kk'> Knebøy kilo:</label>
-            <input type='text' name='kk' required/>
+            <input type='text' name='kk' />
             <br>
             <br>
             <input type='submit' name="action" value="Legg til resultat"/>
