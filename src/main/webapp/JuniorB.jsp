@@ -139,29 +139,29 @@
     <input type='hidden' name='ftw'/>
     <input type='hidden' name='ftt'/>
     <label for='tts'> 3000 sek:</label>
-    <input type='text' name='tts' required/>
+    <input type='text' name='tts' />
     <br>
     <label for='ttt'> 3000 tid:</label>
-    <input type='text' name='ttt' required/>
+    <input type='text' name='ttt' />
     <br>
     <input type='hidden' name='tlt'/>
     <label for='ttw'>2000 watt:</label>
-    <input type='text' name='ttw' required/>
+    <input type='text' name='ttw' />
     <br>
     <label for='tott'> 2000 tid:</label>
-    <input type='text' name='tott' required/>
+    <input type='text' name='tott' />
     <br>
     <label for='sw'> 60 watt:</label>
-    <input type='text' name='sw' required/>
+    <input type='text' name='sw' />
     <br>
     <label for='khs'> Kroppshev stk:</label>
-    <input type='text' name='khs' required/>
+    <input type='text' name='khs' />
     <br>
     <label for='sgs'> Sargeant stk:</label>
-    <input type='text' name='sgs' required/>
+    <input type='text' name='sgs' />
     <br>
     <label for='bs'>Bevegelse stk:</label>
-    <input type='text' name='bs' required/>
+    <input type='text' name='bs' />
     <input type='hidden' name='lr'/>
     <input type='hidden' name='lrp'>
     <input type='hidden' name='lrk'/>
@@ -242,29 +242,29 @@
         <input type='hidden' name='ft'/>
         <br>
         <label for='ts'> 3000 sek:</label>
-        <input type='text' name='ts' required/>
+        <input type='text' name='ts' />
         <br>
         <label for='tt'> 3000 tid:</label>
-        <input type='text' name='tt' required/>
+        <input type='text' name='tt' />
         <input type='hidden' name='tl'/>
         <br>
         <label for='tw'> 2000 watt:</label>
-        <input type='text' name='tw' required/>
+        <input type='text' name='tw' />
         <br>
         <label for='tot'> 2000 tid:</label>
-        <input type='text' name='tot' required/>
+        <input type='text' name='tot' />
         <br>
         <label for='sww'> 60 watt:</label>
-        <input type='text' name='sww' required/>
+        <input type='text' name='sww' />
         <br>
         <label for='ks'> Kroppshev stk:</label>
-        <input type='text' name='ks' required/>
+        <input type='text' name='ks' />
         <br>
         <label for='ss'> Sargeant stk:</label>
-        <input type='text' name='ss' required/>
+        <input type='text' name='ss' />
         <br>
         <label for='bss'>Bevegelse stk:</label>
-        <input type='text' name='bss' required/>
+        <input type='text' name='bss' />
         <input type='hidden' name='lrr'/>
         <input type='hidden' name='lp'/>
         <input type='hidden' name='lr'/>
