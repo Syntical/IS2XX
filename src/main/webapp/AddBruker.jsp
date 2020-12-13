@@ -151,7 +151,7 @@
     <label for='en'> Etternavn:</label>
     <input type='text' name='en' required/>
     <br>
-    <label for='fd'> Fødselsdato:</label>
+    <label for='fd'> Fødselsår:</label>
     <input type='text' name='fd' required/>
     <br>
     <label for='hd'> Høyde (cm):</label>
