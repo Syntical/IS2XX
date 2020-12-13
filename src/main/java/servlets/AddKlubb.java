@@ -28,7 +28,7 @@ public class AddKlubb extends AbstractAppServlet {
     }
 
     /**
-     * skriver ut body på servlet som html.
+     * Skriver ut body på servlet som html.
      *
      * @param req http request objektet med data.
      * @param out http respons objektet som sender data.
