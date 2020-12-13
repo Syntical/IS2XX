@@ -26,6 +26,7 @@
     </li>
     <li><a href="AddBruker.jsp">Legg til utøver</a></li>
     <li><a href="Velgtestgruppe.jsp">Testklasser </a></li>
+    <li><a href="TrenerSide.jsp">Forside </a></li>
     <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
         <script>
             function goBack() {
@@ -39,7 +40,7 @@
     <form action='velgTG' method='post'>
 
         <label for="tg">Testklasse:</label>
-        <select id="tg" name="tg" style="width: 200px">
+        <select id="tg" name="tg" style="width: 200px" required>
             <option value=""> Velg testklasse </option>
                 <%
             PrintWriter l = new PrintWriter(out);

@@ -50,6 +50,7 @@ public class RegistrerBruker extends AbstractAppServlet {
             out.println("<li><a href=\"AddTestgruppe.jsp\">Legg til testklasse</a></li>");
             out.println("<li><a href=\"Testår.jsp\">Legg til testår og -uke</a></li>");
             out.println("<li><a href=\"RegistrerNyBruker.jsp\">Registrer ny systembruker</a></li>");
+            out.println("<li><a href=\"AdminSide.jsp\">Forside </a></li>");
             out.println("<li style=\"float:left\"><button class=\"button\" onclick=\"goBack()\">Gå tilbake</button>\n" +
                     "        <script>\n" +
                     "                function goBack() {\n" +
@@ -57,7 +58,7 @@ public class RegistrerBruker extends AbstractAppServlet {
                     "        }\n" +
                     "        </script></li>");
             out.println("</ul>");
-            out.println("<div class=\"Innlogging\">");
+            out.println("<div class=\"RemBruker\">");
             out.println("<h1>Ny administrator lagt til</h1>");
             out.println("</div>");
         }

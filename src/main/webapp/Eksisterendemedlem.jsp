@@ -12,11 +12,15 @@
 <%@ page import="java.sql.ResultSet" %>
 <html>
 <head>
+    <Title>Eksresult</Title>
+</head>
+<body>
+
     <form action='Eksresult' method='POST'>
 
         <br>
-        <label for="utover">utøver:</label>
-        <select id="utover" name="utover">
+        <label for="utover">Utøver:</label>
+        <select id="utover" name="utover" required>
             <option value=""> Velg utøver </option>
             <%
                 PrintWriter pa = new PrintWriter(out);
@@ -42,7 +46,7 @@
         </select>
 
         <label for="ars">år:</label>
-        <select id="ars" name="ars">
+        <select id="ars" name="ars" required>
             <option value=""> Velg år </option>
             <%
                 PrintWriter p = new PrintWriter(out);
@@ -70,63 +74,62 @@
         <br>
         <br>
         <label for='ftw'>5000 watt:</label>
-        <input type='text' name='ftw'/>
+        <input type='text' name='ftw' required/>
         <br>
         <label for='ftt'> 5000 tid:</label>
-        <input type='text' name='ftt'/>
+        <input type='text' name='ftt' required/>
         <br>
         <label for='tts'> 3000 sek:</label>
-        <input type='text' name='tts'/>
+        <input type='text' name='tts' required/>
         <br>
         <label for='ttt'> 3000 tid:</label>
-        <input type='text' name='ttt'/>
+        <input type='text' name='ttt' required/>
         <br>
         <label for='tlt'> 3000 løp tid:</label>
-        <input type='text' name='tlt'/>
+        <input type='text' name='tlt' required/>
         <br>
         <label for='ttw'>2000 watt:</label>
-        <input type='text' name='ttw'/>
+        <input type='text' name='ttw' required/>
         <br>
         <label for='tott'> 2000 tid:</label>
-        <input type='text' name='tott'/>
+        <input type='text' name='tott' required/>
         <br>
         <label for='sw'> 60 watt:</label>
-        <input type='text' name='sw'/>
+        <input type='text' name='sw' required/>
         <br>
         <label for='khs'> Kroppshev stk:</label>
-        <input type='text' name='khs'/>
+        <input type='text' name='khs' required/>
         <br>
         <label for='sgs'> Sargeant stk:</label>
-        <input type='text' name='sgs'/>
+        <input type='text' name='sgs' required/>
         <br>
         <label for='bs'>Bevegelse stk:</label>
-        <input type='text' name='bs'/>
+        <input type='text' name='bs' required/>
         <br>
         <label for='lr'> ligg ro:</label>
-        <input type='text' name='lr'/>
+        <input type='text' name='lr' required/>
         <br>
         <label for='lrp'> ligg ro prosent:</label>
-        <input type='text' name='lrp'/>
+        <input type='text' name='lrp' required/>
         <br>
         <label for='lrk'> ligg ro kilo:</label>
-        <input type='text' name='lrk'/>
+        <input type='text' name='lrk' required/>
         <br>
         <label for='kbp'> Knebøy prosent:</label>
-        <input type='text' name='kbp'/>
+        <input type='text' name='kbp' required/>
         <br>
         <label for='kbk'> Knebøy kilo:</label>
-        <input type='text' name='kbk'/>
+        <input type='text' name='kbk' required/>
         <br>
         <label for='totsc'> totalscore:</label>
-        <input type='text' name='totsc'/>
+        <input type='text' name='totsc' required/>
         <br>
 
         <br>
         <br>
         <input type='submit' name="action" value="legg til resultat"/>
     </form>
-</head>
-<body>
+
 
 </body>
 </html>

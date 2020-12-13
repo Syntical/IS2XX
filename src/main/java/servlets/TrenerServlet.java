@@ -50,6 +50,7 @@ public class TrenerServlet extends AbstractAppServlet {
             out.println("<li><a href=\"AddTestgruppe.jsp\">Legg til testklasse</a></li>");
             out.println("<li><a href=\"Testår.jsp\">Legg til testår og -uke</a></li>");
             out.println("<li><a href=\"RegistrerNyBruker.jsp\">Registrer ny systembruker</a></li>");
+            out.println("<li><a href=\"AdminSide.jsp\">Forside </a></li>");
             out.println("<li style=\"float:left\"><button class=\"button\" onclick=\"goBack()\">Gå tilbake</button>\n" +
                     "        <script>\n" +
                     "                function goBack() {\n" +
@@ -57,9 +58,9 @@ public class TrenerServlet extends AbstractAppServlet {
                     "        }\n" +
                     "        </script></li>");
             out.println("</ul>");
-            out.println("<div class=\"Introduksjon\"");
+            out.println("<div class=\"Rembruker\"");
             out.println("Lagt til ny trener");
-            out.println("<div>");
+            out.println("</div>");
         }
 
     }

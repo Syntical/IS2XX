@@ -24,6 +24,7 @@
     <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
     <li><a href="Klubboversikt.jsp">Klubboversikt</a></li>
     <li><a href="RegistrerNyBruker.jsp">Registrer ny systembruker</a></li>
+    <li><a href="AdminSide.jsp">Forside </a></li>
     <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
         <script>
             function goBack() {
@@ -35,10 +36,10 @@
 <div class="LeggTilBruker">
 <form action="RegistrerBruker" method="POST">
     <label for='bn'>Brukernavn:</label>
-    <input type='text' name='bn'/>
+    <input type='text' name='bn' required/>
     <br>
     <label for='pd'>Passord:</label>
-    <input type='text' name='pd'/>
+    <input type='text' name='pd' required/>
     <br>
     <input type='submit' name="action" value="Registrer"/>
 </form>
