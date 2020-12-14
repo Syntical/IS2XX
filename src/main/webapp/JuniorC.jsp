@@ -119,7 +119,7 @@
     </select>
     <br>
     <label for='fn'>Fornavn:</label>
-    <input type='text' name='fn'required />
+    <input type='text' name='fn' required />
     <br>
     <label for='en'> Etternavn:</label>
     <input type='text' name='en' required/>
@@ -138,22 +138,22 @@
         <input type='hidden' name='ttt'/>
         <br>
         <label for='tlt'> 3000 løp tid:</label>
-        <input type='text' name='tlt' />
+        <input type='text' name='tlt' required/>
 
         <input type='hidden' name='ttw'/>
         <input type='hidden' name='tott'/>
         <br>
         <label for='sw'> 60 watt:</label>
-        <input type='text' name='sw' />
+        <input type='text' name='sw' required/>
         <br>
         <label for='khs'> Kroppshev stk:</label>
-        <input type='text' name='khs' />
+        <input type='text' name='khs' required/>
         <br>
         <label for='sgs'> Sargeant stk:</label>
-        <input type='text' name='sgs' />
+        <input type='text' name='sgs' required/>
         <br>
         <label for='bs'>Bevegelse stk:</label>
-        <input type='text' name='bs' />
+        <input type='text' name='bs' required/>
 
         <input type='hidden' name='lr'/>
         <input type='hidden' name='lrp'/>
@@ -235,21 +235,21 @@
     <br>
 
     <label for='tlt'> 3000 løp tid:</label>
-    <input type='text' name='tlt' />
+    <input type='text' name='tlt' required/>
     <input type='hidden' name='ttw'/>
     <input type='hidden' name='tott'/>
     <br>
     <label for='sw'> 60 watt:</label>
-    <input type='text' name='sw' />
+    <input type='text' name='sw' required/>
     <br>
     <label for='khs'> Kroppshev stk:</label>
-    <input type='text' name='khs' />
+    <input type='text' name='khs' required/>
     <br>
     <label for='sgs'> Sargeant stk:</label>
-    <input type='text' name='sgs' />
+    <input type='text' name='sgs' required/>
     <br>
     <label for='bs'> Bevegelse stk:</label>
-    <input type='text' name='bs' />
+    <input type='text' name='bs' required/>
 
     <input type='hidden' name='lr'/>
     <input type='hidden' name='lrp'/>

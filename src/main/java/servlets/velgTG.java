@@ -38,17 +38,17 @@ public class velgTG extends AbstractAppServlet {
 
         } else if (tg.matches("2")) {
                     response.sendRedirect("/Skeleton-1.0/DamerSenior.jsp");
+        } else if (tg.matches("3")) {
+            response.sendRedirect("/Skeleton-1.0/JuniorA.jsp");
         } else if (tg.matches("4")) {
             response.sendRedirect("/Skeleton-1.0/JuniorA.jsp");
         } else if (tg.matches("5")) {
-            response.sendRedirect("/Skeleton-1.0/JuniorA.jsp");
-        } else if (tg.matches("6")) {
             response.sendRedirect("/Skeleton-1.0/JuniorB.jsp");
-        } else if (tg.matches("7")) {
+        } else if (tg.matches("6")) {
         response.sendRedirect("/Skeleton-1.0/JuniorB.jsp");
-        }  else if (tg.matches("8")) {
+        }  else if (tg.matches("7")) {
         response.sendRedirect("/Skeleton-1.0/JuniorC.jsp");
-     } else if (tg.matches("9")) {
+     } else if (tg.matches("8")) {
         response.sendRedirect("/Skeleton-1.0/JuniorC.jsp");
         }
 
