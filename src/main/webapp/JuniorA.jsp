@@ -133,7 +133,7 @@
         <input type='text' name='hd' maxlength="3" required/>
         <br>
         <label for='vk'> Vekt:</label>
-        <input type='text' name='vk'maxlength="3" required/>
+        <input type='text' name='vk' maxlength="3" required/>
               <br>
             <label for='ftw'>5000 watt:</label>
             <input type='text' name='ftw' />
@@ -222,7 +222,7 @@
                 try {
                     dbl = DbTool.getINSTANCE().dbLoggIn(pp);
                     ResultSet rs = null;
-                    String query = "SELECT * FROM ArogUKE";
+                    String query = "SELECT * FROM Roprosjekt.ArogUKE";
                     dropDownz = dbl.prepareStatement(query);
                     rs = dropDownz.executeQuery();
                     while (rs.next())
@@ -240,7 +240,7 @@
         <br>
         <br>
         <label for='ftw'>5000 watt:</label>
-        <input type='text' name='ftw' required/>
+        <input type='text' name='ftw' />
         <br>
         <label for='ftt'> 5000 tid:</label>
         <input type='text' name='ftt' />
