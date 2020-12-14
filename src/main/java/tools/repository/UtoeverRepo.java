@@ -1,8 +1,10 @@
 package tools.repository;
+
 import models.TestModell;
 import models.UtoevereModel;
 import models.UtoverClubModel;
 import tools.DbTool;
+
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,9 +23,10 @@ public class UtoeverRepo {
      */
 
 
-    public static int addUtoever(UtoevereModel utoever, String id, String klubb, String gruppe, PrintWriter p) {
+    public static void addUtoever(UtoevereModel utoever, String id, String klubb, String gruppe, PrintWriter p) {
         Connection db = null;
         PreparedStatement insertNewUtoever = null;
+        boolean success = false;
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
             String transquery = "BEGIN;";
@@ -80,7 +83,8 @@ public class UtoeverRepo {
             PreparedStatement end = db.prepareStatement(query4);
 
             begin.execute();
-            insertNewUtoever.execute();
+            insertNewUtoever.executeQuery();
+
             insertNewTest.execute();
             insertNewReg.execute();
             end.execute();
@@ -97,7 +101,7 @@ public class UtoeverRepo {
             }
         }
 
-        return 1;
+
     }
 
     /**
@@ -269,7 +273,7 @@ public class UtoeverRepo {
     }
 
 
-    public static int temp(UtoevereModel utoever,String tstid, String klubb, String gruppe, PrintWriter p) {
+    public static int temp(UtoevereModel utoever, String tstid, String klubb, String gruppe, PrintWriter p) {
         Connection db = null;
         PreparedStatement insertToTest = null;
 
@@ -316,8 +320,6 @@ public class UtoeverRepo {
             test.setString(25, gruppe);
 
 
-
-
             insertToTest.executeQuery();
             test.execute();
 
@@ -328,6 +330,7 @@ public class UtoeverRepo {
 
         return 1;
     }
+
     public static int testres(UtoevereModel utoever, String uutid, String tsstid, PrintWriter p) {
         Connection db = null;
         PreparedStatement insertToTest = null;
@@ -348,7 +351,7 @@ public class UtoeverRepo {
 
             PreparedStatement test = db.prepareStatement(qu);
 
-            test.setString(1,uutid);
+            test.setString(1, uutid);
             test.setString(2, tsstid);
             test.setInt(3, utoever.getFemtusen_watt());
             test.setInt(4, utoever.getFemtusen_tid());
@@ -367,9 +370,6 @@ public class UtoeverRepo {
             test.setInt(17, utoever.getKneboy_pst());
             test.setInt(18, utoever.getKneboy_kg());
             test.setInt(19, utoever.getTotalscore());
-
-
-
 
 
             insertToTest.executeQuery();
@@ -391,7 +391,6 @@ public class UtoeverRepo {
 
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
-
 
 
             //where utover_id != 0; KAN FORTSATT FUNKE
@@ -419,14 +418,13 @@ public class UtoeverRepo {
                     "FROM uttestreg WHERE utover_id  = 0";
 
 
-
             String query3 = "INSERT INTO Register " +
                     " SELECT 0,(SELECT MAX(utover_id) FROM utovere),testgruppe_id,klubb_id, bruker_id " +
                     "FROM uttestreg " +
                     "where utover_id = 0";
             //
 
-            String droppe =  "Drop table uttestreg;";
+            String droppe = "Drop table uttestreg;";
             String query4 = "commit;";
 
 
@@ -437,13 +435,11 @@ public class UtoeverRepo {
             PreparedStatement insertNewTest = db.prepareStatement(query2);
 
 
-
             PreparedStatement insertNewReg = db.prepareStatement(query3);
             PreparedStatement start = db.prepareStatement(transquery);
 
             PreparedStatement drop = db.prepareStatement(droppe);
             PreparedStatement slutt = db.prepareStatement(query4);
-
 
 
             start.execute();
@@ -453,9 +449,6 @@ public class UtoeverRepo {
             insertNewReg.execute();
             drop.execute();
             slutt.execute();
-
-
-
 
 
         } catch (SQLException e) {
