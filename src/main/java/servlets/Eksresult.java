@@ -64,7 +64,7 @@ public class Eksresult extends AbstractAppServlet {
                 out.println("<br>");
                 out.println("Trykk her for å returnere til hjemmesiden");
                 out.println("<br>");
-                out.println("<a href=index.jsp class=\"button\">Hjemmeside</a>");
+                out.println("<a href=TrenerSide.jsp class=\"button\">Forside</a>");
                 out.println("</div>");
 
             } else {

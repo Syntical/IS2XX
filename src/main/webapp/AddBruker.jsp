@@ -57,164 +57,164 @@
 <br>
 <br>
 <div class="LeggtilMedlem">
-<form action='AddBruker' method='POST'>
+    <form action='AddBruker' method='POST'>
 
-    <h1>Legg til en ny utøver og resultat</h1>
-    <h3>Informasjon i alle felter er påkrevd</h3>
-    <label for="year">Testår og uke:</label>
-    <select id="year" name="year" required>
-        <option value=""> Velg testperiode </option>
-        <%
-            PrintWriter p = new PrintWriter(out);
-            Connection db = null;
-            PreparedStatement dropDown = null;
-            try {
-                db = DbTool.getINSTANCE().dbLoggIn(p);
-                ResultSet rs = null;
-                String query = "SELECT * FROM ArogUKE";
-                dropDown = db.prepareStatement(query);
-                rs = dropDown.executeQuery();
-                while (rs.next())
-                {
-        %>
-        <option value="<%=rs.getInt("test_year_id") %>"><%=rs.getString("ArogUKE")%>
-        </option>
-        <%
+        <h1>Legg til en ny utøver og resultat</h1>
+        <h3>Informasjon i alle felter er påkrevd</h3>
+        <label for="year">Testår og uke:</label>
+        <select id="year" name="year" required>
+            <option value=""> Velg testperiode </option>
+            <%
+                PrintWriter p = new PrintWriter(out);
+                Connection db = null;
+                PreparedStatement dropDown = null;
+                try {
+                    db = DbTool.getINSTANCE().dbLoggIn(p);
+                    ResultSet rs = null;
+                    String query = "SELECT * FROM ArogUKE";
+                    dropDown = db.prepareStatement(query);
+                    rs = dropDown.executeQuery();
+                    while (rs.next())
+                    {
+            %>
+            <option value="<%=rs.getInt("test_year_id") %>"><%=rs.getString("ArogUKE")%>
+            </option>
+            <%
+                    }
+                } catch (SQLException e ) {
+                    e.printStackTrace();
                 }
-            } catch (SQLException e ) {
-                e.printStackTrace();
-            }
-        %>
-    </select>
-    <br>
+            %>
+        </select>
+        <br>
 
-    <br>
-    <label for="klubb">Klubb:</label>
-    <select id="klubb" name="klubb" required>
-        <option value=""> Velg klubb </option>
-        <%
-            PrintWriter o = new PrintWriter(out);
-            Connection dbb = null;
-            PreparedStatement klubb = null;
-            try {
-                dbb = DbTool.getINSTANCE().dbLoggIn(o);
-                ResultSet rs = null;
-                String query = "SELECT * FROM klubb";
-                klubb = dbb.prepareStatement(query);
-                rs = klubb.executeQuery();
-                while (rs.next())
-                {
-        %>
-        <option value="<%=rs.getInt("klubb_id") %>"><%=rs.getString("klubbnavn")%>
-        </option>
-        <%
+        <br>
+        <label for="klubb">Klubb:</label>
+        <select id="klubb" name="klubb" required>
+            <option value=""> Velg klubb </option>
+            <%
+                PrintWriter o = new PrintWriter(out);
+                Connection dbb = null;
+                PreparedStatement klubb = null;
+                try {
+                    dbb = DbTool.getINSTANCE().dbLoggIn(o);
+                    ResultSet rs = null;
+                    String query = "SELECT * FROM klubb";
+                    klubb = dbb.prepareStatement(query);
+                    rs = klubb.executeQuery();
+                    while (rs.next())
+                    {
+            %>
+            <option value="<%=rs.getInt("klubb_id") %>"><%=rs.getString("klubbnavn")%>
+            </option>
+            <%
+                    }
+                } catch (SQLException e ) {
+                    e.printStackTrace();
                 }
-            } catch (SQLException e ) {
-                e.printStackTrace();
-            }
-        %>
-    </select>
-    <br>
-    <br>
-    <label for="test">Testklasse:</label>
-    <select id="test" name="test" required>
-        <option value=""> Velg testklasse </option>
-        <%
-            PrintWriter l = new PrintWriter(out);
-            Connection ddb = null;
-            PreparedStatement gruppe = null;
-            try {
-                ddb = DbTool.getINSTANCE().dbLoggIn(l);
-                ResultSet rs = null;
-                String query = "SELECT * FROM Testgruppe";
-                gruppe = ddb.prepareStatement(query);
-                rs = gruppe.executeQuery();
-                while (rs.next())
-                {
-        %>
-        <option value="<%=rs.getInt("testgruppe_id") %>"><%=rs.getString("TestGruppeNavn")%>
-        </option>
-        <%
+            %>
+        </select>
+        <br>
+        <br>
+        <label for="test">Testklasse:</label>
+        <select id="test" name="test" required>
+            <option value=""> Velg testklasse </option>
+            <%
+                PrintWriter l = new PrintWriter(out);
+                Connection ddb = null;
+                PreparedStatement gruppe = null;
+                try {
+                    ddb = DbTool.getINSTANCE().dbLoggIn(l);
+                    ResultSet rs = null;
+                    String query = "SELECT * FROM Testgruppe";
+                    gruppe = ddb.prepareStatement(query);
+                    rs = gruppe.executeQuery();
+                    while (rs.next())
+                    {
+            %>
+            <option value="<%=rs.getInt("testgruppe_id") %>"><%=rs.getString("TestGruppeNavn")%>
+            </option>
+            <%
+                    }
+                } catch (SQLException e ) {
+                    e.printStackTrace();
                 }
-            } catch (SQLException e ) {
-                e.printStackTrace();
-            }
-        %>
+            %>
 
 
-    </select>
-    <br>
-    <br>
-    <label for='fn'>Fornavn:</label>
-    <input type='text' name='fn' required/>
-    <br>
-    <label for='en'> Etternavn:</label>
-    <input type='text' name='en' required/>
-    <br>
-    <label for='fd'> Fødselsår:</label>
-    <input type='text' name='fd' required/>
-    <br>
-    <label for='hd'> Høyde (cm):</label>
-    <input type='text' name='hd' maxlength="3" required/>
-    <br>
-    <label for='vk'> Vekt (kg):</label>
-    <input type='text' name='vk' maxlength="3" required/>
-    <br>
-    <label for='ftw'>5000 watt:</label>
-    <input type='text' name='ftw' />
-    <br>
-    <label for='ftt'> 5000 tid:</label>
-    <input type='text' name='ftt' />
-    <br>
-    <label for='tts'> 3000 sek:</label>
-    <input type='text' name='tts' />
-    <br>
-    <label for='ttt'> 3000 tid:</label>
-    <input type='text' name='ttt' />
-    <br>
-    <label for='tlt'> 3000 løp tid:</label>
-    <input type='text' name='tlt' />
-    <br>
-    <label for='ttw'>2000 watt:</label>
-    <input type='text' name='ttw' />
-    <br>
-    <label for='tott'> 2000 tid:</label>
-    <input type='text' name='tott' />
-    <br>
-    <label for='sw'> 60 watt:</label>
-    <input type='text' name='sw' />
-    <br>
-    <label for='khs'> Kroppshev stk:</label>
-    <input type='text' name='khs' />
-    <br>
-    <label for='sgs'> Sargeant stk:</label>
-    <input type='text' name='sgs' />
-    <br>
-    <label for='bs'>Bevegelse stk:</label>
-    <input type='text' name='bs' />
-    <br>
-    <label for='lr'> Ligg ro:</label>
-    <input type='text' name='lr' />
-    <br>
-    <label for='lrp'> Ligg ro prosent:</label>
-    <input type='text' name='lrp' />
-    <br>
-    <label for='lrk'> Ligg ro kilo:</label>
-    <input type='text' name='lrk' />
-    <br>
-    <label for='kbp'> Knebøy prosent:</label>
-    <input type='text' name='kbp' />
-    <br>
-    <label for='kbk'> Knebøy kilo:</label>
-    <input type='text' name='kbk' />
-    <br>
-    <label for='totsc'> Totalscore:</label>
-    <input type='text' name='totsc' />
-    <br>
+        </select>
+        <br>
+        <br>
+        <label for='fn'>Fornavn:</label>
+        <input type='text' name='fn' required/>
+        <br>
+        <label for='en'> Etternavn:</label>
+        <input type='text' name='en' required/>
+        <br>
+        <label for='fd'> Fødselsår:</label>
+        <input type='text' name='fd' placeholder="ÅÅÅÅ" minlength="4" maxlength="4" required/>
+        <br>
+        <label for='hd'> Høyde (cm):</label>
+        <input type='text' name='hd' maxlength="3" required/>
+        <br>
+        <label for='vk'> Vekt (kg):</label>
+        <input type='text' name='vk' maxlength="3" required/>
+        <br>
+        <label for='ftw'>5000 watt:</label>
+        <input type='text' name='ftw' />
+        <br>
+        <label for='ftt'> 5000 tid:</label>
+        <input type='text' name='ftt' />
+        <br>
+        <label for='tts'> 3000 sek:</label>
+        <input type='text' name='tts' />
+        <br>
+        <label for='ttt'> 3000 tid:</label>
+        <input type='text' name='ttt' />
+        <br>
+        <label for='tlt'> 3000 løp tid:</label>
+        <input type='text' name='tlt' />
+        <br>
+        <label for='ttw'>2000 watt:</label>
+        <input type='text' name='ttw' />
+        <br>
+        <label for='tott'> 2000 tid:</label>
+        <input type='text' name='tott' />
+        <br>
+        <label for='sw'> 60 watt:</label>
+        <input type='text' name='sw' />
+        <br>
+        <label for='khs'> Kroppshev stk:</label>
+        <input type='text' name='khs' />
+        <br>
+        <label for='sgs'> Sargeant stk:</label>
+        <input type='text' name='sgs' />
+        <br>
+        <label for='bs'>Bevegelse stk:</label>
+        <input type='text' name='bs' />
+        <br>
+        <label for='lr'> Ligg ro:</label>
+        <input type='text' name='lr' />
+        <br>
+        <label for='lrp'> Ligg ro prosent:</label>
+        <input type='text' name='lrp' />
+        <br>
+        <label for='lrk'> Ligg ro kilo:</label>
+        <input type='text' name='lrk' />
+        <br>
+        <label for='kbp'> Knebøy prosent:</label>
+        <input type='text' name='kbp' />
+        <br>
+        <label for='kbk'> Knebøy kilo:</label>
+        <input type='text' name='kbk' />
+        <br>
+        <label for='totsc'> Totalscore:</label>
+        <input type='text' name='totsc' />
+        <br>
 
-    <br>
-    <br>
-    <input type='submit' name="action" value="Legg til ny utøver og resultat"/>
+        <br>
+        <br>
+        <input type='submit' name="action" value="Legg til ny utover og resultat"/>
     </form>
 </div>
 
