@@ -46,7 +46,7 @@ public class Eksresult extends AbstractAppServlet {
 
 
 
-        if (action.contains("legg til resultat")) {
+        if (action.contains("Legg til resultat")) {
             TestModell test = new TestModell ( req.getParameter("ftw"),
                     req.getParameter("ftt"), req.getParameter("tts"), req.getParameter("ttt"), req.getParameter("tlt"), req.getParameter("ttw"),
                     req.getParameter("tott"), req.getParameter("sw"), req.getParameter("khs"), req.getParameter("sgs"), req.getParameter("bs"), req.getParameter("lr"), req.getParameter("lrp"),
