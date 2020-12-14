@@ -177,7 +177,9 @@
         </form>
     </div>
 
+
     <br>
+
     <br>
         <div class ="LeggtilMedlem">
             <h1>Legg til testresultat for eksisterende utøver</h1>
@@ -279,6 +281,7 @@
             <input type='hidden' name='totsc'/>
             <br>
             <input type='submit' name="action" value="Legg til resultat"/>
+
             </form>
         </div>
     </body>

@@ -174,8 +174,9 @@
 
         <input type='hidden' name='totsc'/>
         <br>
+
         <br>
-    <input type='submit' name="action" value="Legg til ny utøver og resultat"/>
+    <input type='submit' name="action" value="Legg til ny utover og resultat"/>
 </form>
 
 </div>
@@ -283,6 +284,7 @@
     <input type='hidden' name='totsc'/>
     <br>
     <input type='submit' name="action" value="Legg til resultat"/>
+
 </form>
 </div>
 </body>
