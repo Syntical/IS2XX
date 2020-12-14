@@ -16,6 +16,8 @@
     <li><a href="Testår.jsp">Legg til testår og -uke</a></li>
     <li><a href="Klubboversikt.jsp">Klubboversikt</a></li>
     <li><a href="RegistrerNyBruker.jsp">Registrer ny systembruker</a></li>
+    <li><a href="testaddbruker.jsp">Midl.pubReg</a></li>
+    <li><a href="testpub.jsp">Midl.publisering</a></li>
     <li style="float:left"><button class="button" onclick="goBack()">Gå tilbake</button>
         <script>
             function goBack() {

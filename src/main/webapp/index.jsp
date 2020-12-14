@@ -24,6 +24,11 @@
         <input type='text' name='ffnavn' placeholder="Søk med fornavn"/>
         <input type='submit' name='action' value='sok'/>
     </form>
+    <br>
+    <br>
+    Vil du heller utføre et filtrert søk? Klikk her
+    <br>
+    <a href="soke.jsp" class="button">Filtrert søk</a>
 </div>
 <div class="informasjonsBar">
     Kontakt oss på Tlf: 990 99 999 eller E-post: roklubben@support.no

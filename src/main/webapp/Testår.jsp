@@ -37,7 +37,7 @@
 <div class="LeggTilBruker">
 <form action="AddArogUke" method="POST">
     <label for='ar'>Testår</label>
-    <input type='text' name='ar' maxlength = "2" required/>
+    <input type='text' name='ar' minlength="4" maxlength = "4" required/>
     <br>
     <label for='uke'>Testuke:</label>
     <input type='text' name='uke' maxlength = "2" required/>

@@ -81,8 +81,8 @@ public class AddBruker extends AbstractAppServlet {
                 out.println("</div>");
 
             } else if (!etTestfeltErFyltUt) {
-                out.println("<a href=AddBruker.jsp> <h1> Noe gikk galt. Vil du prøve på nytt? </h1>");
-                out.println("<font color=red size='25'> System failure. Hazzard imidi!!!</font>");
+                out.println("<a href=AddBruker.jsp> <h1> Ops! Du har kommet til denne siden fordi du har lagt til en utøver uten resultater </h1>");
+                out.println("<font color=red size='25'> Vennligst klikk her for å forsøke igjen . Hazzard imidi!!!</font>");
             }
 
         } if (action.contains("hent")){

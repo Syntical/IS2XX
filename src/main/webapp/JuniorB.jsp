@@ -40,7 +40,7 @@
     <br>
 
     <label for="year">Testår og uke: </label>
-    <select id="year" name="year" >
+    <select id="year" name="year" required>
         <option value=""> Velg periode </option>
         <%
             PrintWriter p = new PrintWriter(out);
@@ -68,7 +68,7 @@
 
     <br>
     <label for="klubb">Klubb:</label>
-    <select id="klubb" name="klubb" >
+    <select id="klubb" name="klubb" required>
         <option value=""> Velg klubb </option>
         <%
             PrintWriter o = new PrintWriter(out);
@@ -95,7 +95,7 @@
     <br>
     <br>
     <label for="test">Testklasse:</label>
-    <select id="test" name="test" >
+    <select id="test" name="test" required>
         <option value=""> Velg testklasse </option>
             <%
             PrintWriter l = new PrintWriter(out);
@@ -139,29 +139,29 @@
     <input type='hidden' name='ftw'/>
     <input type='hidden' name='ftt'/>
     <label for='tts'> 3000 sek:</label>
-    <input type='text' name='tts' />
+    <input type='text' name='tts' required/>
     <br>
     <label for='ttt'> 3000 tid:</label>
-    <input type='text' name='ttt' />
+    <input type='text' name='ttt' required/>
     <br>
     <input type='hidden' name='tlt'/>
     <label for='ttw'>2000 watt:</label>
-    <input type='text' name='ttw' />
+    <input type='text' name='ttw' required/>
     <br>
     <label for='tott'> 2000 tid:</label>
-    <input type='text' name='tott' />
+    <input type='text' name='tott' required/>
     <br>
     <label for='sw'> 60 watt:</label>
-    <input type='text' name='sw' />
+    <input type='text' name='sw' required/>
     <br>
     <label for='khs'> Kroppshev stk:</label>
-    <input type='text' name='khs' />
+    <input type='text' name='khs' required/>
     <br>
     <label for='sgs'> Sargeant stk:</label>
-    <input type='text' name='sgs' />
+    <input type='text' name='sgs' required/>
     <br>
     <label for='bs'>Bevegelse stk:</label>
-    <input type='text' name='bs' />
+    <input type='text' name='bs' required/>
     <input type='hidden' name='lr'/>
     <input type='hidden' name='lrp'>
     <input type='hidden' name='lrk'/>
@@ -184,7 +184,7 @@
 
         <br>
         <label for="utover">Utøver:</label>
-        <select id="utover" name="utover" >
+        <select id="utover" name="utover" required >
             <option value=""> Velg utøver </option>
             <%
                 PrintWriter pa = new PrintWriter(out);
@@ -211,7 +211,7 @@
         <br>
         <br>
         <label for="ars">Testår og uke:</label>
-        <select id="ars" name="ars" >
+        <select id="ars" name="ars" required>
             <option value=""> Velg testperiode </option>
             <%
                 PrintWriter pc = new PrintWriter(out);
@@ -241,29 +241,29 @@
         <input type='hidden' name='ftw'/>
         <input type='hidden' name='ftt'/>
         <label for='tts'> 3000 sek:</label>
-        <input type='text' name='tts' />
+        <input type='text' name='tts' required/>
         <br>
         <label for='ttt'> 3000 tid:</label>
-        <input type='text' name='ttt' />
+        <input type='text' name='ttt' required/>
         <br>
         <input type='hidden' name='tlt'/>
         <label for='ttw'>2000 watt:</label>
-        <input type='text' name='ttw' />
+        <input type='text' name='ttw' required/>
         <br>
         <label for='tott'> 2000 tid:</label>
-        <input type='text' name='tott' />
+        <input type='text' name='tott' required/>
         <br>
         <label for='sw'> 60 watt:</label>
-        <input type='text' name='sw' />
+        <input type='text' name='sw' required/>
         <br>
         <label for='khs'> Kroppshev stk:</label>
-        <input type='text' name='khs' />
+        <input type='text' name='khs' required/>
         <br>
         <label for='sgs'> Sargeant stk:</label>
-        <input type='text' name='sgs' />
+        <input type='text' name='sgs' required/>
         <br>
         <label for='bs'>Bevegelse stk:</label>
-        <input type='text' name='bs' />
+        <input type='text' name='bs' required/>
         <input type='hidden' name='lr'/>
         <input type='hidden' name='lrp'>
         <input type='hidden' name='lrk'/>
