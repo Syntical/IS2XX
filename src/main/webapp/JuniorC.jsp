@@ -131,7 +131,7 @@
     <input type='text' name='hd' maxlength="3" required />
     <br>
     <label for='vk'> Vekt:</label>
-    <input type='text' name='vk'maxlength="3" required />
+    <input type='text' name='vk' maxlength="3" required />
         <input type='hidden' name='ftw'/>
         <input type='hidden' name='ftt'/>
         <input type='hidden' name='tts'/>
