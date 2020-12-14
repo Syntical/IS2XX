@@ -8,8 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.Null;
-
 import models.UtoevereModel;
+import models.UtoverPeriodeModel;
 import tools.repository.SearchRepo;
 
 
@@ -36,7 +36,7 @@ public class ResultsFromDb extends AbstractAppServlet {
     @Override
     protected void writeBody(HttpServletRequest req, PrintWriter out) {
         String fornavn = req.getParameter("ffnavn");
-        List<UtoevereModel> nameFromDb = SearchRepo.getFornavn(fornavn, out);
+        List<UtoverPeriodeModel> nameFromDb = SearchRepo.getFornavn(fornavn, out);
         out.println("<link rel=\"stylesheet\" href=\"test.css\"/>");
         out.println("<ul>");
         out.println("<li><a href=\"index.jsp\">Tilbake til forsiden</a></li>");
@@ -48,12 +48,11 @@ public class ResultsFromDb extends AbstractAppServlet {
         out.println("<h1>Søkeresultat:</h1> ");
         out.println("<table style=\"1px solid black;margin-left:auto;margin-right:auto;\">");
         out.println("<tr>");
-        //out.println("<th scope=col> Testperiode: </th>");
+        out.println("<th scope=col> Testår: </th>");
+        out.println("<th scope=col> Testuke: </th>");
         out.println("<th scope=col> Fornavn: </th>");
         out.println("<th scope=col> Etternavn: </th>");
         out.println("<th scope=col> Fødselsår: </th>");
-       // out.println("<th scope=col> Høyde: </th>");
-        //out.println("<th scope=col> Vekt: </th>");
         out.println("<th scope=col> 5000 watt: </th>");
         out.println("<th scope=col> 5000 tid: </th>");
         out.println("<th scope=col> 3000 sek: </th>");
@@ -66,25 +65,18 @@ public class ResultsFromDb extends AbstractAppServlet {
         out.println("<th scope=col> Sargeant stk: </th>");
         out.println("<th scope=col> Bevegelse stk: </th>");
         out.println("<th scope=col> Ligg ro: </th>");
-        out.println("<th scope=col> Ligg ro prosent: </th>");
-        out.println("<th scope=col> Ligg ro kilo: </th>");
-        out.println("<th scope=col> Knebøy prosent: </th>");
-        out.println("<th scope=col> Knebøy kilo: </th>");
+        out.println("<th scope=col> Ligg ro (%): </th>");
+        out.println("<th scope=col> Ligg ro kg: </th>");
+        out.println("<th scope=col> Knebøy (%): </th>");
+        out.println("<th scope=col> Knebøy kg: </th>");
         out.println("<th scope=col> Totalscore: </th>");
         out.println("</tr>");
-        for (UtoevereModel model : nameFromDb) {
-            out.format(" <tr><td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td>\" +" +
-                            "\n" + "<td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td>  %s </td> </tr> ", model.getFornavn(),
-                    model.getEtternavn(), model.getFodselsdato(),model.getFemtusen_watt(), model.getFemtusen_tid(),
-                    model.getTretusen_sek(), model.getTretusen_tid(), model.getTretusen_lop_tid(), model.getTotusen_watt(), model.getTotusen_tid(), model.getSeksti_watt(), model.getKropps_hev_stk(),
+        for (UtoverPeriodeModel model : nameFromDb) {
+            out.format(" <tr> <td> %s </td> <td> %s </td> <td> %s </td> <td> %s </td> <td> %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td>" +
+                            "<td> %s </td> <td>  %s </td> <td> %s </td> <td> %s </td> <td>  %s </td> <td> %s </td> </tr> ", model.getAr(), model.getTestuke(), model.getFornavn(),
+                    model.getEtternavn(), model.getFodselsdato(),model.getFemtusen_watt(), model.getFemtusen_tid(), model.getTretusen_sek(), model.getTretusen_tid(), model.getTretusen_lop_tid(), model.getTotusen_watt(), model.getTotusen_tid(), model.getSeksti_watt(), model.getKropps_hev_stk(),
                     model.getSargeant_stk(), model.getBeveg_stk(), model.getLigg_ro(), model.getLigg_ro_pst(), model.getLigg_ro_kg(), model.getKneboy_pst(), model.getKneboy_kg(), model.getTotalscore());
-/*
-            if(model.getFornavn() != Null) {
-                for()
-            } else {
-                out.println();
-            }
-*/
+
         }
         out.println("</table>");
         out.println("<div class=\"informasjonsBar\">");

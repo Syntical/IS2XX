@@ -1,6 +1,7 @@
 package tools.repository;
 
 import models.UtoevereModel;
+import models.UtoverPeriodeModel;
 import tools.DbTool;
 
 import java.io.PrintWriter;
@@ -20,23 +21,23 @@ public class SearchRepo {
      * @return et String objekt med eposten til brukeren.
      */
 
-    public static List<UtoevereModel> getFornavn(String fornavn, PrintWriter p) {
+    public static List<UtoverPeriodeModel> getFornavn(String fornavn, PrintWriter p) {
         Connection db = null;
         PreparedStatement prepareStatement = null;
 
-        List<UtoevereModel> toReturn = new ArrayList<>();
+        List<UtoverPeriodeModel> toReturn = new ArrayList<>();
         try {
             db = DbTool.getINSTANCE().dbLoggIn(p);
             ResultSet rs = null;
-            String query = "SELECT * FROM utovere JOIN testregister USING (utover_id) where fornavn OR etternavn  = ?";
+            String query = "SELECT * FROM utovere JOIN testregister USING (utover_id) JOIN testyear using (test_year_id) where fornavn = ?";
             prepareStatement = db.prepareStatement(query);
             prepareStatement.setString(1, fornavn);
             rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                UtoevereModel utoever = new UtoevereModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"),
+                UtoverPeriodeModel utoever = new UtoverPeriodeModel(rs.getString("fornavn"), rs.getString("etternavn"), rs.getString("fodselsdato"), rs.getString("hoyde"), rs.getString("vekt"),
                         rs.getString("5000_watt"), rs.getString("5000_tid"), rs.getString("3000_sek"), rs.getString("3000_tid"), rs.getString("3000_lop_tid"), rs.getString("2000_watt"), rs.getString("2000_tid"),
                         rs.getString("60_watt"), rs.getString("kropps_hev_stk"), rs.getString("Sargeant_stk"), rs.getString("beveg_stk"), rs.getString("ligg_ro"), rs.getString("ligg_ro_pst"), rs.getString("ligg_ro_kg"), rs.getString("kneboy_pst"),
-                        rs.getString("kneboy_kg"), rs.getString("totalscore"));
+                        rs.getString("kneboy_kg"), rs.getString("totalscore"), rs.getString("Testuke"), rs.getString("Ar"));
                 toReturn.add(utoever);
             }
             rs.close();
