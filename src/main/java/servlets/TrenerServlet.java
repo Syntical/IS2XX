@@ -58,8 +58,8 @@ public class TrenerServlet extends AbstractAppServlet {
                     "        }\n" +
                     "        </script></li>");
             out.println("</ul>");
-            out.println("<div class=\"Rembruker\"");
-            out.println("Lagt til ny trener");
+            out.println("<div class=\"Rembruker\">");
+            out.println("<h2> Lagt til ny trener </h2>");
             out.println("</div>");
         }
 
