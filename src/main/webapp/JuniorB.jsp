@@ -128,7 +128,7 @@
     <input type='text' name='en' required />
     <br>
     <label for='fd'> Fødselsår:</label>
-    <input type='text' name='fd'  maxlength="4" required/>
+    <input type='text' name='fd' placeholder="ÅÅÅÅ" minlength="4" maxlength="4" required/>
     <br>
     <label for='hd'> Høyde:</label>
     <input type='text' name='hd' maxlength="3" required/>

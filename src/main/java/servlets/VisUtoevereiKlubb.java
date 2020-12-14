@@ -53,11 +53,6 @@ public class VisUtoevereiKlubb extends AbstractAppServlet {
         List<UtoverClubModel> UtoverClubModelList = UtoeverRepo.visUtoverKlubb(out);
         out.println("<link rel=\"stylesheet\"href=\"test.css\"/>");
         out.println("<ul>");
-        // out.println("<li><form action=\"${pageContext.request.contextPath}/LoggUt\" method=\"post\">\n" +
-        //               "        <input type=\"submit\" value=\"Logg ut\" /></form></li>");
-        out.println("<li><form action=\"${pageContext.request.contextPath}/VisUtoevereiKlubb\" method=\"post\">\n" +
-                "        <input type=\"submit\" value=\"Vis utøvere i klubben\" />\n" +
-                "    </form></li>");
         out.println("<li><a href=\"AddBruker.jsp\">Legg til utøver</a></li>");
         out.println("<li><a href=\"Velgtestgruppe.jsp\">Testklasser </a></li>");
         out.println("<li><a href=\"TrenerSide.jsp\">Forside</a></li>");
